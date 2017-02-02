@@ -10,7 +10,6 @@ class Section extends Component {
         super();
         this.id=SectionID+1;
         SectionID+=1;
-        this.state={};
     }
     render() {
         return (
