@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import DropdownSection from './DropdownSection/DropdownSection';
 import NavExample from './Nav/Nav';
-import {jumbotron,well,Well} from 'react-bootstrap';
+import {Col,Row,Well,Grid} from 'react-bootstrap';
+import {Router,Route,Link} from 'react-router';
+
 class App extends Component {
     render() {
         return (<div className="App">
@@ -13,12 +15,29 @@ class App extends Component {
                 </div>
                 <NavExample/>
 
-                <DropdownSection/>
-
-
+                <Grid fluid={true}>
+                    {this.props.children}
+                </Grid>
             </div>
         );
     }
 }
+function SplitPane(props){
+    return(<div className="SplitPane">
+        <div className="SplitPane-left">
+            {props.left}
+        </div>
+        <div className="SplitPane-right">
+            {props.right}
+        </div>
 
+    </div>);
+}
+// class mainLayout extends Component{
+//     render(){
+//             return(<DropdownSection/>
+//             );
+//     }
+// }
 export default App;
+// export class mainLayout{}

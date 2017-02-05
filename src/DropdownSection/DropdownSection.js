@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import {Button, Panel} from 'react-bootstrap';
 import ButtonGroup from './ButtonGroup/ButtonGroup';
+import './DropdownSection.css';
 
 var SectionID=0;
 class Section extends Component {
@@ -10,6 +11,7 @@ class Section extends Component {
         super();
         this.id=SectionID+1;
         SectionID+=1;
+        this.state={};
     }
     render() {
         return (
@@ -19,7 +21,7 @@ class Section extends Component {
                 </Button>
                 <Panel collapsible style={{margin:"10px 0 10px 0"}} expanded={this.state.open}>
                       <div>
-                          <div style={{maxWidth:900, height:'auto', margin:'auto'}}className="well" id={this.id}>
+                          <div style={{maxWidth:900, height:'auto'}} id={this.id}>
                               {this.props.inside}
                           </div>
                       </div>
