@@ -1,43 +1,45 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import DropdownSection from './DropdownSection/DropdownSection';
 import NavExample from './Nav/Nav';
-import {Col,Row,Well,Grid} from 'react-bootstrap';
+import {Grid,FormGroup,ControlLabel,FormControl,HelpBlock} from 'react-bootstrap';
 import {Router,Route,Link} from 'react-router';
-
+import LogInForm from './LogInForm/LogInForm';
+/* eslint-disable */
 class App extends Component {
     render() {
-        return (<div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Welcome</h2>
-                </div>
-                <NavExample/>
+                return (<div className="App">
+                        <div className="App-header">
+                            <img src={logo} className="App-logo" alt="logo"/>
+                            <h2>Welcome</h2>
+                            </div>
 
-                <Grid fluid={true}>
-                    {this.props.children}
-                </Grid>
+                <Greeting isLoggedIn={false} t={this.props.children}/>
+
+
             </div>
         );
     }
 }
-function SplitPane(props){
-    return(<div className="SplitPane">
-        <div className="SplitPane-left">
-            {props.left}
-        </div>
-        <div className="SplitPane-right">
-            {props.right}
-        </div>
-
-    </div>);
+function Greeting(props){
+    const isLoggedIn = props.isLoggedIn;
+    if(isLoggedIn){
+        return (<div>
+            <NavExample/>
+            <Grid fluid={true}>
+                {props.t}
+            </Grid>
+            </div>
+        );
+        // return (props.t);
+    }
+    else{
+        return (<div>
+            <h2>Please Log In.</h2>
+            <LogInForm/>
+        </div>);
+    }
 }
-// class mainLayout extends Component{
-//     render(){
-//             return(<DropdownSection/>
-//             );
-//     }
-// }
+
 export default App;
 // export class mainLayout{}

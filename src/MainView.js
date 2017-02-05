@@ -19,14 +19,13 @@ class MainView extends Component{
             return (
                 <SplitPane left={<DropdownSection/>} right={<div>
                     <p> there are no listings in the database yet</p>
-
                 </div>}>
 
                 </SplitPane>);
         }
         else {
             return (
-                <SplitPane left={<DropdownSection/>} right={<TableView/>}>
+                <SplitPane left={<DropdownSection/>} right={<TableView />}>
 
                 </SplitPane>
             );

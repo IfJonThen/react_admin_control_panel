@@ -33,10 +33,12 @@ var maxwinter2016={}
 var garyfall2014={}
 var jonfall2013={}
 var table=[];
-class Button extends Component {
-
+class Button extends React.Component {
+    addValue(){
+        console.log("adding value");
+    }
     render() {
-        return (<button className="btn" onClick={()=> addMember(this.props.value)}>
+        return (<button className="btn" onClick={this.addValue.bind(this)}>
                 {this.props.value}
             </button>
         );
