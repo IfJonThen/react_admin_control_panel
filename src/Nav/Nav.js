@@ -3,6 +3,8 @@ import './Nav.css';
 import {Nav,NavDropdown,MenuItem,NavItem} from 'react-bootstrap';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
+/*eslint no-unused-vars: "off"*/
+
 const NavExample = React.createClass({
     handleSelect(eventKey){
         event.preventDefault();

@@ -1,0 +1,11 @@
+#myform{
+  max-width:60%;
+  margin-left:auto;
+  margin-right:auto;
+}
+@media only screen and (min-width: 80em) {
+  #myform{
+    max-width:30%;
+  }
+
+}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { } from 'react';
 import './LogInForm.css';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
 
@@ -26,7 +26,7 @@ const LogInForm = React.createClass({
                 {/*</FormGroup>*/}
                 <FieldGroup id="formControlsText" type="text" label="Username" placeholder="Enter Username"/>
                 <FieldGroup id="formControlsPassword" type="password" label="Password" placeholder="Enter Password"/>
-
+                <button> Log In</button>
 
             </Form>
             </div>

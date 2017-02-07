@@ -3,6 +3,8 @@ import './TableView.css';
 import {Table} from 'react-bootstrap';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
+/*eslint no-unused-vars: "off"*/
+
 class TableView extends Component{
     constructor() {
         super();

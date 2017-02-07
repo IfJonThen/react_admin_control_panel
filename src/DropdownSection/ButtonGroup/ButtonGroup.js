@@ -33,6 +33,8 @@ var maxwinter2016={}
 var garyfall2014={}
 var jonfall2013={}
 var table=[];
+/*eslint no-unused-vars: "off"*/
+
 class Button extends React.Component {
     addValue(){
         console.log("adding value");

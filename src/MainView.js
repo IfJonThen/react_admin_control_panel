@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import './MainView.css';
 import DropdownSection from './DropdownSection/DropdownSection';
 import TableView from './TableView/TableView';
-var members={'Name':'Jon,Max,Gary'};
-var memInfo= {'Gary':{},'Jon':{},'Max':{} };
+// var members={'Name':'Jon,Max,Gary'};
+// var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
 class MainView extends Component{
-    constructor(){
-        super();
-        // this.props.table=table;
 
-    }
     setTable(table){
         // this.props.table=table;
     }
