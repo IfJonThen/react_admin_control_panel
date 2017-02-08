@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './MainView.css';
-import DropdownSection from './DropdownSection/DropdownSection';
-import TableView from './TableView/TableView';
+import './static/css/MainView.css';
+import DropdownSection from './components/DropdownSection';
+import TableView from './components/TableView';
 // var members={'Name':'Jon,Max,Gary'};
 // var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];

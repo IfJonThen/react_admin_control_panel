@@ -1,11 +1,12 @@
 import React, { } from 'react';
-import './LogInControl.css';
-import {Link} from 'react-router';
+import '../static/css/LogInControl.css';
+import {Router, Link} from 'react-router';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
 
 /*eslint no-unused-vars: "off"*/
 
 class LogInControl extends React.Component{
+
     constructor(props){
         super(props);
         this.handleLogInClick = this.handleLogInClick.bind(this);
@@ -13,6 +14,7 @@ class LogInControl extends React.Component{
         this.handleUName = this.handleUName.bind(this);
         this.handlePW = this.handlePW.bind(this);
         this.ili = props.isLoggedIn;
+
         // this.handleChange = this.props.handleChange.bind(this);
         this.state={isLoggedIn:false,t:props.t,uname:"1",pw:"2"};
         console.log("LogInControl(): state.isLoggedIn:"+this.state.isLoggedIn);
@@ -24,8 +26,9 @@ class LogInControl extends React.Component{
         this.props.onClick(true);
         // this.ili=true;
         this.setState({isLoggedIn:!this.state.isLoggedIn},console.log("LogInControl: state.isLoggedIn "+this.state.isLoggedIn));
-        this.context.router.transitionTo('home');
-
+        // this.context.router.transitionTo('/home');
+        var TransitionTo = Router.transitionTo;
+        TransitionTo('home');
         // console.log("++++" + e.);
     }
     handleUName(e){
@@ -46,7 +49,7 @@ class LogInControl extends React.Component{
         console.log("LogInControl() render(): Ls "+Ls);
         let button=null;
         if (Ls){
-            return null;
+            return this.props.t;
             // return(<button onClick={props.onClick}>
             //     Logout
             // </button>);
@@ -59,7 +62,7 @@ class LogInControl extends React.Component{
                     <Form id="myform">
                         <FieldGroup id="formControlsText" onChange={this.handleUName}type="text" label="Username" placeholder="Enter Username"/>
                         <FieldGroup id="formControlsPassword" onChange={this.handlePW}type="password" label="Password" placeholder="Enter Password"/>
-                        <button onClick={this.handleLogInClick}> Log In</button>
+                        <button  onClick={this.handleLogInClick}> Log In</button>
                     </Form>
                 </div>
             );

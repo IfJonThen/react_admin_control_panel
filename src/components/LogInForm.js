@@ -1,5 +1,5 @@
 import React, { } from 'react';
-import './LogInForm.css';
+import '../static/css/LogInForm.css';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
 
 /* eslint-disable */

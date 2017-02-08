@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Nav.css';
 import {Nav,NavDropdown,MenuItem,NavItem} from 'react-bootstrap';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
@@ -8,7 +7,7 @@ var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 const NavExample = React.createClass({
     handleSelect(eventKey){
         event.preventDefault();
-        console.log('selected ${eventKey');
+        console.log('selected '+eventKey);
     },
     render(){
         return(

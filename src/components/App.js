@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import NavExample from './Nav/Nav';
+import logo from '../logo.svg';
+import '../static/css/App.css';
+import NavExample from './Nav';
 import {Grid} from 'react-bootstrap';
 import {Link} from 'react-router';
 // import LogInForm from './LogInForm/LogInForm';
-import LogInControl from './LogInControl/LogInControl';
+import LogInControl from './LogInControl';
 /*eslint no-unused-vars: "off"*/
 
 class App extends Component {

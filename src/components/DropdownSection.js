@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import {Button, Panel} from 'react-bootstrap';
-import ButtonGroup from './ButtonGroup/ButtonGroup';
-import './DropdownSection.css';
+import ButtonGroup from './ButtonGroup';
 
 var SectionID=0;
 class Section extends Component {

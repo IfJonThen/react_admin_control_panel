@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './TableView.css';
 import {Table} from 'react-bootstrap';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };

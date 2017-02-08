@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './ButtonGroup.css';
 
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
