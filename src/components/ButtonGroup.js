@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
 
-var members={'Name':'Jon,Max,Gary'};
-var memInfo= {'Gary':{},'Jon':{},'Max':{} };
-var classKey={'Writing 30': ['Writing','30'],
-                'Informatics 43':['Informatics', '43'],
-                'ICS 45C':['ICS', '45C'],
-                'ICS 5': ['ICS','5'],
-                'Film 85A':['Film','85A'],
-                'Econ 20B':['Econ','20B'],
-                'ICS 31':['ICS','31'],
-                'Math 2A':['Math', '2A'],
-                'ICS 45J':['ICS', '45J']
-}
-var mf16={
-        'quarter':'fall',
-        'year':'2016',
-            'classes': ['Writing 30','Informatics 43','ICS 45C']
-};
-var gf16={
-    'quarter':'fall',
-    'year':'2016',
-    'classes': ['CS 161','Informatics 122','ICS 45C','Math 2A']
-};
-var jf16={
-    'quarter':'fall',
-    'year':'2016',
-    'classes': ['CS 161','Informatics 43','Econ 20B']
-};
-var temps={"mf16":mf16,"gf16":gf16,"jf16":jf16};
-var maxwinter2016={}
-var garyfall2014={}
-var jonfall2013={}
-var table=[];
-/*eslint no-unused-vars: "off"*/
 
-class Button extends React.Component {
+/*eslint no-useless-constructor:"off",
+no-unused-vars: "off"*/
+
+export class Button extends React.Component {
+    constructor(props){
+        super(props);
+        this.id=null;
+        this.addValue=this.addValue.bind(this);
+    }
     addValue(){
-        console.log("adding value");
+        console.log(this.props.id);
     }
     render() {
-        return (<button className="btn" onClick={this.addValue.bind(this)}>
+        return (<button className="btn" id={this.props.id} onClick={this.props.onClick}>
                 {this.props.value}
             </button>
         );
     }
 }
 class ButtonGroup extends Component {
+    constructor(props){
+        super(props);
+
+    }
     renderButtons(i,j){
         return (<Button id={j} value={i}/>);
     }

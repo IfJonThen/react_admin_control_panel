@@ -5,7 +5,7 @@ import {Button, Panel} from 'react-bootstrap';
 import ButtonGroup from './ButtonGroup';
 
 var SectionID=0;
-class Section extends Component {
+export class Section extends Component {
     constructor(){
         super();
         this.id=SectionID+1;
