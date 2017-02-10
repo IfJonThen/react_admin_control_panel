@@ -17,33 +17,41 @@ class RosterView extends Component{
     constructor(props){
       super(props);
       this.state={pane:"add"};
+        this.handleSelectA=this.handleSelectA.bind(this);
+        this.handleSelectR=this.handleSelectR.bind(this);
+    }
+    componentDidMount(){
 
     }
+    componentWillUnMount(){
 
+    }
     handleSelectR(event){
-        console.log("remove"+this.props.id);
+        console.log('RosterView::handleSelectRemove() clicked');
+        console.log("remove "+event.target.id);
         this.setState({pane:"remove"});
     }
     handleSelectA(){
+        console.log('RosterView::handleSelectAdd() clicked');
         this.setState({pane:"add"});
     }
     render() {
         let left =
             <div>
                 <div className="row">
-                    <Button onClick={this.handleSelectR}id="Add" value="Add Member"/>
+                    <Button onClick={this.handleSelectA}id="Add" value="Add Member"/>
                 </div>
                 <div className="row">
-                    <Button onClick={this.handleSelectA}id="Remove" value="Remove Member"/>
+                    <Button onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
 
                 </div>
             </div>;
         let right =null;
         if (this.state.pane==="add"){
-            right= <RosterForm/>;
+            right= <RosterForm db={this.props.db}/>;
         }
         else{
-            right=<RosterEdit/>;
+            right=<RosterEdit db={this.props.db}/>;
         }
 
         return (
