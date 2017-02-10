@@ -4,7 +4,7 @@ import {Router, browserHistory} from 'react-router';
 var members={'Name':'Jon,Max,Gary'};
 
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
-/*eslint no-unused-vars: "off"*/
+/*eslint no-unused-vars: "off", default-case: "off"*/
 
 const NavExample = React.createClass({
     handleSelect(eventKey){

@@ -9,17 +9,17 @@ import RosterForm,{RosterEdit} from './RosterForm';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
-
+import * as firebase from "firebase";
 /*eslint no-unused-vars: "off"*/
+
 
 class RosterView extends Component{
     constructor(props){
       super(props);
       this.state={pane:"add"};
-      // this.state={this.props.field};
-        this.handleSelectA= this.handleSelectA.bind(this);
-        this.handleSelectR= this.handleSelectR.bind(this);
+
     }
+
     handleSelectR(event){
         console.log("remove"+this.props.id);
         this.setState({pane:"remove"});

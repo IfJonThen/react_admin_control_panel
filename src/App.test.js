@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import RosterForm,{RosterEdit} from './components/RosterView';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(
+      <div>
+        <RosterForm /><RosterEdit/>
+      </div>, div);
 });

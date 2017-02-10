@@ -1,4 +1,6 @@
-var members={'Name':'Jon,Max,Gary'};
+import firebase from 'firebase';
+
+const members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var classKey={'Writing 30': ['Writing','30'],
     'Informatics 43':['Informatics', '43'],
@@ -30,3 +32,28 @@ var maxwinter2016={}
 var garyfall2014={}
 var jonfall2013={}
 var table=[];
+/*eslint no-unused-vars: "off"*/
+var config ={apikey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
+    authDomain:"classexaminer.firebaseapp.com",
+    databaseURL:"https://classexaminer.firebaseio.com",
+    storageBucket:"classexaminer.appspot.com",
+};
+firebase.initializeApp(config);
+
+    /*
+    * componentWillMount(){
+     this.firebaseRef = new Firebase("https://ReactFireTodoApp.firebaseio.com/items/");
+     this.firebaseRef.on("child_added", function(dataSnapshot) {
+     this.items.push(dataSnapshot.val());
+     this.setState({
+     items: this.items
+     });
+     }.bind(this));
+     },
+     componentWillUnmount() {
+     this.firebaseRef.off();
+     },
+    *
+    *
+    *
+    * */

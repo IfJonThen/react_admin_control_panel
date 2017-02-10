@@ -52,14 +52,13 @@ class App extends Component {
                 <button onClick={this.goSomeWhere}>hello there</button>
                 </div>
                     );
-            if (this.state.loc=="roster"){
+            if (this.state.loc==="roster"){
                 var s = <Button id="AddM" value="Add Member"> why</Button>;
                 var t=(<DropdownSection/>);
-                {/*base=<SplitView left={s} right={t}/>;*/}
                 base=<RosterView onChange={this.onChange}/>;
                 //show roster
             }
-            else if (this.state.loc=="home"){
+            else if (this.state.loc==="home"){
                 base= <MainView/>;
             }
         }
