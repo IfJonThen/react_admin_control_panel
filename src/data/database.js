@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 
 const members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
@@ -33,12 +32,7 @@ var garyfall2014={}
 var jonfall2013={}
 var table=[];
 /*eslint no-unused-vars: "off"*/
-var config ={apikey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
-    authDomain:"classexaminer.firebaseapp.com",
-    databaseURL:"https://classexaminer.firebaseio.com",
-    storageBucket:"classexaminer.appspot.com",
-};
-firebase.initializeApp(config);
+
 
     /*
     * componentWillMount(){

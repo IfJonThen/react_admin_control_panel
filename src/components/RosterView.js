@@ -9,6 +9,7 @@ import RosterForm,{RosterEdit} from './RosterForm';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
+
 import * as firebase from "firebase";
 /*eslint no-unused-vars: "off"*/
 
