@@ -1,4 +1,5 @@
 import {base} from './firebaseRef'
+/*eslint no-unused-vars: "off"*/
 
 var handler=(error, user)=>{
     if (error){

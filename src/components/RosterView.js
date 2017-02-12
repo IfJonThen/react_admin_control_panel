@@ -20,9 +20,8 @@ class RosterView extends Component{
     constructor(){
       super();
       this.count=0;
-      this.state={count:null,base:null};
+      this.state={pane:"add",count:0,base:[]};
 
-      this.state={pane:"add"};
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
         this.onChange=this.onChange.bind(this)
@@ -30,8 +29,16 @@ class RosterView extends Component{
         this.pullList2=this.pullList2.bind(this);
         this.pullDB=this.pullDB.bind(this);
         this.loadSections=this.loadSections.bind(this);
+        this.pullDB();
     }
     componentDidMount(){
+        console.log("RosterView::componentDidMount()::");
+        // var firebaseRef = firebase.database().ref("Names");
+        base.syncState("users",{
+            context:this,
+            state:'base',
+            asArray:true
+        });
 
     }
     componentWillUnMount(){
@@ -43,12 +50,12 @@ class RosterView extends Component{
         }).then(data=>
         {
             this.count=data.length;
-            console.log("data contains " +data);
-            this.setState({base:data,count:data.length});
+            console.log("RosterView::pulDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
+            this.setState({base:data,count:this.count});
         }).catch(error=>{
             console.log("RosterView:constructor: fetch error");
         });
-        console.log("RosterView::constructor::this.state.value " + this.state.count);
+        console.log("RosterView::constructor::this.state.count " + this.state.count);
     }
     loadSections(){
         this.pullList();
@@ -61,7 +68,6 @@ class RosterView extends Component{
         else{
             return this.state.count;
         }
-        // this.pullList();
     }
     handleSelectR(event){
         // console.log('RosterView::handleSelectRemove() clicked');
@@ -69,8 +75,10 @@ class RosterView extends Component{
         this.pullList();
     }
     handleSelectA(){
-        // console.log('RosterView::handleSelectAdd() clicked');
         this.setState({pane:"add"});
+    }
+    componentWillReceiveProps(){
+        console.log("RosterView::ComponentWillReceiveProps  ");
     }
     pullList(){
         let v = null;
@@ -117,7 +125,7 @@ class RosterView extends Component{
 
         if (this.state.pane==="add"){
             let count= this.onChange();
-            right= <RosterForm onChange={count}/>;
+            right= <RosterForm count={count}/>;
         }
         else{
             right=<RosterEdit right={v} count={this.state.count}/>;
