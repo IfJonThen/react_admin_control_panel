@@ -5,7 +5,6 @@ class Listing extends Component {
     constructor(){
         super();
     }
-
     render() {
         return (<button className="btn" onClick={()=> alert(this.props.value)}>
                 {this.props.value}

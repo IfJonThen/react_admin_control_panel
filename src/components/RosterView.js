@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import '../static/css/MainView.css';
 import NavExample from "./Nav";
 import {Form, Grid} from 'react-bootstrap';
+import '../static/css/MainView.css';
+
 import SplitView from './SplitView';
 import TableView from './TableView';
 import {Button} from './ButtonGroup';
@@ -10,40 +11,124 @@ var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
 
+import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
 
+
 class RosterView extends Component{
-    constructor(props){
-      super(props);
-      this.state={pane:"add"};
-      // this.state={this.props.field};
-        this.handleSelectA= this.handleSelectA.bind(this);
-        this.handleSelectR= this.handleSelectR.bind(this);
+
+    constructor(){
+      super();
+      this.count=0;
+      this.state={pane:"add",count:0,base:[]};
+
+        this.handleSelectA=this.handleSelectA.bind(this);
+        this.handleSelectR=this.handleSelectR.bind(this);
+        this.onChange=this.onChange.bind(this)
+        this.pullList=this.pullList.bind(this);
+        this.pullList2=this.pullList2.bind(this);
+        this.pullDB=this.pullDB.bind(this);
+        this.loadSections=this.loadSections.bind(this);
+        this.pullDB();
+    }
+    componentDidMount(){
+        console.log("RosterView::componentDidMount()::");
+        // var firebaseRef = firebase.database().ref("Names");
+        base.syncState("users",{
+            context:this,
+            state:'base',
+            asArray:true
+        });
+
+    }
+    componentWillUnMount(){
+
+    }
+    pullDB(){
+        base.fetch('users', {
+            context: this, asArray: true,
+        }).then(data=>
+        {
+            this.count=data.length;
+            console.log("RosterView::pulDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
+            this.setState({base:data,count:this.count});
+        }).catch(error=>{
+            console.log("RosterView:constructor: fetch error");
+        });
+        console.log("RosterView::constructor::this.state.count " + this.state.count);
+    }
+    loadSections(){
+        this.pullList();
+    }
+    onChange(){
+        if (this.state.count===undefined){
+            this.pullDB();
+            return this.state.count;
+        }
+        else{
+            return this.state.count;
+        }
     }
     handleSelectR(event){
-        console.log("remove"+this.props.id);
+        // console.log('RosterView::handleSelectRemove() clicked');
         this.setState({pane:"remove"});
+        this.pullList();
     }
     handleSelectA(){
         this.setState({pane:"add"});
+    }
+    componentWillReceiveProps(){
+        console.log("RosterView::ComponentWillReceiveProps  ");
+    }
+    pullList(){
+        let v = null;
+        var t =document.getElementById("selectRemove");
+        console.log("RosterView::pullList:: this.state.base:" +this.state.base);
+        if (t !=null) {
+            for (let j = 0; j < this.state.count; j++) {
+                if (typeof this.state.base[j] === 'string') {
+                    v = document.createElement("option");
+                    v.appendChild(document.createTextNode(this.state.base[j]));
+                    v.value = j + 1;
+                    t.appendChild(v);
+                }
+            }
+        }
+        console.log("RosterForm: pullList: added "+this.state.count +" options");
+    }
+    pullList2(){
+
+        let v = [];
+        var t =document.getElementById("selectRemove");
+        console.log("RosterView::pullList2:: this.state.base:" +this.state.base);
+        for(let j =0; j<this.state.count;j++){
+            if(typeof this.state.base[j]=== 'string') {
+               v.push(<option key={j}>{this.state.base[j]}</option>);
+            }
+        }
+        console.log("RosterForm: pullList2: added "+v+" options");
+
+        return v;
     }
     render() {
         let left =
             <div>
                 <div className="row">
-                    <Button onClick={this.handleSelectR}id="Add" value="Add Member"/>
+                    <Button onClick={this.handleSelectA}id="Add" value="Add Member"/>
                 </div>
                 <div className="row">
-                    <Button onClick={this.handleSelectA}id="Remove" value="Remove Member"/>
-
+                    <Button onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
                 </div>
             </div>;
         let right =null;
+        let v = this.pullList2();
+
         if (this.state.pane==="add"){
-            right= <RosterForm/>;
+            let count= this.onChange();
+            right= <RosterForm count={count}/>;
         }
         else{
-            right=<RosterEdit/>;
+            right=<RosterEdit right={v} count={this.state.count}/>;
         }
 
         return (
@@ -55,6 +140,12 @@ class RosterView extends Component{
 
     }
 }
+RosterView.propTypes={
+    count:React.PropTypes.number
+};
+RosterView.defaultProps={
+    count:0
+};
 function SplitPane(props){
     return(<div className="SplitPane">
         <div className="SplitPane-left">

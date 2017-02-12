@@ -1,4 +1,5 @@
-var members={'Name':'Jon,Max,Gary'};
+
+const members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var classKey={'Writing 30': ['Writing','30'],
     'Informatics 43':['Informatics', '43'],
@@ -30,3 +31,23 @@ var maxwinter2016={}
 var garyfall2014={}
 var jonfall2013={}
 var table=[];
+/*eslint no-unused-vars: "off"*/
+
+
+    /*
+    * componentWillMount(){
+     this.firebaseRef = new Firebase("https://ReactFireTodoApp.firebaseio.com/items/");
+     this.firebaseRef.on("child_added", function(dataSnapshot) {
+     this.items.push(dataSnapshot.val());
+     this.setState({
+     items: this.items
+     });
+     }.bind(this));
+     },
+     componentWillUnmount() {
+     this.firebaseRef.off();
+     },
+    *
+    *
+    *
+    * */

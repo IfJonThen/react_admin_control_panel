@@ -1,5 +1,20 @@
+#Add, #Remove{
+  width:75%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-bottom:black 1px solid;
+  min-height:60px;
+  color:white;
+}
+#Add:hover,#Remove:hover{
+    color:rgba(40,143,255,0.8);
+  /*background-color: rgba(40, 143, 255, 0.3);*/
+}
+#Remove{
 
+}
 .SplitPane {
+  margin-top:30px;
+
   width: 100%;
   height: 100%;
 }
@@ -9,10 +24,23 @@
   width: 30%;
   height: 100%;
   background-color: rgba(0,0,0,0.3);
+  min-height:500px;
 
 }
-
+.splitform{
+  margin-left:30px;
+}
+.form-group select{
+  margin-top:15px;
+}
+#editFormLabel{
+  border-bottom:1px solid black;
+}
+.form-group button{
+  margin-top:15px;
+}
 .SplitPane-right {
+  min-height:500px;
   float: left;
   width: 70%;
   height: 100%;
