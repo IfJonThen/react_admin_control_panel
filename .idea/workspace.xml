@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb7276b0-11ee-47fa-8970-67e363b43ac9" name="Default" comment="add and remove panels now working properly">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/static/js/auth.js" afterPath="$PROJECT_DIR$/src/static/js/firebaseAuth.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/App.js" afterPath="$PROJECT_DIR$/src/components/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/RosterForm.js" afterPath="$PROJECT_DIR$/src/components/RosterForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/RosterView.js" afterPath="$PROJECT_DIR$/src/components/RosterView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/static/css/MainView.css" afterPath="$PROJECT_DIR$/src/static/css/MainView.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/static/js/firebaseRef.js" afterPath="$PROJECT_DIR$/src/static/js/firebaseRef.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -100,7 +95,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/App.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="725">
@@ -124,11 +119,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RosterForm.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="RosterForm.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/RosterForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+                <state relative-caret-position="125">
+                  <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -623,7 +618,7 @@
       <workItem from="1486028064549" duration="32241000" />
       <workItem from="1486512345503" duration="4133000" />
       <workItem from="1486516505181" duration="22247000" />
-      <workItem from="1486688511104" duration="43603000" />
+      <workItem from="1486688511104" duration="43885000" />
     </task>
     <task id="LOCAL-00001" summary="added nav bar">
       <created>1486028430674</created>
@@ -695,11 +690,25 @@
       <option name="project" value="LOCAL" />
       <updated>1486814764677</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="* RosterView now is the state controller for RosterEdit and RosterForm&#10;* RosterView now passes children to Roster Edit&#10;* bug fixed: roster edit is now updated on state change">
+      <created>1486863130122</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1486863130123</updated>
+    </task>
+    <task id="LOCAL-00012" summary="* moved controller to roster view&#10;* roster form now properly accepts props from rosterview&#10;* roster form now properly updates firebase&#10;* roster edit now properly displays fetch from firebase even after roster form updates firebase&#10;//todo &#10;* place roster form info into database in proper format&#10;* provide functionality for remove in roster edit&#10;* migrate class schedule add section from js_class_examiner&#10;* migrate class comparison section from js_class_examiner">
+      <created>1486863328552</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1486863328552</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110294000" />
+    <option name="totallyTimeSpent" value="110576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="0" width="1934" height="1030" extended-state="0" />
@@ -764,7 +773,9 @@
     <MESSAGE value="add and remove panels now working properly" />
     <MESSAGE value="added fetch helper functions for firebase" />
     <MESSAGE value="remove member now correctly loads the list&#10;//to do refresh button functionality and styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove member now correctly loads the list&#10;//to do refresh button functionality and styling" />
+    <MESSAGE value="* RosterView now is the state controller for RosterEdit and RosterForm&#10;* RosterView now passes children to Roster Edit&#10;* bug fixed: roster edit is now updated on state change" />
+    <MESSAGE value="* moved controller to roster view&#10;* roster form now properly accepts props from rosterview&#10;* roster form now properly updates firebase&#10;* roster edit now properly displays fetch from firebase even after roster form updates firebase&#10;//todo &#10;* place roster form info into database in proper format&#10;* provide functionality for remove in roster edit&#10;* migrate class schedule add section from js_class_examiner&#10;* migrate class comparison section from js_class_examiner" />
+    <option name="LAST_COMMIT_MESSAGE" value="* moved controller to roster view&#10;* roster form now properly accepts props from rosterview&#10;* roster form now properly updates firebase&#10;* roster edit now properly displays fetch from firebase even after roster form updates firebase&#10;//todo &#10;* place roster form info into database in proper format&#10;* provide functionality for remove in roster edit&#10;* migrate class schedule add section from js_class_examiner&#10;* migrate class comparison section from js_class_examiner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1095,16 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/RosterView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1117,10 +1118,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/RosterForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        <state relative-caret-position="125">
+          <caret line="29" column="31" lean-forward="true" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

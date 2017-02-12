@@ -12,7 +12,7 @@ import DropdownSection, {Section} from './DropdownSection';
 import {Button} from './ButtonGroup';
 import RosterView from './RosterView';
 import LogInControl from './LogInControl';
-
+import {login,logout} from '../static/js/firebaseAuth';
 /*eslint no-unused-vars: "off"*/
 
 class App extends Component {
@@ -21,24 +21,22 @@ class App extends Component {
         this.state={isLoggedIn:true};
         this.handleLogInChange=this.handleLogInChange.bind(this);
         this.goSomeWhere=this.goSomeWhere.bind(this);
-        this.onChange=this.onChange.bind(this);
+        // this.onChange=this.onChange.bind(this);
         console.log("App.js: state.isLoggedIn:"+this.state.isLoggedIn);
+        let l = {email:"pikahatonjon@gmail.com",password:"password"};
+        login(l);
     }
     goSomeWhere() {
         this.setState({loc:"roster"});
         browserHistory.push('roster');
     }
-    onChange(event){
-        this.setState({roster:this.props.id});
-    }
     handleLogInChange(e){
         console.log("App.js: handleLogInChange() before state:"+e);
         this.setState({isLoggedIn:e},()=>{
             setTimeout(()=>{
-
                 console.log("App.js: handleLogInChange() after state:"+this.state.isLoggedIn)
             },500);
-    });
+             });
 
     }
     render() {
@@ -49,13 +47,16 @@ class App extends Component {
             navbar =(
                 <div>
                     <NavExample/>
-                <button onClick={this.goSomeWhere}>hello there</button>
                 </div>
                     );
-            if (this.state.loc==="roster"){
+            if (this.state.loc === undefined){
+                navbar=<button onClick={this.goSomeWhere}>Log In</button>;
+
+            }
+            else if (this.state.loc==="roster"){
                 var s = <Button id="AddM" value="Add Member"> why</Button>;
                 var t=(<DropdownSection/>);
-                base=<RosterView onChange={this.onChange}/>;
+                base=<RosterView db={this.props.db}/>;
                 //show roster
             }
             else if (this.state.loc==="home"){
