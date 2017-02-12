@@ -8,8 +8,8 @@ import ReactDOM from 'react-dom';
 import Rebase from 're-base';
 /*eslint no-unused-vars: "off"*/
 import {firebaseAuth} from '../static/js/firebaseAuth';
-// import base from '../static/js/firebaseAuth';
-// import * as firebase from 'firebase';
+
+//brings in the Rebase object
 var fbase = Rebase.createClass({
     apiKey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
     authDomain:"classexaminer.firebaseapp.com",
@@ -19,24 +19,32 @@ var fbase = Rebase.createClass({
 });
 
 class RosterForm extends Component{
+
+    /*RosterForm::constructor()
+    * binds the functions thanks es6 -_-
+    * sets base state "count" equal to props.count
+    * */
     constructor(props){
         super(props);
         // this.count=props.count;
         this.state={count:this.props.count};
         this.onButtonClick= this.onButtonClick.bind(this);
+        this.addToDB=this.addToDB.bind(this);
         console.log("RosterForm::constructor::props.count " +props.count);
     }
+
+    /* RosterForm()::onButtonClick()
+    * bind by constructor, parses Add form for data and sends it to AddToDB helper function
+    * */
     onButtonClick(event){
         event.preventDefault();
-        let fname = document.getElementById("inputFname");
-        let lname = document.getElementById("inputLname");
-        fname = fname.value;
-        lname= lname.value;
+        let fname = document.getElementById("inputFname").value;
+        let lname = document.getElementById("inputLname").value;
         let quarter = document.getElementById("selectPledgeYear");
         quarter = quarter.options[quarter.selectedIndex].text;
         let year = document.getElementById("inputYear").value;
-        console.log("adding member", fname+ " " + lname+" "+quarter  + " "+ year);
-        //change this to push
+
+        this.addToDB(fname,lname,quarter,year);
         // base.update('classes',{
         //     data:{uid: {"jyuen":{f2k16:['CS 161','Informatics 133','Informatics 124']}}},
         //     then(err){
@@ -46,26 +54,35 @@ class RosterForm extends Component{
         //         }
         //     }
         // });
+    }
+    /*RosterForm()::addToDB()
+    * helper function. takes arguments and places them into firebase
+    * sends an Alert(for now upon success)
+    * */
+    addToDB(fname,lname,quarter,year){
         console.log("RosterForm add "+ this.count);
         let t = {};
         if (this.state.base!==undefined) {
-            t[this.state.base.length] = fname;
-            fbase.update('users', {
-                data: t,
-                then(err){
-                    if (!err) {
-                        alert("RosterForm:buttonHandler: successfully added " + fname)
-                        // Router.transitionTo('')
-                    }
-                }
-            });
+            t= {first:fname,last:lname,quarter:quarter,year:year};
+            this.setState({base:this.state.base.concat([t])});
+            // this.state.base.concat()[]
+            // fbase.update('users', {s
+            //     data: t,
+            //     then(err){
+            //         if (!err) {
+            //             alert("RosterForm:buttonHandler: successfully added " + fname)
+            //         } else{
+            //             alert("Error " + err);
+            //         }
+            //     }
+            // });
         }
     }
     componentWillMount(){
         console.log("RosterForm::componentWillMount()");
         let t = {};
         if(this.state.base!==undefined) {
-            this.setState({count:this.state.base.length});
+            // this.setState({count:this.state.base.length});
         }
     }
     componentDidMount() {
@@ -132,7 +149,7 @@ export class RosterEdit extends Component{
         this.fetchData = this.fetchData.bind(this);
         this.fetchData();
         this.count = props.count;
-        this.handleRefresh=this.handleRefresh.bind(this);
+        this.handleRefreshBtn=this.handleRefreshBtn.bind(this);
         this.handleRemoveBtn=this.handleRemoveBtn.bind(this);
         this.pullList = this.pullList.bind(this)
     }
@@ -143,29 +160,26 @@ export class RosterEdit extends Component{
                     this.setState({base:data,count:data.length});
                     this.count=data.length;
                     console.log("RosterEdit::fetch:: count changed successfully");
-                    // this.pullList();
-
                 }
                 else{
                     console.log("RosterEdit::fetch::count changed unsuccesfully");
-                    // this.pullList();
-
                 }
                 console.log("RosterEdit:: fetched data success " + data + data.length +this.state.count);
 
             }});
     }
-    handleRemoveBtn(){
+    handleRemoveBtn(event){
+        event.preventDefault();
+        // let t = document.getElementById("selectRemove");
+        // console.log("RosterEdit::handleRemove::"+t.options[t]);
         let v = document.getElementById("selectRemove");
         v=v.options[v.selectedIndex].text;
-        console.log("RosterEdit::handleRemoveBtn::triggered :" +v +"will be removed");
+        console.log("RosterEdit::handleRemoveBtn::triggered :" +v +" will be removed");
     }
-    handleRefresh(){
+    handleRefreshBtn(event){
+        event.preventDefault();
         console.log("RosterEdit::handleRefresh::refreshing...");
         setTimeout(this.pullList(),500);
-        // let v = document.getElementById("selectRemove");
-        // v=v.options[v.selectedIndex].text;
-        // console.log("RosterEdit::handleRemoveBtn::triggered :" +v +"will be removed");
     }
     createUID(fname,lname){
         if(fname.length!==0 &&lname.length!==0) {
@@ -177,11 +191,15 @@ export class RosterEdit extends Component{
         var t =document.getElementById("selectRemove");
         console.log("RosterEdit: pullList: adding "+this.state.count +" options");
         for(let j =0; j<this.state.count;j++){
-            if(typeof this.state.base[j]=== 'string') {
-                v = document.createElement("option");
-                v.appendChild(document.createTextNode(this.state.base[j]));
-                v.value = j + 1;
-                t.appendChild(v);
+            for (let j = 0; j < this.state.count; j++) {
+                if (typeof this.state.base[j] === 'string') {
+                    v = document.createElement("option");
+                    if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
+                        v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
+                        v.value = j + 1;
+                        t.appendChild(v);
+                    }
+                }
             }
         }
         console.log("RosterEdit: pullList: added "+this.state.count +" options");
@@ -197,7 +215,7 @@ export class RosterEdit extends Component{
     }
     componentWillUpdate(){
         console.log("RosterEdit will update()");
-        this.pullList();
+        // this.pullList();
 
         if(this.count!==0){
             // console.log("RosterEditWillUpdate : "+this.fetchData());
