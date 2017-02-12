@@ -29,7 +29,7 @@ class RosterView extends Component{
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
         this.onChange=this.onChange.bind(this)
-        this.pullList=this.pullList.bind(this);
+        // this.pullList=this.pullList.bind(this);
         this.pullList2=this.pullList2.bind(this);
         this.pullDB=this.pullDB.bind(this);
         this.loadSections=this.loadSections.bind(this);
@@ -69,6 +69,7 @@ class RosterView extends Component{
         });
         console.log("RosterView::constructor::this.state.count " + this.state.count);
     }
+
     /*RosterView()::loadSections()
     * helper function
     * makes a call to pullList, may remove in the future
@@ -89,6 +90,7 @@ class RosterView extends Component{
             return this.state.count;
         }
     }
+
     /*RosterView()::handleSelectR()
      * handler function for the Remove Button
      * changes state to "remove"
@@ -96,8 +98,9 @@ class RosterView extends Component{
     handleSelectR(event){
         // console.log('RosterView::handleSelectRemove() clicked');
         this.setState({pane:"remove"});
-        this.pullList();
+        // this.pullList();
     }
+
     /*RosterView()::handleSelectA()
      * handler function for the AddButton
      * changes state to "add"
@@ -105,30 +108,31 @@ class RosterView extends Component{
     handleSelectA(){
         this.setState({pane:"add"});
     }
-    /*RosterView()::pullList()
+
+    /*RosterView()::pullList() Not in Use
      * generates textNodes for RosterEdit select form based on the number of children in state.base
      * */
-    pullList(){
-        let v = null;
-        var t =document.getElementById("selectRemove");
-        console.log("RosterView::pullList:: this.state.base:" +this.state.base);
-        if (t !=null) {
-            for (let j = 0; j < this.state.count; j++) {
-                if (typeof this.state.base[j] !== 'string') {
-                    v = document.createElement("option");
-                    if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
-                        v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
-                        v.value = j + 1;
-                        t.appendChild(v);
-                    }
-                    else{
-                        console.log("RosterView::pullList()...no children added");
-                    }
-                }
-            }
-        }
-        console.log("RosterForm: pullList: added "+this.state.count +" options");
-    }
+    // pullList(){
+    //     let v = null;
+    //     var t =document.getElementById("selectRemove");
+    //     console.log("RosterView::pullList:: this.state.base:" +this.state.base);
+    //     if (t !=null) {
+    //         for (let j = 0; j < this.state.count; j++) {
+    //             if (typeof this.state.base[j] !== 'string') {
+    //                 v = document.createElement("option");
+    //                 if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
+    //                     v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
+    //                     v.value = j + 1;
+    //                     t.appendChild(v);
+    //                 }
+    //                 else{
+    //                     console.log("RosterView::pullList()...no children added");
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     console.log("RosterForm: pullList: added "+this.state.count +" options");
+    // }
 
     /*
     * RosterEdit()::pullList2
