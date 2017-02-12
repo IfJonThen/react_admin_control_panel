@@ -10,7 +10,7 @@ import Rebase from 're-base';
 import {firebaseAuth} from '../static/js/firebaseAuth';
 // import base from '../static/js/firebaseAuth';
 // import * as firebase from 'firebase';
-var base = Rebase.createClass({
+var fbase = Rebase.createClass({
     apiKey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
     authDomain:"classexaminer.firebaseapp.com",
     databaseURL:"https://classexaminer.firebaseio.com",
@@ -21,12 +21,13 @@ var base = Rebase.createClass({
 class RosterForm extends Component{
     constructor(props){
         super(props);
+        // this.count=props.count;
+        this.state={count:this.props.count};
+        this.onButtonClick= this.onButtonClick.bind(this);
         console.log("RosterForm::constructor::props.count " +props.count);
     }
     onButtonClick(event){
         event.preventDefault();
-
-        console.log("add button clicked");
         let fname = document.getElementById("inputFname");
         let lname = document.getElementById("inputLname");
         fname = fname.value;
@@ -45,33 +46,51 @@ class RosterForm extends Component{
         //         }
         //     }
         // });
+        console.log("RosterForm add "+ this.count);
         let t = {};
-        t[this.count]=fname;
-        base.update('users',{
-            data:t,
-            then(err){
-                if(!err){
-                    alert("RosterForm:buttonHandler: successfully added "+ fname)
-                    // Router.transitionTo('')
+        if (this.state.base!==undefined) {
+            t[this.state.base.length] = fname;
+            fbase.update('users', {
+                data: t,
+                then(err){
+                    if (!err) {
+                        alert("RosterForm:buttonHandler: successfully added " + fname)
+                        // Router.transitionTo('')
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
+    componentWillMount(){
+        console.log("RosterForm::componentWillMount()");
+        let t = {};
+        if(this.state.base!==undefined) {
+            this.setState({count:this.state.base.length});
+        }
     }
     componentDidMount() {
+        console.log("RosterForm::componentDidMount()::");
         // var firebaseRef = firebase.database().ref("Names");
-        // this.syncState("Names",{
-        //     context:this,
-        //     state:'names',
-        //     asArray:true
-        // });
+        fbase.syncState("users",{
+            context:this,
+            state:'base',
+            asArray:true
+        });
     }
 
     render(){
+        let t=null;
+        if (this.state.count===0 || this.state.count===null){
+            t="KEYERROR"+this.state.count;
+        }
+        else{
+            t="First Name";
+        }
         return(<div className="splitform"><Form id="rosterform">
                 <div className="form-group row">
                     <label className="col-sm-2 col-form-label">First Name</label>
                     <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputFname" placeholder="First Name">
+                        <input type="name" className="form-control" id="inputFname" placeholder={t}>
                         </input>
                     </div>
                 </div>
@@ -118,7 +137,7 @@ export class RosterEdit extends Component{
         this.pullList = this.pullList.bind(this)
     }
     fetchData(){
-        base.fetch('users', {context:this,asArray:true,
+        fbase.fetch('users', {context:this,asArray:true,
             then(data){
                 if (this.state.count!==data.length){
                     this.setState({base:data,count:data.length});
@@ -174,9 +193,10 @@ export class RosterEdit extends Component{
     }
     componentWillMount(){
         console.log("RosterEdit will mount()");
-        this.pullList();
+        // this.pullList();
     }
     componentWillUpdate(){
+        console.log("RosterEdit will update()");
         this.pullList();
 
         if(this.count!==0){
