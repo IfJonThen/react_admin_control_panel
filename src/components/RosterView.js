@@ -16,7 +16,11 @@ import {base} from "../static/js/firebaseRef";
 
 
 class RosterView extends Component{
-
+    /*RosterView()::constructor()
+    * bind the functions..thanks es6 -_-
+    * set states to default (empty or 0)
+    * calls pullDB() to fill states. will most likely change to re-base.syncState in the future
+     *  */
     constructor(){
       super();
       this.count=0;
@@ -41,9 +45,17 @@ class RosterView extends Component{
         });
 
     }
+    componentWillReceiveProps(){
+        console.log("RosterView::ComponentWillReceiveProps  ");
+    }
     componentWillUnMount(){
 
     }
+    /*RosterView()::pullDB()
+    * pulls data from database via re-base.fetch()
+    * sets "base" state and "count" state
+    * may change to syncState
+    *  */
     pullDB(){
         base.fetch('users', {
             context: this, asArray: true,
@@ -57,9 +69,17 @@ class RosterView extends Component{
         });
         console.log("RosterView::constructor::this.state.count " + this.state.count);
     }
+    /*RosterView()::loadSections()
+    * helper function
+    * makes a call to pullList, may remove in the future
+     */
     loadSections(){
         this.pullList();
     }
+    /*RosterView()::onChange()
+     * helper function for Rosterform to generate children for props
+     * makes a call to pullDB, may remove in the future
+     */
     onChange(){
         if (this.state.count===undefined){
             this.pullDB();
@@ -69,47 +89,78 @@ class RosterView extends Component{
             return this.state.count;
         }
     }
+    /*RosterView()::handleSelectR()
+     * handler function for the Remove Button
+     * changes state to "remove"
+     * */
     handleSelectR(event){
         // console.log('RosterView::handleSelectRemove() clicked');
         this.setState({pane:"remove"});
         this.pullList();
     }
+    /*RosterView()::handleSelectA()
+     * handler function for the AddButton
+     * changes state to "add"
+     * */
     handleSelectA(){
         this.setState({pane:"add"});
     }
-    componentWillReceiveProps(){
-        console.log("RosterView::ComponentWillReceiveProps  ");
-    }
+    /*RosterView()::pullList()
+     * generates textNodes for RosterEdit select form based on the number of children in state.base
+     * */
     pullList(){
         let v = null;
         var t =document.getElementById("selectRemove");
         console.log("RosterView::pullList:: this.state.base:" +this.state.base);
         if (t !=null) {
             for (let j = 0; j < this.state.count; j++) {
-                if (typeof this.state.base[j] === 'string') {
+                if (typeof this.state.base[j] !== 'string') {
                     v = document.createElement("option");
-                    v.appendChild(document.createTextNode(this.state.base[j]));
-                    v.value = j + 1;
-                    t.appendChild(v);
+                    if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
+                        v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
+                        v.value = j + 1;
+                        t.appendChild(v);
+                    }
+                    else{
+                        console.log("RosterView::pullList()...no children added");
+                    }
                 }
             }
         }
         console.log("RosterForm: pullList: added "+this.state.count +" options");
     }
-    pullList2(){
 
+    /*
+    * RosterEdit()::pullList2
+    * generates children for RosterEdit select form based on the number of children in state.base
+    *
+    * */
+    pullList2(){
         let v = [];
         var t =document.getElementById("selectRemove");
         console.log("RosterView::pullList2:: this.state.base:" +this.state.base);
         for(let j =0; j<this.state.count;j++){
-            if(typeof this.state.base[j]=== 'string') {
-               v.push(<option key={j}>{this.state.base[j]}</option>);
+            if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
+                if (typeof this.state.base[j] !== 'string') {
+                    let l = this.state.base[j]['first']+ " "+ this.state.base[j]['last'] +' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
+
+                    v.push(<option key={j}>{l}</option>);
+                }
+                else{
+                    console.log("RosterView::pullList()...no children added");
+                }
             }
         }
         console.log("RosterForm: pullList2: added "+v+" options");
 
         return v;
     }
+
+    /*RosterView()::Render()
+     * controlled by App.js conditionally renders left and right panes
+      * if state is add, renders RosterForm
+      * if state is remove, renders RosterEdit
+     */
     render() {
         let left =
             <div>
