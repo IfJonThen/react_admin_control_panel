@@ -16,29 +16,32 @@ var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 class NavBar extends React.Component{
     constructor(props){
         super(props);
-        this.handleSelect=this.handleSelect.bind(this);
+        this.handleNavClick=this.handleNavClick.bind(this);
         if(props.loc===undefined){
             console.log("NavBar():constructor LOC IS UNDEFINED");
         }
         this.state={loc:props.loc};
     }
-    handleSelect(eventKey){
+    handleNavClick(event){
         event.preventDefault();
-        console.log('NavBar::selected '+eventKey);
-        switch(eventKey){
-            case 1:
-                this.setState({loc:'home'});
-                browserHistory.push('home');
+        console.log('NavBar::selected '+event.target.id);
+        switch(event.target.id){
+            case "nav1":
+                this.props.handleClick("home");
                 break;
-            case 2:
-                this.setState({loc:'roster'});
-                browserHistory.push('roster');
+            case "nav2":
+                this.props.handleClick("roster");
                 break;
-            case 3:
+            case "nav3":
+                this.props.handleClick("database");
                 //go to database;
                 break;
-            case 4:
-                //go to compare pane;
+            case "nav4":
+                this.props.handleClick("classes");
+                break;
+            case "nav5":
+                break;
+            case "nav5.3":
                 break;
             default:
                 break;
@@ -67,11 +70,18 @@ class NavBar extends React.Component{
         return(
             <div className="NavBar">
                 {/*<div className="row">*/}
-                <Button cname="navbtn" value="Home"/>
-                <Button cname="navbtn"value="Roster"/>
-                <Button cname="navbtn"value="Database"/>
-                <Button cname="navbtn"value="Classes"/>
-                <Button cname="navbtn"value="Dropdown"/>
+                <Button id="nav1" onClick={this.handleNavClick}cname="navbtn" value="Home"/>
+                <Button id="nav2"onClick={this.handleNavClick}cname="navbtn"value="Roster"/>
+                <Button id="nav3"onClick={this.handleNavClick}cname="navbtn inactivebtn"value="Database"/>
+                <Button id="nav4"onClick={this.handleNavClick} cname="navbtn inactivebtn"value="Classes"/>
+                <div className="dropdown">
+                    <Button id="nav5"cname="navbtn dropbtn"value="Dropdown"/>
+                    <div className="dropdown-content">
+                        <Button id="nav5.1"cname="ddbtn"value="placeholder"/>
+                        <Button id="nav5.2"cname="ddbtn"value="placeholder"/>
+                        <Button id="nav5.3"cname="ddbtn"value="LogOut"/>
+                    </div>
+                </div>
                 {baseView}
                  {/*</div>*/}
             </div>
