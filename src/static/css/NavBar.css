@@ -1,0 +1,59 @@
+.NavBar{
+  margin-left:1px;
+  float:left;
+  width:100%;
+  height:42px;
+}
+.navbtn{
+  padding:10px 15px;
+  border:1px solid rgba(0,0,0,0.7);
+  float:left;
+  /*padding-left:10px;*/
+  background-color:rgba(0, 0, 0, 0.7);
+  border-radius: 0px;
+  color:rgba(255,255,255,1);
+}
+.navbtn:hover{
+  color:rgba(40,143,255,0.8);
+  /*border-color:rgba(0, 0, 0, 0.7);*/
+}
+.navbtn:active{
+  color:white;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
+.navbtn:visited{
+  color:white;
+}
+.dropdown-content{
+  min-width:100px;
+  position:absolute;
+  box-shadow:0px 10px 15px 0px rgba(0,0,0,0.2);
+  z-index:1;
+  top:41px;
+  border-bottom: 2px black solid;
+  border-left: 2px black solid;
+  border-right: 2px black solid;
+  background-color: grey;
+  display:none;
+}
+.dropdown{
+  /*right:0;*/
+  float:right;
+  position:relative;
+  display:inline;
+  /*border:red 2px solid;*/
+  width:100px;
+  /*height:200px;*/
+}
+.ddbtn{
+  width:inherit;
+  background-color:rgba(0,0,0,0.0);
+  color:white;
+}
+.dropdown:hover .dropdown-content{
+  display:block;
+}
+.dropdown-content:nth-child(1){
+  border-top:1px white inset;
+  background-color:red;
+}

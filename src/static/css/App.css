@@ -1,17 +1,45 @@
 .App {
   text-align: center;
 }
-
+body{
+background-color:rgba(0,0,0,0.3);
+}
+#rosterupdate ,#classupdate, #calupdate{
+  min-height:200px;
+  min-width:200px;
+  margin:20px 60px 20px 60px;
+  border:2px white solid;
+  font-size:1.5em;
+  font-family:"Dosis",Helvetica;
+}
+#rosterupdate:hover, #classupdate:hover, #calupdate:hover{
+  /*border-color:blue;*/
+}
+#rosterupdate:active, #classupdate:active, #calupdate:active{
+  /*background-color:rgba(25,25,25,0.6);*/
+}
+.MainSquare{
+  margin-top:43px;
+  border:black 1px solid;
+  margin-left:auto;
+  margin-right:auto;
+  width:100%;
+  height:auto;
+  background-color:rgba(0,0,0,0.3);
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
+#loginTemp{
+  padding-top:15%;
+}
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 170px;
   padding: 20px;
   color: white;
+  margin-bottom:1px;
 }
 
 .App-intro {
