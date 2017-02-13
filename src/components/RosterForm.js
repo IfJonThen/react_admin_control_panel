@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
 import '../static/css/RosterView.css';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
-import members from '../data/database';
+import * as firebase from 'firebase';
 import {Button} from './ButtonGroup';
 import ReactFireMixin from 'reactfire';
 import ReactDOM from 'react-dom';
@@ -17,7 +17,6 @@ var fbase = Rebase.createClass({
     storageBucket:"classexaminer.appspot.com",
     messagingSenderId:"150507520756"
 });
-
 class RosterForm extends Component{
 
     /*RosterForm::constructor()
@@ -55,12 +54,13 @@ class RosterForm extends Component{
         //     }
         // });
     }
+
     /*RosterForm()::addToDB()
     * helper function. takes arguments and places them into firebase
     * sends an Alert(for now upon success)
     * */
     addToDB(fname,lname,quarter,year){
-        console.log("RosterForm add "+ this.count);
+        // console.log("RosterForm add "+ this.count);
         let t = {};
         if (this.state.base!==undefined) {
             t= {first:fname,last:lname,quarter:quarter,year:year};
@@ -79,14 +79,14 @@ class RosterForm extends Component{
         }
     }
     componentWillMount(){
-        console.log("RosterForm::componentWillMount()");
+        // console.log("RosterForm::componentWillMount()");
         let t = {};
         if(this.state.base!==undefined) {
             // this.setState({count:this.state.base.length});
         }
     }
     componentDidMount() {
-        console.log("RosterForm::componentDidMount()::");
+        // console.log("RosterForm::componentDidMount()::");
         // var firebaseRef = firebase.database().ref("Names");
         fbase.syncState("users",{
             context:this,
@@ -96,9 +96,11 @@ class RosterForm extends Component{
     }
 
     render(){
-        let t=null;
+        // let t=null;
+        let t="First Name";
+
         if (this.state.count===0 || this.state.count===null){
-            t="KEYERROR"+this.state.count;
+            // t="KEYERROR"+this.state.count;
         }
         else{
             t="First Name";
