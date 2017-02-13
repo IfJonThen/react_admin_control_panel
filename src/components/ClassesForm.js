@@ -6,6 +6,8 @@ import {Button} from './ButtonGroup';
 import ReactFireMixin from 'reactfire';
 import ReactDOM from 'react-dom';
 import Rebase from 're-base';
+import {getUID,parseForm,getValue, hasValues,getSelectText} from '../static/js/functions';
+import {Typeahead} from 'react-bootstrap-typeahead'
 /*eslint no-unused-vars: "off"*/
 import {firebaseAuth} from '../static/js/firebaseAuth';
 
@@ -37,13 +39,15 @@ class ClassesForm extends Component{
     * */
     onButtonClick(event){
         event.preventDefault();
-        let fname = document.getElementById("inputFname").value;
-        let lname = document.getElementById("inputLname").value;
-        let quarter = document.getElementById("selectPledgeYear");
-        quarter = quarter.options[quarter.selectedIndex].text;
-        let year = document.getElementById("inputYear").value;
-
-        this.addToDB(fname,lname,quarter,year);
+        let t = document.getElementById("classesform").getElementsByTagName("input");
+        let info = hasValues([],[].slice.call(t));
+        info.push(getSelectText("inputCQuarter"));
+        info.push(getSelectText("selectUser"));
+        let selects = ["selectUser","inputCQuarter"];
+        console.log(selects.map(getSelectText));
+        console.log(info);
+        console.log(getUID(getSelectText("selectUser")));
+        // this.addToDB(classYear,classQuarter,quarter,year);
         // base.update('classes',{
         //     data:{uid: {"jyuen":{f2k16:['CS 161','Informatics 133','Informatics 124']}}},
         //     then(err){
@@ -87,10 +91,14 @@ class ClassesForm extends Component{
     }
     componentDidMount() {
         // console.log("ClassesForm::componentDidMount()::");
-        // var firebaseRef = firebase.database().ref("Names");
         fbase.syncState("users",{
             context:this,
             state:'base',
+            asArray:true
+        });
+        fbase.syncState("classes",{
+            context:this,
+            state:'classes',
             asArray:true
         });
     }
@@ -105,7 +113,9 @@ class ClassesForm extends Component{
         else{
             t="   id";
         }
-        return(<div className="splitform"><Form id="classesform">
+        return(
+            <div className="splitform">
+                <Form id="classesform">
                 <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Enter member ID</label>
                     <div className="col-sm-6">
@@ -119,12 +129,57 @@ class ClassesForm extends Component{
                     <div className="form-group row">
                     <label className="col-sm-2 col-form-label">Look up user</label>
                     <div className="col-sm-6">
-                    <select className="form-control" id="selectLookup">
+                    <select className="form-control" id="selectUser">
                         {this.props.right}
                     </select>
                     </div>
                 </div>
-
+                <div className="form-group row ">
+                    <label  className="col-sm-2 col-form-label">{(this.props.system)}</label>
+                    <div className="col-sm-6">
+                        <select className="form-control" id="inputCQuarter">
+                            <option>Fall</option>
+                            <option>Winter</option>
+                            <option>Spring</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row has-success has-feeedback">
+                    <label className="col-sm-2 col-form-label">Year</label>
+                    <div className="col-sm-6">
+                        <input type="name" className="form-control" id="inputCYear" placeholder="Year">
+                        </input>
+                        <span className="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">Class 1:</label>
+                    <div className="col-sm-6">
+                        <input type="name" className="form-control" id="inputC1" placeholder="Class Code">
+                        </input>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">Class 2:</label>
+                    <div className="col-sm-6">
+                        <input type="name" className="form-control" id="inputC2" placeholder="Class Code">
+                        </input>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">Class 3:</label>
+                    <div className="col-sm-6">
+                        <input type="name" className="form-control" id="inputC3" placeholder="Class Code">
+                        </input>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-2 col-form-label">Class 4:</label>
+                    <div className="col-sm-6">
+                        <input type="name" className="form-control" id="inputC4" placeholder="Class Code">
+                        </input>
+                    </div>
+                </div>
                 <Button onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Go</Button>
             </Form>
             </div>
@@ -229,8 +284,8 @@ export class ClassView extends Component{
             let v = document.getElementById("ClassViewer");
             if (v!==(null|| undefined)){
                 let s = document.createElement("p");
-                let t = document.createTextNode("template");
-                s.appendChild(t);
+                let j = document.createTextNode(t);
+                s.appendChild(j);
                 v.appendChild(s);
 
             }
