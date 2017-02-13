@@ -181,7 +181,7 @@ class ClassTabView extends Component{
 
         if (this.state.pane==="add"){
             let count= this.onChange();
-            right= <ClassesForm count={count}/>;
+            right= <ClassesForm right={v}system="Quarter" count={count}/>;
         }
         else{
             right=<ClassView right={v} count={this.state.count}/>;
