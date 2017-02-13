@@ -16,6 +16,7 @@ import {base} from "../static/js/firebaseRef";
 
 
 class RosterView extends Component{
+
     /*RosterView()::constructor()
     * bind the functions..thanks es6 -_-
     * set states to default (empty or 0)
@@ -36,7 +37,7 @@ class RosterView extends Component{
         this.pullDB();
     }
     componentDidMount(){
-        console.log("RosterView::componentDidMount()::");
+        // console.log("RosterView::componentDidMount()::");
         // var firebaseRef = firebase.database().ref("Names");
         base.syncState("users",{
             context:this,
@@ -46,7 +47,7 @@ class RosterView extends Component{
 
     }
     componentWillReceiveProps(){
-        console.log("RosterView::ComponentWillReceiveProps  ");
+        // console.log("RosterView::ComponentWillReceiveProps  ");
     }
     componentWillUnMount(){
 
@@ -62,7 +63,7 @@ class RosterView extends Component{
         }).then(data=>
         {
             this.count=data.length;
-            console.log("RosterView::pulDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
+            // console.log("RosterView::pullDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
             this.setState({base:data,count:this.count});
         }).catch(error=>{
             console.log("RosterView:constructor: fetch error");
@@ -142,7 +143,7 @@ class RosterView extends Component{
     pullList2(){
         let v = [];
         var t =document.getElementById("selectRemove");
-        console.log("RosterView::pullList2:: this.state.base:" +this.state.base);
+        // console.log("RosterView::pullList2:: this.state.base:" +this.state.base);
         for(let j =0; j<this.state.count;j++){
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
@@ -155,7 +156,7 @@ class RosterView extends Component{
                 }
             }
         }
-        console.log("RosterForm: pullList2: added "+v+" options");
+        // console.log("RosterForm: pullList2: added "+v+" options");
 
         return v;
     }
@@ -167,12 +168,12 @@ class RosterView extends Component{
      */
     render() {
         let left =
-            <div>
+            <div className="RosterPane">
                 <div className="row">
-                    <Button onClick={this.handleSelectA}id="Add" value="Add Member"/>
+                    <Button cname="rosterbtn" onClick={this.handleSelectA}id="Add" value="Add Member"/>
                 </div>
                 <div className="row">
-                    <Button onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
+                    <Button cname="rosterbtn" onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
                 </div>
             </div>;
         let right =null;
