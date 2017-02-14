@@ -52,21 +52,6 @@ class NavBar extends React.Component{
     }
     render(){
         let baseView = null;
-        if (this.state.loc === undefined){
-            {/*baseView= <MainView/>;*/}
-
-
-        }
-        else if (this.state.loc==="roster"){
-            var s = <Button id="AddM" value="Add Member"> why</Button>;
-            var t=(<DropdownSection/>);
-            baseView=<RosterView db={this.props.db}/>;
-            //show roster
-        }
-        else if (this.state.loc==="home"){
-            {/*baseView= <MainView/>;*/}
-
-        }
         return(
             <div className="NavBar">
                 {/*<div className="row">*/}
@@ -83,7 +68,6 @@ class NavBar extends React.Component{
                     </div>
                 </div>
                 {baseView}
-                 {/*</div>*/}
             </div>
         );
     }
