@@ -14,7 +14,11 @@ export class Button extends React.Component {
         console.log(this.props.id);
     }
     render() {
-        return (<button className="btn" id={this.props.id} onClick={this.props.onClick}>
+        let cl="btn";
+        if(this.props.cname!=null) {
+             cl+=" " +this.props.cname;
+        }
+        return (<button className={cl} id={this.props.id} onClick={this.props.onClick}>
                 {this.props.value}
             </button>
         );
@@ -25,14 +29,14 @@ class ButtonGroup extends Component {
         super(props);
 
     }
-    renderButtons(i,j){
-        return (<Button id={j} value={i}/>);
+    renderButtons(i,j,k){
+        return (<Button cname={k}id={j} value={i}/>);
     }
     render() {
         return (<div>
-                {this.renderButtons("Jon_Fall 2016",'jf16')}
-                {this.renderButtons("Max_Fall 2016",'mf16')}
-                {this.renderButtons("Gary_Fall 2016",'gf16')}
+                {this.renderButtons("Jon_Fall 2016",'jf16',null)}
+                {this.renderButtons("Max_Fall 2016",'mf16',null)}
+                {this.renderButtons("Gary_Fall 2016",'gf16',null)}
         </div>
         );
     }

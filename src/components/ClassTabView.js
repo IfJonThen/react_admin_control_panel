@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import NavExample from "./Nav";
 import {Form, Grid} from 'react-bootstrap';
 import '../static/css/MainView.css';
-
 import SplitView from './SplitView';
 import TableView from './TableView';
 import {Button} from './ButtonGroup';
 import RosterForm,{RosterEdit} from './RosterForm';
+import ClassesForm,{ClassView} from './ClassesForm';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
@@ -15,9 +15,9 @@ import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
 
 
-class RosterView extends Component{
+class ClassTabView extends Component{
 
-    /*RosterView()::constructor()
+    /*ClassTabView()::constructor()
     * bind the functions..thanks es6 -_-
     * set states to default (empty or 0)
     * calls pullDB() to fill states. will most likely change to re-base.syncState in the future
@@ -25,7 +25,7 @@ class RosterView extends Component{
     constructor(){
       super();
       this.count=0;
-      this.state={pane:"add",count:0,base:[]};
+      this.state={pane:"remove",count:0,base:[]};
 
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
@@ -37,7 +37,7 @@ class RosterView extends Component{
         this.pullDB();
     }
     componentDidMount(){
-        // console.log("RosterView::componentDidMount()::");
+        // console.log("ClassTabView::componentDidMount()::");
         // var firebaseRef = firebase.database().ref("Names");
         base.syncState("users",{
             context:this,
@@ -47,12 +47,12 @@ class RosterView extends Component{
 
     }
     componentWillReceiveProps(){
-        // console.log("RosterView::ComponentWillReceiveProps  ");
+        // console.log("ClassTabView::ComponentWillReceiveProps  ");
     }
     componentWillUnMount(){
 
     }
-    /*RosterView()::pullDB()
+    /*ClassTabView()::pullDB()
     * pulls data from database via re-base.fetch()
     * sets "base" state and "count" state
     * may change to syncState
@@ -63,22 +63,22 @@ class RosterView extends Component{
         }).then(data=>
         {
             this.count=data.length;
-            // console.log("RosterView::pullDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
+            // console.log("ClassTabView::pullDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
             this.setState({base:data,count:this.count});
         }).catch(error=>{
-            console.log("RosterView:constructor: fetch error");
+            console.log("ClassTabView:constructor: fetch error");
         });
-        console.log("RosterView::constructor::this.state.count " + this.state.count);
+        console.log("ClassTabView::constructor::this.state.count " + this.state.count);
     }
 
-    /*RosterView()::loadSections()
+    /*ClassTabView()::loadSections()
     * helper function
     * makes a call to pullList, may remove in the future
      */
     loadSections(){
         this.pullList();
     }
-    /*RosterView()::onChange()
+    /*ClassTabView()::onChange()
      * helper function for Rosterform to generate children for props
      * makes a call to pullDB, may remove in the future
      */
@@ -92,17 +92,17 @@ class RosterView extends Component{
         }
     }
 
-    /*RosterView()::handleSelectR()
+    /*ClassTabView()::handleSelectR()
      * handler function for the Remove Button
      * changes state to "remove"
      * */
     handleSelectR(event){
-        // console.log('RosterView::handleSelectRemove() clicked');
+        // console.log('ClassTabView::handleSelectRemove() clicked');
         this.setState({pane:"remove"});
         // this.pullList();
     }
 
-    /*RosterView()::handleSelectA()
+    /*ClassTabView()::handleSelectA()
      * handler function for the AddButton
      * changes state to "add"
      * */
@@ -110,13 +110,13 @@ class RosterView extends Component{
         this.setState({pane:"add"});
     }
 
-    /*RosterView()::pullList() Not in Use
+    /*ClassTabView()::pullList() Not in Use
      * generates textNodes for RosterEdit select form based on the number of children in state.base
      * */
     // pullList(){
     //     let v = null;
     //     var t =document.getElementById("selectRemove");
-    //     console.log("RosterView::pullList:: this.state.base:" +this.state.base);
+    //     console.log("ClassTabView::pullList:: this.state.base:" +this.state.base);
     //     if (t !=null) {
     //         for (let j = 0; j < this.state.count; j++) {
     //             if (typeof this.state.base[j] !== 'string') {
@@ -127,7 +127,7 @@ class RosterView extends Component{
     //                     t.appendChild(v);
     //                 }
     //                 else{
-    //                     console.log("RosterView::pullList()...no children added");
+    //                     console.log("ClassTabView::pullList()...no children added");
     //                 }
     //             }
     //         }
@@ -143,7 +143,7 @@ class RosterView extends Component{
     pullList2(){
         let v = [];
         var t =document.getElementById("selectRemove");
-        // console.log("RosterView::pullList2:: this.state.base:" +this.state.base);
+        // console.log("ClassTabView::pullList2:: this.state.base:" +this.state.base);
         for(let j =0; j<this.state.count;j++){
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
@@ -152,7 +152,7 @@ class RosterView extends Component{
                     v.push(<option key={j}>{l}</option>);
                 }
                 else{
-                    console.log("RosterView::pullList()...no children added");
+                    console.log("ClassTabView::pullList()...no children added");
                 }
             }
         }
@@ -161,7 +161,7 @@ class RosterView extends Component{
         return v;
     }
 
-    /*RosterView()::Render()
+    /*ClassTabView()::Render()
      * controlled by App.js conditionally renders left and right panes
       * if state is add, renders RosterForm
       * if state is remove, renders RosterEdit
@@ -170,10 +170,10 @@ class RosterView extends Component{
         let left =
             <div className="RosterPane">
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectA}id="Add" value="Add Member"/>
+                    <Button cname="rosterbtn" onClick={this.handleSelectA}id="Add" value="Update Classes"/>
                 </div>
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
+                    <Button cname="rosterbtn" onClick={this.handleSelectR}id="Remove" value="Get Schedules"/>
                 </div>
             </div>;
         let right =null;
@@ -181,10 +181,10 @@ class RosterView extends Component{
 
         if (this.state.pane==="add"){
             let count= this.onChange();
-            right= <RosterForm count={count}/>;
+            right= <ClassesForm right={v}system="Quarter" count={count}/>;
         }
         else{
-            right=<RosterEdit right={v} count={this.state.count}/>;
+            right=<ClassView right={v} count={this.state.count}/>;
         }
 
         return (
@@ -196,10 +196,10 @@ class RosterView extends Component{
 
     }
 }
-RosterView.propTypes={
+ClassTabView.propTypes={
     count:React.PropTypes.number
 };
-RosterView.defaultProps={
+ClassTabView.defaultProps={
     count:0
 };
 function SplitPane(props){
@@ -214,4 +214,4 @@ function SplitPane(props){
     </div>);
 }
 
-export default RosterView;
+export default ClassTabView;

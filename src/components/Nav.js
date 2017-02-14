@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import {Nav,NavDropdown,MenuItem,NavItem} from 'react-bootstrap';
 import {Router, browserHistory} from 'react-router';
+import {LinkContainer} from 'react-router-bootstrap';
 var members={'Name':'Jon,Max,Gary'};
-
+import MainView from './MainView';
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 /*eslint no-unused-vars: "off", default-case: "off"*/
 
-const NavExample = React.createClass({
+class NavExample extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleSelect=this.handleSelect.bind(this);
+        if(props.loc===undefined){
+            console.log("NavExample():constructor LOC IS UNDEFINED");
+        }
+        this.state={loc:props.loc};
+    }
     handleSelect(eventKey){
         event.preventDefault();
-        console.log('selected '+eventKey);
+        console.log('NavExample::selected '+eventKey.text);
         switch(eventKey){
             case 1:
-                //go to home;
+                this.setState({loc:'home'});
+                browserHistory.push('home');
                 break;
             case 2:
+                this.setState({loc:'roster'});
                 browserHistory.push('roster');
                 break;
             case 3:
@@ -23,16 +34,27 @@ const NavExample = React.createClass({
             case 4:
                 //go to compare pane;
                 break;
+            case 5.1:
+                this.setState({isLoggedIn:false});
 
         }
-    },
+    }
     render(){
         return(
+            <div>
             <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
-                 <NavItem eventKey="1" href="/home"> Home </NavItem>
-                 <NavItem eventKey="2" href="/roster"> Roster </NavItem>
-                 <NavItem eventKey="3" href="/database" disabled> Database </NavItem>
-                 <NavItem eventKey="4" href="/compare" disabled> Compare </NavItem>
+                {/*<LinkContainer to="/home">*/}
+                 <NavItem eventKey="1"> Home </NavItem>
+                {/*</LinkContainer>*/}
+                {/*<LinkContainer to="/roster">*/}
+                <NavItem eventKey="2"> Roster </NavItem>
+                {/*</LinkContainer>*/}
+                {/*<LinkContainer to="database">*/}
+                <NavItem eventKey="3" disabled> Database </NavItem>
+                {/*</LinkContainer>*/}
+                {/*<LinkContainer to="/compare">*/}
+                 <NavItem eventKey="4" disabled> Compare </NavItem>
+                {/*</LinkContainer>*/}
                  <NavDropdown eventKey="5" title="Settings" id="nav-dropdown">
                      <MenuItem eventKey="5.1">database</MenuItem>
                     <MenuItem eventKey="5.1">roster</MenuItem>
@@ -41,10 +63,10 @@ const NavExample = React.createClass({
                 </NavDropdown>
 
             </Nav>
-
+            </div>
         )
     }
-});
+}
 
 
 export default NavExample;

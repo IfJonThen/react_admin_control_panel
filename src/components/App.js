@@ -10,25 +10,37 @@ import MainView from './MainView';
 import SplitView from './SplitView';
 import DropdownSection, {Section} from './DropdownSection';
 import {Button} from './ButtonGroup';
+import ClassTabView from './ClassTabView';
 import RosterView from './RosterView';
 import LogInControl from './LogInControl';
+import NavBar from './NavBar';
 import {login,logout} from '../static/js/firebaseAuth';
 /*eslint no-unused-vars: "off"*/
 
 class App extends Component {
     constructor(props){
         super(props);
-        this.state={isLoggedIn:true};
+        this.state={isLoggedIn:true,loc:props.loc};
         this.handleLogInChange=this.handleLogInChange.bind(this);
-        this.goSomeWhere=this.goSomeWhere.bind(this);
-        // this.onChange=this.onChange.bind(this);
-        console.log("App.js: state.isLoggedIn:"+this.state.isLoggedIn);
+        this.onSelect=this.onSelect.bind(this);
+        this.handleNavClick=this.handleNavClick.bind(this);
+        console.log("App.js: state.loc:"+this.state.loc);
         let l = {email:"pikahatonjon@gmail.com",password:"password"};
         login(l);
     }
-    goSomeWhere() {
-        this.setState({loc:"roster"});
-        browserHistory.push('roster');
+
+    /*App()::conSelect(data);
+    * no functionality at the moment
+    * */
+    onSelect(data){
+        console.log("App()::updateLoc  changing views thanks to loc "+data);
+        // this.setState({"loc"});
+    }
+    /*App()::handleNavClick():
+    * helper function for NavBar. updates state
+    * */
+    handleNavClick(nav){
+        this.setState({loc:nav});
     }
     handleLogInChange(e){
         console.log("App.js: handleLogInChange() before state:"+e);
@@ -37,36 +49,45 @@ class App extends Component {
                 console.log("App.js: handleLogInChange() after state:"+this.state.isLoggedIn)
             },500);
              });
-
     }
     render() {
-        console.log("App.js render(): state.isLoggedIn:"+this.state.isLoggedIn);
+        console.log("App.js render(): state.loc:"+this.state.loc);
         var navbar =null;
         var base = null;
         if(this.state.isLoggedIn) {
-            navbar =(
-                <div>
-                    <NavExample/>
-                </div>
-                    );
-            if (this.state.loc === undefined){
-                navbar=<button onClick={this.goSomeWhere}>Log In</button>;
+            navbar =(<div>
+                    <NavBar handleClick={this.handleNavClick}/>
+                </div>);
 
+            //LogIn render condition
+            if (this.state.loc === undefined){
+                document.body.style.backgroundColor="white";
+                navbar=<div id="loginTemp">
+                    <button onClick={()=>{this.setState({loc:"classes"})}}>Log In</button>
+                </div>;
             }
-            else if (this.state.loc==="roster"){
-                var s = <Button id="AddM" value="Add Member"> why</Button>;
-                var t=(<DropdownSection/>);
-                base=<RosterView db={this.props.db}/>;
-                //show roster
-            }
-            else if (this.state.loc==="home"){
-                base= <MainView/>;
+            else {
+                //sets body to grey color if logged in
+                document.body.style.backgroundColor = "rgba(0,0,0,0.3)";
+                //roster render condition
+                if (this.state.loc === "roster") {
+
+                    var s = <Button id="AddM" value="Add Member"></Button>;
+                    var t = (<DropdownSection/>);
+                    base = <RosterView db={this.props.db}/>;
+                }
+                //home render condition
+                else if (this.state.loc === "home") {
+                    base = <MainView/>;
+                }
+                else if (this.state.loc==="classes"){
+                    base=<ClassTabView/>;
+                }
             }
         }
         else{
              navbar = <LogInControl onClick={this.handleLogInChange} isLoggedin={this.state.isLoggedIn} t={this.props.children}/>
         }
-
                 return (<div className="App">
                         <div className="App-header">
                             <img src={logo} className="App-logo" alt="logo"/>
@@ -74,31 +95,10 @@ class App extends Component {
                             </div>
                         {navbar}
                         {base}
-                        {/*<Greeting isLoggedIn={this.state.isLoggedIn} t={this.props.children}/>*/}
-
-
             </div>
         );
     }
 }
-function Greeting(props){
 
-    var isLoggedIn = props.isLoggedIn;
-    let v = (<div><NavExample/><Grid fluid={true}>{props.t}</Grid></div>);
-
-    if(isLoggedIn){
-        return (v
-        );
-        // return (props.t);
-    }
-    else{
-        return (<div>
-            <h2>Please Log In.</h2>
-            {/*<LogInForm/>*/}
-            {/*<LogInControl onChange={props.handleLoginChange} isLoggedIn={isLoggedIn} t={l}/>*/}
-        </div>);
-    }
-}
 
 export default App;
-// export class mainLayout{}
