@@ -4,7 +4,7 @@
 body{
 background-color:rgba(0,0,0,0.3);
 }
-#rosterupdate ,#classupdate, #calupdate{
+#attendanceupdate ,#classupdate, #calupdate{
   min-height:200px;
   min-width:200px;
   margin:20px 60px 20px 60px;

@@ -13,33 +13,29 @@ import RosterView from './components/RosterView';
 import MainController from './components/MainController';
 // import * as firebase from 'firebase';
 
-var fb = Rebase.createClass({apikey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
-    authDomain:"classexaminer.firebaseapp.com",
-    databaseURL:"https://classexaminer.firebaseio.com",
-    storageBucket:"classexaminer.appspot.com",
-});
 
-// var config ={apikey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
-//     authDomain:"classexaminer.firebaseapp.com",
-//     databaseURL:"https://classexaminer.firebaseio.com",
-//     storageBucket:"classexaminer.appspot.com",
-// };
-// initializeApp(config).database().ref();
+
 /*eslint no-useless-constructor:"off",
  no-unused-vars: "off"*/
-
+browserHistory.listen(location=>{
+    const path =(/#!(\/.*)$/.exec(location.hash)||[])[1];
+    if(path){
+        history.replace(path);
+    }
+});
+// (<Router history={browserHistory}>
+//     <Route path="/" component={()=>(<App/>)}>
+//         {/*<Route path="home" component={MainView}/>*/}
+//         {/*<Route path="roster" component={()=><App loc="roster"/>}/>*/}
+//
+//     </Route>
+//     <Route path="*" component={PageNotFound}/>
+//
+//
+// </Router>)
 window.onload=()=> {
     ReactDOM.render(
-        (<Router history={browserHistory}>
-            <Route path="/" component={()=>(<App/>)}>
-                {/*<Route path="home" component={MainView}/>*/}
-                {/*<Route path="roster" component={()=><App loc="roster"/>}/>*/}
-
-            </Route>
-            <Route path="*" component={PageNotFound}/>
-
-
-        </Router>),
+        <App></App>,
         document.getElementById('root')
     );
 };

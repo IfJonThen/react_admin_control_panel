@@ -1,4 +1,4 @@
-#Add, #Remove{
+.paneBtn,#Add, #Remove{
   width:75%;
   background-color: rgba(0, 0, 0, 0.7);
   border-bottom:black 1px solid;
@@ -7,12 +7,12 @@
   color:white;
 }
 
-#Add:hover,#Remove:hover{
+.paneBtn,#Add:hover,#Remove:hover{
   color:rgba(40,143,255,0.8);
   /*background-color: rgba(40, 143, 255, 0.3);*/
 }
 
-#Add:active, #Remove:active{
+.paneBtn,#Add:active, #Remove:active{
   box-shadow:3px 3px rgba(0,0,0,0.5);
 }
 .RosterPane{

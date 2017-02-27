@@ -7,15 +7,18 @@
 * checks if arrayB has the type of element that is being searched for
 **/
 export var parseForm=(arr,arg)=>{
-    alert(arg[0][0],arg[0][1]);
+    console.log("parsing "+ arg[0][0] +" and "+arg[0][1]);
     switch(arg[0][0]){
         case "id":
+            //pushes an object value
             arr.push(document.getElementById(arg[0][1]).value);
             break;
         case "classname":
+            //pushes an array
             arr.push(document.getElementsByClassName(arg[0][1]));
             break;
         case "tag":
+            //pushes an array
             arr.push(document.getElementsByTagName(arg[0][1]));
             break;
         default:
@@ -69,3 +72,13 @@ export var getUID=(user)=>{
     uid+=user[4];
     return uid;
 }
+export var classDB = ['Comp Sci 121', 'Comp Sci 122A', 'Comp Sci 122B', 'Comp Sci 122C',
+    'Econ 2A',
+    'Math 2A','Math 2B','Math 2C', 'Math 2D',
+    'ICS 46','ICS 45C','ICS 45J','ICS 31', 'ICS 32','ICS 33',
+    'Informatics 43','Informatics 101','Informatics 113','Informatics 115','Informatics 121','Informatics 122','Informatics 131',
+        'Informatics 132', 'Informatics 133','Informatics 141','Informatics 143','Informatics 151','Informatics 161',
+    'Stats 7','Stats 67','Stats 115','Stats 120A','Stats 120B',
+    ''
+
+];
