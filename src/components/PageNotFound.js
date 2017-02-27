@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
+import '../static/css/PageNotFound.css';
+
 
 export default class PageNotFound extends React.Component{
 
