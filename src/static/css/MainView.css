@@ -1,4 +1,4 @@
-.paneBtn,#Add, #Remove{
+.paneBtn{
   width:75%;
   background-color: rgba(0, 0, 0, 0.7);
   border-bottom:black 1px solid;
@@ -7,12 +7,15 @@
   color:white;
 }
 
-.paneBtn,#Add:hover,#Remove:hover{
-  color:rgba(40,143,255,0.8);
-  /*background-color: rgba(40, 143, 255, 0.3);*/
+.paneBtn:hover{
+  color:rgba(25,25,25,1);
+  background-color: rgba(40, 143, 255, 0.3);
+}
+.btn:hover{
+  /*color:rgba(40,143,255,0.8);*/
 }
 
-.paneBtn,#Add:active, #Remove:active{
+.paneBtn{
   box-shadow:3px 3px rgba(0,0,0,0.5);
 }
 .RosterPane{
@@ -33,12 +36,16 @@
   min-height:500px;
   border-right: 5px rgba(0, 0, 0, 0.7) groove;
 }
+#rosterform,#classesform{
+  position:relative;
+  padding:30px 30px;
+}
 .splitform{
-  margin: 60px 30px;
+  margin: 30px 30px;
   /*margin-left:60px;*/
 }
 .form-group select{
-  margin-top:15px;
+  /*margin-top:15px;*/
 }
 #editFormLabel{
   border-bottom:1px solid black;

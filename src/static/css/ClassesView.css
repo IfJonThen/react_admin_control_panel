@@ -2,3 +2,12 @@
     max-width:60%;
     margin-left:20%;
 }
+.entryForm{
+    border: 15px inset lightslategrey;
+    border-right-style: solid;
+    border-left-style: solid;
+    background-color:white;
+}
+.col-form-label{
+
+}
