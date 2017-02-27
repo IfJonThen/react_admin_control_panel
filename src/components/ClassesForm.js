@@ -47,7 +47,14 @@ class ClassesForm extends Component{
         console.log(selects.map(getSelectText));
         console.log(info);
         console.log(getUID(getSelectText("selectUser")));
-        // this.addToDB(classYear,classQuarter,quarter,year);
+        // let d = document.getElementById("classType");
+        let d = document.getElementsByClassName("token-removeable");
+        let s = [];
+        for (let i =0;i<d.length;i++){
+            s[i]=d[i].childNodes[1].data;
+        }
+        console.log(s);
+        // this.addToDB(classYear,clas/sQuarter,quarter,year);
         // base.update('classes',{
         //     data:{uid: {"jyuen":{f2k16:['CS 161','Informatics 133','Informatics 124']}}},
         //     then(err){
@@ -113,6 +120,8 @@ class ClassesForm extends Component{
         else{
             t="   id";
         }
+        let options=this.props.options;
+        let emptyLabel=true;
         return(
             <div className="splitform">
                 <Form id="classesform">
@@ -152,34 +161,13 @@ class ClassesForm extends Component{
                         <span className="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 1:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC1" placeholder="Class Code">
-                        </input>
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Select Classes:</label>
+                        <div  id="classType" className="col-sm-6">
+                            <Typeahead emptyLabel={emptyLabel ?'':undefined} labelKey="Classes" multiple={true} options={this.props.options} placeholder="Choose a class"/>
+                        </div>
                     </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 2:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC2" placeholder="Class Code">
-                        </input>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 3:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC3" placeholder="Class Code">
-                        </input>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 4:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC4" placeholder="Class Code">
-                        </input>
-                    </div>
-                </div>
+
                 <Button onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Go</Button>
             </Form>
             </div>
