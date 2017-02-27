@@ -7,6 +7,7 @@ import TableView from './TableView';
 import {Button} from './ButtonGroup';
 import RosterForm,{RosterEdit} from './RosterForm';
 import ClassesForm,{ClassView} from './ClassesForm';
+import {classDB} from '../static/js/functions';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
@@ -25,7 +26,7 @@ class ClassTabView extends Component{
     constructor(){
       super();
       this.count=0;
-      this.state={pane:"remove",count:0,base:[]};
+      this.state={pane:"update",count:0,base:[]};
 
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
@@ -34,6 +35,7 @@ class ClassTabView extends Component{
         this.pullList2=this.pullList2.bind(this);
         this.pullDB=this.pullDB.bind(this);
         this.loadSections=this.loadSections.bind(this);
+        this.pullClassList=this.pullClassList.bind(this);
         this.pullDB();
     }
     componentDidMount(){
@@ -70,7 +72,20 @@ class ClassTabView extends Component{
         });
         console.log("ClassTabView::constructor::this.state.count " + this.state.count);
     }
+    /*ClassTabView()::pullClassList()
+    * pulls class List from data base via fetch
+    * for the typeahead
+    * */
+    pullClassList(){
+        base.fetch('classDB',{
+            context:this,asArray:true,
+        }).then(data=>{
 
+        }).catch(error=>{
+            console.log("ClassTabView::pullClassList():: fetch error");
+        });
+        return [];
+    }
     /*ClassTabView()::loadSections()
     * helper function
     * makes a call to pullList, may remove in the future
@@ -107,33 +122,8 @@ class ClassTabView extends Component{
      * changes state to "add"
      * */
     handleSelectA(){
-        this.setState({pane:"add"});
+        this.setState({pane:"update"});
     }
-
-    /*ClassTabView()::pullList() Not in Use
-     * generates textNodes for RosterEdit select form based on the number of children in state.base
-     * */
-    // pullList(){
-    //     let v = null;
-    //     var t =document.getElementById("selectRemove");
-    //     console.log("ClassTabView::pullList:: this.state.base:" +this.state.base);
-    //     if (t !=null) {
-    //         for (let j = 0; j < this.state.count; j++) {
-    //             if (typeof this.state.base[j] !== 'string') {
-    //                 v = document.createElement("option");
-    //                 if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
-    //                     v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
-    //                     v.value = j + 1;
-    //                     t.appendChild(v);
-    //                 }
-    //                 else{
-    //                     console.log("ClassTabView::pullList()...no children added");
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     console.log("RosterForm: pullList: added "+this.state.count +" options");
-    // }
 
     /*
     * RosterEdit()::pullList2
@@ -170,18 +160,18 @@ class ClassTabView extends Component{
         let left =
             <div className="RosterPane">
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectA}id="Add" value="Update Classes"/>
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="UpdateBtn" value="Update Classes"/>
                 </div>
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectR}id="Remove" value="Get Schedules"/>
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectR}id="GetBtn" value="Get Schedules"/>
                 </div>
             </div>;
         let right =null;
         let v = this.pullList2();
-
-        if (this.state.pane==="add"){
+        let classList=this.pullClassList();
+        if (this.state.pane==="update"){
             let count= this.onChange();
-            right= <ClassesForm right={v}system="Quarter" count={count}/>;
+            right= <ClassesForm right={v} system="Quarter" options={classDB}count={count}/>;
         }
         else{
             right=<ClassView right={v} count={this.state.count}/>;
