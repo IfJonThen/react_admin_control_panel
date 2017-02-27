@@ -25,27 +25,31 @@ class NavBar extends React.Component{
     handleNavClick(event){
         event.preventDefault();
         console.log('NavBar::selected '+event.target.id);
+        let location="action";
         switch(event.target.id){
             case "nav1":
-                this.props.handleClick("home");
+                location="home";
                 break;
             case "nav2":
-                this.props.handleClick("roster");
+                location="roster";
                 break;
             case "nav3":
-                this.props.handleClick("database");
+                location="database";
                 //go to database;
                 break;
             case "nav4":
-                this.props.handleClick("classes");
+                location="classes";
                 break;
             case "nav5":
                 break;
             case "nav5.3":
+                alert("logoutbutton clicked");
+                location="logout";
                 break;
             default:
                 break;
         }
+        this.props.handleClick(location);
     }
     componentWillMount(){
         console.log("waiting");
@@ -64,7 +68,7 @@ class NavBar extends React.Component{
                     <div className="dropdown-content">
                         <Button id="nav5.1"cname="ddbtn"value="placeholder"/>
                         <Button id="nav5.2"cname="ddbtn"value="placeholder"/>
-                        <Button id="nav5.3"cname="ddbtn"value="LogOut"/>
+                        <Button id="nav5.3" onClick={this.handleNavClick} cname="ddbtn"value="LogOut"/>
                     </div>
                 </div>
                 {baseView}
