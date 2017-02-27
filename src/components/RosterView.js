@@ -177,13 +177,13 @@ class RosterView extends Component{
                 </div>
             </div>;
         let right =null;
-        let v = this.pullList2();
 
         if (this.state.pane==="add"){
             let count= this.onChange();
             right= <RosterForm count={count}/>;
         }
         else{
+            let v = this.pullList2();
             right=<RosterEdit right={v} count={this.state.count}/>;
         }
 
