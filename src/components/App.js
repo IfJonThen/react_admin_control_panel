@@ -20,11 +20,12 @@ import {login,logout} from '../static/js/firebaseAuth';
 class App extends Component {
     constructor(props){
         super(props);
-        this.state={isLoggedIn:true,loc:props.loc};
-        this.handleLogInChange=this.handleLogInChange.bind(this);
+        this.state={isLoggedIn:false,loc:props.loc};
+        this.logInCheck=this.logInCheck.bind(this);
         this.onSelect=this.onSelect.bind(this);
         this.handleNavClick=this.handleNavClick.bind(this);
         console.log("App.js: state.loc:"+this.state.loc);
+        // let l = {email:process.env.REACT_APP_SECRET_DB_U,password:process.env.REACT_APP_SECRET_DB_P};
         let l = {email:"pikahatonjon@gmail.com",password:"password"};
         login(l);
     }
@@ -40,16 +41,27 @@ class App extends Component {
     * helper function for NavBar. updates state
     * */
     handleNavClick(nav){
-        this.setState({loc:nav});
+        if (nav==="logout"){
+            this.setState({isLoggedIn:false});
+        }
+        else if (nav==="attendence"){
+            this.setState({loc:"home"});
+        }
+        else {
+            this.setState({loc:nav});
+        }
     }
-    handleLogInChange(e){
-        console.log("App.js: handleLogInChange() before state:"+e);
-        this.setState({isLoggedIn:e},()=>{
-            setTimeout(()=>{
-                console.log("App.js: handleLogInChange() after state:"+this.state.isLoggedIn)
-            },500);
-             });
+    /*App ():: logInCheck():
+    * checks if user is logged in
+    * */
+    logInCheck(event){
+        // event.preventDefault();
+        //call authentication method
+        //if true set state to true
+        //else throw error
+        this.setState({isLoggedIn:event,loc:"home"});
     }
+
     render() {
         console.log("App.js render(): state.loc:"+this.state.loc);
         var navbar =null;
@@ -63,7 +75,8 @@ class App extends Component {
             if (this.state.loc === undefined){
                 document.body.style.backgroundColor="white";
                 navbar=<div id="loginTemp">
-                    <button onClick={()=>{this.setState({loc:"classes"})}}>Log In</button>
+                    <LogInControl isLoggedin={this.logInCheck}/>
+                    {/*<button onClick={()=>{this.setState({loc:"classes"})}}>Log In</button>*/}
                 </div>;
             }
             else {
@@ -78,7 +91,7 @@ class App extends Component {
                 }
                 //home render condition
                 else if (this.state.loc === "home") {
-                    base = <MainView/>;
+                    base = <MainView handleClick={this.handleNavClick}nv={this.state.loc}/>;
                 }
                 else if (this.state.loc==="classes"){
                     base=<ClassTabView/>;
@@ -86,7 +99,7 @@ class App extends Component {
             }
         }
         else{
-             navbar = <LogInControl onClick={this.handleLogInChange} isLoggedin={this.state.isLoggedIn} t={this.props.children}/>
+             navbar = <LogInControl handleLogIn={this.logInCheck}/>
         }
                 return (<div className="App">
                         <div className="App-header">
