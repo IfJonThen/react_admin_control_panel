@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb7276b0-11ee-47fa-8970-67e363b43ac9" name="Default" comment="">
+    <list default="true" id="cb7276b0-11ee-47fa-8970-67e363b43ac9" name="Default" comment="Rosterform&#10;*fixed column size and Rosterform now gets css styling from MainView&#10;RosterView&#10;Fixed classNames of button &#10;ClassesForm&#10;+added code to test autocreation of UID for all users&#10;+added code to test parsing through text file uploads via FileReader&#10;+added code to create Modal for the classForm&#10;-removed some garbage comments">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Jonsen.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Jonsen.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/hello-world.iml" afterPath="$PROJECT_DIR$/.idea/hello-world.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ButtonGroup.js" afterPath="$PROJECT_DIR$/src/components/ButtonGroup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ClassesForm.js" afterPath="$PROJECT_DIR$/src/components/ClassesForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/DropdownSection.js" afterPath="$PROJECT_DIR$/src/components/DropdownSection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Listing.js" afterPath="$PROJECT_DIR$/src/components/Listing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/LogInForm.js" afterPath="$PROJECT_DIR$/src/components/LogInForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/MainController.js" afterPath="$PROJECT_DIR$/src/components/MainController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/MainSquares.js" afterPath="$PROJECT_DIR$/src/components/MainSquares.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Nav.js" afterPath="$PROJECT_DIR$/src/components/Nav.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/RosterForm.js" afterPath="$PROJECT_DIR$/src/components/RosterForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/RosterView.js" afterPath="$PROJECT_DIR$/src/components/RosterView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Routes.js" afterPath="$PROJECT_DIR$/src/components/Routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SplitView.js" afterPath="$PROJECT_DIR$/src/components/SplitView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TableView.js" afterPath="$PROJECT_DIR$/src/components/TableView.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,131 +34,31 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <splitter split-orientation="horizontal" split-proportion="0.5">
-            <split-first>
-              <leaf>
-                <file leaf-file-name="portfolio.html" pinned="false" current-in-tab="true">
-                  <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/portfolio.html">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="464">
-                        <caret line="50" column="10" lean-forward="false" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-                <file leaf-file-name="port.css" pinned="false" current-in-tab="false">
-                  <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/port.css">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="263">
-                        <caret line="86" column="42" lean-forward="false" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-                <file leaf-file-name="next.js" pinned="false" current-in-tab="false">
-                  <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/next.js">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="475">
-                        <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-                <file leaf-file-name="portfolio.js" pinned="false" current-in-tab="false">
-                  <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/bootstrap/portfolio.js">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="0">
-                        <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-              </leaf>
-            </split-first>
-            <split-second>
-              <leaf>
-                <file leaf-file-name="portfolio.css" pinned="false" current-in-tab="true">
-                  <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/portfolio.css">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="150">
-                        <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-                <file leaf-file-name="portfolio.js" pinned="false" current-in-tab="false">
-                  <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/bootstrap/portfolio.js">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="25">
-                        <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-              </leaf>
-            </split-second>
-          </splitter>
-        </state>
-      </content>
-    </window>
+    <option name="PATCH_PATH" value="C:\Users\Jonsen\WebstormProjects\react_class_examiner" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="react_class_examiner" />
+  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5040701">
+    <splitter split-orientation="horizontal" split-proportion="0.3308529">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="ButtonGroup.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/components/ButtonGroup.js">
+          <file leaf-file-name="MainView.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/static/css/MainView.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+                <state relative-caret-position="1050">
+                  <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="575">
-                  <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
-                  <folding>
-                    <element signature="e#0#26#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MainView.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/MainView.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                    <element signature="e#331#368#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ClassTabView.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ClassTabView.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/ClassTabView.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4575">
-                  <caret line="183" column="41" lean-forward="false" selection-start-line="183" selection-start-column="41" selection-end-line="183" selection-end-column="41" />
+                <state relative-caret-position="700">
+                  <caret line="177" column="9" lean-forward="true" selection-start-line="177" selection-start-column="9" selection-end-line="177" selection-end-column="9" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -150,11 +69,9 @@
           <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/static/js/functions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="617">
-                  <caret line="69" column="4" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
+                <state relative-caret-position="286">
+                  <caret line="76" column="6" lean-forward="false" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -163,76 +80,88 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/App.js">
+          <file leaf-file-name="NavBar.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/NavBar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="250">
-                  <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#2051#2143#0" expanded="false" />
-                    <element signature="e#2703#2910#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/package.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="212">
-                  <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+                <state relative-caret-position="525">
+                  <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RosterView.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="AttendanceForm.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/AttendanceForm.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="329">
+                  <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainController.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/MainController.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="754">
+                  <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainView.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/MainView.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="329">
+                  <caret line="60" column="49" lean-forward="true" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Attendee.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/Attendee.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2075">
+                  <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
+                  <folding>
+                    <element signature="e#0#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Attendee.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/static/css/Attendee.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="525">
+                  <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RosterView.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/RosterView.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2300">
-                  <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+                <state relative-caret-position="100">
+                  <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!block;n#componentDidMount#0;n#RosterView#0" expanded="false" />
                     <element signature="n#!!block;n#componentWillReceiveProps#0;n#RosterView#0" expanded="false" />
                     <element signature="n#!!block;n#componentWillUnMount#0;n#RosterView#0" expanded="false" />
-                    <element signature="n#!!block;n#pullDB#0;n#RosterView#0" expanded="false" />
                     <element signature="n#!!block;n#onChange#0;n#RosterView#0" expanded="false" />
                     <element signature="n#!!block;n#handleSelectR#0;n#RosterView#0" expanded="false" />
-                    <element signature="e#3196#3309#0" expanded="false" />
+                    <element signature="e#2949#3062#0" expanded="false" />
                     <element signature="n#!!block;n#handleSelectA#0;n#RosterView#0" expanded="false" />
-                    <element signature="e#3531#3545#0" expanded="false" />
+                    <element signature="e#3284#3298#0" expanded="false" />
                     <element signature="n#!!block;n#pullList2#0;n#RosterView#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MainView.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/static/css/MainView.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ClassesView.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/static/css/ClassesView.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="LogInControl.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/static/css/LogInControl.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -240,12 +169,21 @@
           <file leaf-file-name="RosterForm.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/RosterForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="50">
-                  <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+                <state relative-caret-position="323">
+                  <caret line="55" column="48" lean-forward="false" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
-                    <element signature="e#1802#1828#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ClassesView.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/static/css/ClassesView.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="375">
+                  <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -253,33 +191,15 @@
           <file leaf-file-name="ClassesForm.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/ClassesForm.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="350">
-                  <caret line="54" column="54" lean-forward="false" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+                <state relative-caret-position="2575">
+                  <caret line="103" column="40" lean-forward="false" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
-                    <element signature="e#4187#4534#0" expanded="false" />
-                    <element signature="e#4551#4684#0" expanded="false" />
+                    <element signature="n#!!block;n#componentDidMount#0;n#ClassView#0" expanded="false" />
+                    <element signature="n#!!block;n#componentWillMount#0;n#ClassView#0" expanded="false" />
+                    <element signature="n#!!block;n#componentWillUpdate#0;n#ClassView#0" expanded="false" />
+                    <element signature="n#!!block;n#loadClasses#0;n#ClassView#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="NavBar.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/static/css/NavBar.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="100">
-                  <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RosterView.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/static/css/RosterView.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="50">
-                  <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -298,7 +218,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>route</find>
       <find>change</find>
       <find>p.star</find>
       <find>@media</find>
@@ -314,18 +233,36 @@
       <find>onChange</find>
       <find>loadSections</find>
       <find>pullList</find>
+      <find>content5</find>
+      <find>nav</find>
+      <find>navclick</find>
+      <find>AttendenceView</find>
       <find>RosterForm</find>
       <find>pullList2</find>
-      <find>content5</find>
+      <find>RosterEdit</find>
+      <find>loadClasses</find>
+      <find>getUID</find>
+      <find>uid</find>
+      <find>myFile</find>
+      <find>myFIle</find>
+      <find>readLine</find>
+      <find>parseInfo</find>
+      <find>filereader</find>
     </findStrings>
     <replaceStrings>
       <replace>ClassTabView</replace>
       <replace>ClassesForm</replace>
+      <replace>AttendenceView</replace>
+      <replace>AttendanceView</replace>
+      <replace>AttendanceForm</replace>
+      <replace>ClassView</replace>
+      <replace>Attendee</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="IfJonThen &lt;pikahatonjon@gmail.com&gt;" />
         <option value="jonsenY &lt;pikahatonjon@gmail.com&gt;" />
       </list>
     </option>
@@ -334,18 +271,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/MainView.js" />
-        <option value="$PROJECT_DIR$/src/DropdownSection/ButtonGroup/ButtonGroup.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/Nav/Nav.js" />
-        <option value="$PROJECT_DIR$/src/LogInControl/LogInControl.js" />
-        <option value="$PROJECT_DIR$/src/index.ejs" />
-        <option value="$PROJECT_DIR$/src/TableView/TableView.js" />
-        <option value="$PROJECT_DIR$/src/server.js" />
-        <option value="$PROJECT_DIR$/src/components/PageNotFound.js" />
-        <option value="$PROJECT_DIR$/src/components/Routes.js" />
-        <option value="$PROJECT_DIR$/src/components/DropdownSection.js" />
-        <option value="$PROJECT_DIR$/src/components/SplitView.js" />
         <option value="Z:/public_html/index.html" />
         <option value="Z:/public_html/js/next.js" />
         <option value="$USER_HOME$/Desktop/JonsStuff/portfolio/js/next.js" />
@@ -359,25 +284,13 @@
         <option value="$USER_HOME$/Desktop/kingkoi-edit/style.css" />
         <option value="$PROJECT_DIR$/src/static/js/firebaseAuth.js" />
         <option value="$PROJECT_DIR$/src/static/js/firebaseRef.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/mainSquares.js" />
-        <option value="$PROJECT_DIR$/src/components/MainView.js" />
         <option value="$PROJECT_DIR$/src/components/Nav.js" />
         <option value="$PROJECT_DIR$/src/components/ButtonGroup.js" />
-        <option value="$PROJECT_DIR$/src/components/RosterView.js" />
         <option value="$PROJECT_DIR$/src/static/css/RosterView.css" />
         <option value="$PROJECT_DIR$/src/static/css/NavBar.css" />
-        <option value="$PROJECT_DIR$/src/components/RosterForm.js" />
-        <option value="$PROJECT_DIR$/src/static/css/MainView.css" />
-        <option value="$PROJECT_DIR$/src/static/css/App.css" />
-        <option value="$PROJECT_DIR$/src/components/App.js" />
-        <option value="$PROJECT_DIR$/src/components/NavBar.js" />
         <option value="$PROJECT_DIR$/src/components/MainController.js" />
         <option value="$PROJECT_DIR$/src/components/MainSquares.js" />
-        <option value="$PROJECT_DIR$/src/components/ClassTabView.js" />
-        <option value="$PROJECT_DIR$/src/static/css/ClassesView.css" />
-        <option value="$PROJECT_DIR$/src/components/ClassesForm.js" />
-        <option value="$PROJECT_DIR$/src/static/js/functions.js" />
         <option value="$USER_HOME$/Desktop/JonsStuff/portfolio/css/port.css" />
         <option value="$USER_HOME$/Desktop/JonsStuff/portfolio/js/bootstrap/portfolio.js" />
         <option value="$USER_HOME$/Desktop/JonsStuff/portfolio/css/bootstrap/portolio.css" />
@@ -385,6 +298,30 @@
         <option value="$USER_HOME$/Desktop/JonsStuff/portfolio/next.html" />
         <option value="$USER_HOME$/Desktop/JonsStuff/portfolio/portfolio.html" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/static/css/App.css" />
+        <option value="$PROJECT_DIR$/src/components/LogInControl.js" />
+        <option value="$PROJECT_DIR$/src/components/NavBar.js" />
+        <option value="$PROJECT_DIR$/src/components/AttendanceView.js" />
+        <option value="$PROJECT_DIR$/class_examiner.env" />
+        <option value="$PROJECT_DIR$/build/error.html" />
+        <option value="$PROJECT_DIR$/src/components/PageNotFound.js" />
+        <option value="$PROJECT_DIR$/src/static/css/PageNotFound.css" />
+        <option value="$PROJECT_DIR$/build/server.js" />
+        <option value="$PROJECT_DIR$/build/index.html" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/components/App.js" />
+        <option value="$PROJECT_DIR$/src/components/RosterForm.js" />
+        <option value="$PROJECT_DIR$/src/static/css/MainView.css" />
+        <option value="$PROJECT_DIR$/src/static/css/ClassesView.css" />
+        <option value="$PROJECT_DIR$/src/components/ClassTabView.js" />
+        <option value="Z:/public_html/class_examiner.html" />
+        <option value="$PROJECT_DIR$/src/components/ClassesForm.js" />
+        <option value="$PROJECT_DIR$/src/static/js/functions.js" />
+        <option value="$PROJECT_DIR$/src/components/MainView.js" />
+        <option value="$PROJECT_DIR$/src/components/AttendanceForm.js" />
+        <option value="$PROJECT_DIR$/src/static/css/Attendee.css" />
+        <option value="$PROJECT_DIR$/src/components/Attendee.js" />
+        <option value="$PROJECT_DIR$/src/components/RosterView.js" />
       </list>
     </option>
   </component>
@@ -400,9 +337,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="width" value="1934" />
-    <option name="height" value="1030" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1042" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -420,6 +358,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -504,24 +443,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react_class_examiner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react_class_examiner" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -543,13 +464,12 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../voting-server" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="js.eslint.eslintPackage" value="C:\Users\Jonsen\WebstormProjects\hello-world\node_modules\eslint" />
@@ -557,19 +477,19 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\static\css" />
-      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\components" />
-      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\" />
-      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\LogInForm" />
-      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\static\css" />
       <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\components" />
       <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\static" />
       <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\Components" />
       <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\static\css" />
+      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\components" />
+      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\build" />
+      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\" />
+      <recent name="C:\Users\Jonsen\WebstormProjects\react_class_examiner\src\LogInForm" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.App.test.js">
@@ -660,7 +580,14 @@
       <workItem from="1486516505181" duration="22247000" />
       <workItem from="1486688511104" duration="66842000" />
       <workItem from="1486964777065" duration="21000" />
-      <workItem from="1486964823547" duration="19190000" />
+      <workItem from="1486964823547" duration="19005000" />
+      <workItem from="1487124414064" duration="4900000" />
+      <workItem from="1487296259665" duration="1635000" />
+      <workItem from="1487741052031" duration="1838000" />
+      <workItem from="1488162197522" duration="728000" />
+      <workItem from="1488166475649" duration="1868000" />
+      <workItem from="1488173146389" duration="29286000" />
+      <workItem from="1488256237059" duration="6224000" />
     </task>
     <task id="LOCAL-00001" summary="added nav bar">
       <created>1486028430674</created>
@@ -865,71 +792,157 @@
       <option name="project" value="LOCAL" />
       <updated>1486987574967</updated>
     </task>
-    <task id="LOCAL-00030" summary="added comments">
-      <created>1487046240549</created>
+    <task id="LOCAL-00030" summary="startd work on attendence form... waiting for mockups from Gary to implement">
+      <created>1488198328641</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1487046240549</updated>
+      <updated>1488198328641</updated>
     </task>
-    <task id="LOCAL-00031" summary="added comments">
-      <created>1487046329677</created>
+    <task id="LOCAL-00031" summary="**implemented a Typeahead for class entry via react-bootstrap-typeahead dependency&#10;**looking into a better way to fill the typeahead. I'm thinking we could either use a huge array or write our own typeahead algorithm via hashmap? that would be interesting... but would probably take a long time.  &#10;&gt;&gt; maybe for v2">
+      <created>1488198566054</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1487046329677</updated>
+      <updated>1488198566054</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="**fixed bug pertaining to wrong pane contents being displayed. also refactored some of the css names">
+      <created>1488198694738</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1488198694738</updated>
+    </task>
+    <task id="LOCAL-00033" summary="**made MainView a bit more interesting to look at.">
+      <created>1488198776466</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1488198776466</updated>
+    </task>
+    <task id="LOCAL-00034" summary="**refactored code so it is...just slightly more legible">
+      <created>1488198844646</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1488198844646</updated>
+    </task>
+    <task id="LOCAL-00035" summary="404 Page not Found now looks a little bit nicer. &#10;*added some css&#10;">
+      <created>1488198936638</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1488198936638</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Placeholder Login Page...&#10;**will look into optimal authentication handlers">
+      <created>1488198993772</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1488198993772</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Fixed NavBar to pass states correctly">
+      <created>1488199060236</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1488199060236</updated>
+    </task>
+    <task id="LOCAL-00038" summary="who doesnt love more styling!!">
+      <created>1488201682504</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1488201682504</updated>
+    </task>
+    <task id="LOCAL-00039" summary="implemented initial attendance functionality. Shout out to Bhaas for the mock up and feedback">
+      <created>1488263690717</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1488263690717</updated>
+    </task>
+    <task id="LOCAL-00040" summary="attendance form now draws the Attendee buttons dynamically + initial styling for attendees">
+      <created>1488263768298</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1488263768298</updated>
+    </task>
+    <task id="LOCAL-00041" summary="styling for classView and mainView&#10;&#10;getScheduling now brings up a contained modal. &#10;**will implement form to image conversion soon and send to email functionality">
+      <created>1488263883276</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1488263883276</updated>
+    </task>
+    <task id="LOCAL-00042" summary="added more information to local database">
+      <created>1488279315272</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1488279315272</updated>
+    </task>
+    <task id="LOCAL-00043" summary="the main tab now renders the attendence form correctly">
+      <created>1488279356683</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1488279356683</updated>
+    </task>
+    <task id="LOCAL-00044" summary="added pane for search by classes">
+      <created>1488279419081</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1488279419081</updated>
+    </task>
+    <task id="LOCAL-00045" summary="fixed log in in state with LogInControl.js">
+      <created>1488279464445</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1488279464445</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152744000" />
+    <option name="totallyTimeSpent" value="199038000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="0" width="1934" height="1030" extended-state="0" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14917421" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33105022" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07320955" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936978" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32818073" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6070133" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810616" sideWeight="0.49791667" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24986681" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09243698" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09243698" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024125453" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34129694" sideWeight="0.33958334" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34129694" sideWeight="0.33958334" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33105022" sideWeight="0.50208336" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09243698" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2104422" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34129694" sideWeight="0.33958334" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810616" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24986681" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.024125453" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -938,22 +951,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added split pane for roster views. looking into ways to generate the table and lists." />
-    <MESSAGE value="fixing roster view" />
-    <MESSAGE value="add and remove panels now working properly" />
-    <MESSAGE value="added fetch helper functions for firebase" />
-    <MESSAGE value="remove member now correctly loads the list&#10;//to do refresh button functionality and styling" />
-    <MESSAGE value="* RosterView now is the state controller for RosterEdit and RosterForm&#10;* RosterView now passes children to Roster Edit&#10;* bug fixed: roster edit is now updated on state change" />
-    <MESSAGE value="* moved controller to roster view&#10;* roster form now properly accepts props from rosterview&#10;* roster form now properly updates firebase&#10;* roster edit now properly displays fetch from firebase even after roster form updates firebase&#10;//todo &#10;* place roster form info into database in proper format&#10;* provide functionality for remove in roster edit&#10;* migrate class schedule add section from js_class_examiner&#10;* migrate class comparison section from js_class_examiner" />
-    <MESSAGE value="added auto log in, will replace with Oauth once G finishes it" />
-    <MESSAGE value="added descriptors for each of the functions. hope they help in readability" />
-    <MESSAGE value="*found and fixed bug in pullList where clicking on button would double and triple up on form select options.." />
-    <MESSAGE value="*added descriptors for readability &#10;* need to find the cause of this -----------------------------------------&#10;* *** setState(...): Can only update a mounted or mounting component. This usually means you called setState() on an unmountedcomponent. This is a no-op. Please check the code for the RosterForm component. &#10;*-------------------------------------" />
-    <MESSAGE value="*Navbar cloned from Nav.js&#10;*Have decided to style buttons rather than to use bootstrap's nav.. too much headaches" />
-    <MESSAGE value="adding styling for NavBar" />
-    <MESSAGE value="allow for Buttons to accept props to add classes *whew*" />
-    <MESSAGE value="updated buttons to reflect change in button group to accept new classname prop" />
-    <MESSAGE value="app now passes a state handler to navbar" />
     <MESSAGE value="cleaned up code and styling" />
     <MESSAGE value="cleaned up styling" />
     <MESSAGE value="new files to implement class view" />
@@ -962,8 +959,25 @@
     <MESSAGE value="cleaned up some of the code" />
     <MESSAGE value="*now the component passes list of users to classesform" />
     <MESSAGE value="refactored some of the code" />
-    <MESSAGE value="added comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments" />
+    <MESSAGE value="startd work on attendence form... waiting for mockups from Gary to implement" />
+    <MESSAGE value="**implemented a Typeahead for class entry via react-bootstrap-typeahead dependency&#10;**looking into a better way to fill the typeahead. I'm thinking we could either use a huge array or write our own typeahead algorithm via hashmap? that would be interesting... but would probably take a long time.  &#10;&gt;&gt; maybe for v2" />
+    <MESSAGE value="**fixed bug pertaining to wrong pane contents being displayed. also refactored some of the css names" />
+    <MESSAGE value="**made MainView a bit more interesting to look at." />
+    <MESSAGE value="**refactored code so it is...just slightly more legible" />
+    <MESSAGE value="404 Page not Found now looks a little bit nicer. &#10;*added some css&#10;" />
+    <MESSAGE value="Placeholder Login Page...&#10;**will look into optimal authentication handlers" />
+    <MESSAGE value="Fixed NavBar to pass states correctly" />
+    <MESSAGE value="who doesnt love more styling!!" />
+    <MESSAGE value="implemented initial attendance functionality. Shout out to Bhaas for the mock up and feedback" />
+    <MESSAGE value="attendance form now draws the Attendee buttons dynamically + initial styling for attendees" />
+    <MESSAGE value="styling for classView and mainView&#10;&#10;getScheduling now brings up a contained modal. &#10;**will implement form to image conversion soon and send to email functionality" />
+    <MESSAGE value="added more information to local database" />
+    <MESSAGE value="the main tab now renders the attendence form correctly" />
+    <MESSAGE value="added pane for search by classes" />
+    <MESSAGE value="fixed log in in state with LogInControl.js" />
+    <MESSAGE value="Rosterform&#10;*fixed column size and Rosterform now gets css styling from MainView&#10;RosterView&#10;Fixed classNames of button &#10;ClassesForm&#10;+added code to test autocreation of UID for all users&#10;+added code to test parsing through text file uploads via FileReader&#10;+added code to create Modal for the classForm&#10;-removed some garbage comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rosterform&#10;*fixed column size and Rosterform now gets css styling from MainView&#10;RosterView&#10;Fixed classNames of button &#10;ClassesForm&#10;+added code to test autocreation of UID for all users&#10;+added code to test parsing through text file uploads via FileReader&#10;+added code to create Modal for the classForm&#10;-removed some garbage comments" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -972,185 +986,27 @@
           <url>file://$PROJECT_DIR$/src/App.test.js</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/ClassesForm.js</url>
+          <line>173</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/MainView.js</url>
+          <line>7</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://Z:/public_html/js/next.js" />
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SplitView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/firebaseAuth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logo.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DropdownSection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Listing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="5" lean-forward="false" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#98#380#0" expanded="false" />
-            <element signature="e#390#491#0" expanded="false" />
-            <element signature="e#502#610#0" expanded="false" />
-            <element signature="e#621#719#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/firebaseAuth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/js/firebaseRef.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LogInControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="64" column="25" lean-forward="false" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Nav.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/LogInForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/LogInForm.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/kingkoi-edit/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/kingkoi-edit/lolol.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="32" column="563" lean-forward="false" selection-start-line="32" selection-start-column="562" selection-end-line="32" selection-end-column="563" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/kingkoi-edit/style-rtl.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10825">
           <caret line="35" column="56541" lean-forward="false" selection-start-line="35" selection-start-column="56526" selection-end-line="35" selection-end-column="56541" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,45 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6025">
           <caret line="0" column="35309" lean-forward="false" selection-start-line="0" selection-start-column="35309" selection-end-line="0" selection-end-column="35309" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/MainView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#331#368#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/RosterView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2300">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#componentDidMount#0;n#RosterView#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillReceiveProps#0;n#RosterView#0" expanded="false" />
-            <element signature="n#!!block;n#componentWillUnMount#0;n#RosterView#0" expanded="false" />
-            <element signature="n#!!block;n#pullDB#0;n#RosterView#0" expanded="false" />
-            <element signature="n#!!block;n#onChange#0;n#RosterView#0" expanded="false" />
-            <element signature="n#!!block;n#handleSelectR#0;n#RosterView#0" expanded="false" />
-            <element signature="e#3196#3309#0" expanded="false" />
-            <element signature="n#!!block;n#handleSelectA#0;n#RosterView#0" expanded="false" />
-            <element signature="e#3531#3545#0" expanded="false" />
-            <element signature="n#!!block;n#pullList2#0;n#RosterView#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/MainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1204,38 +1021,184 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/NavBar.js">
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/port.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="2150">
+          <caret line="86" column="42" lean-forward="false" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/myfunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/bootstrap/portolio.css" />
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/portolio.css" />
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/bootstrap/portfolio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/next.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/next.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/portfolio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="50" column="10" lean-forward="false" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/portfolio.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LogInControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding>
-            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/LogInControl.css">
+    <entry file="file://Z:/public_html/index.html" />
+    <entry file="file://$PROJECT_DIR$/class_examiner.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="44" lean-forward="false" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/js/firebaseAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/error.html" />
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/RosterForm.js">
+    <entry file="file://$PROJECT_DIR$/firebase.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/server.js" />
+    <entry file="file://$PROJECT_DIR$/build/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="687" lean-forward="false" selection-start-line="0" selection-start-column="687" selection-end-line="0" selection-end-column="687" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#1802#1828#0" expanded="false" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/LogInForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="5" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PageNotFound.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="57" lean-forward="true" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/NavBar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/PageNotFound.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1247,158 +1210,171 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/NavBar.css">
+    <entry file="file://$PROJECT_DIR$/src/static/css/LogInControl.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/static/css/ClassesView.css">
+    <entry file="file://$PROJECT_DIR$/src/static/css/LogInForm.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state relative-caret-position="100">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ButtonGroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/css/MainView.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="1050">
+          <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ClassTabView.js">
+    <entry file="file://$PROJECT_DIR$/src/components/NavBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4575">
-          <caret line="183" column="41" lean-forward="false" selection-start-line="183" selection-start-column="41" selection-end-line="183" selection-end-column="41" />
+        <state relative-caret-position="525">
+          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/public_html/class_examiner.html" />
+    <entry file="file://$PROJECT_DIR$/src/components/ClassesForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2575">
+          <caret line="103" column="40" lean-forward="false" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
+            <element signature="n#!!block;n#componentDidMount#0;n#ClassView#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillMount#0;n#ClassView#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillUpdate#0;n#ClassView#0" expanded="false" />
+            <element signature="n#!!block;n#loadClasses#0;n#ClassView#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/static/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="69" column="4" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+        <state relative-caret-position="286">
+          <caret line="76" column="6" lean-forward="false" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AttendanceView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="177" column="46" lean-forward="false" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MainView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="60" column="49" lean-forward="true" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ClassesForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AttendanceForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="54" column="54" lean-forward="false" selection-start-line="54" selection-start-column="54" selection-end-line="54" selection-end-column="54" />
+        <state relative-caret-position="329">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <element signature="e#4187#4534#0" expanded="false" />
-            <element signature="e#4551#4684#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ButtonGroup.js">
+    <entry file="file://$PROJECT_DIR$/src/components/ClassTabView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="177" column="9" lean-forward="true" selection-start-line="177" selection-start-column="9" selection-end-line="177" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/Attendee.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/RosterForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="55" column="48" lean-forward="false" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/static/css/ClassesView.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/port.css">
+    <entry file="file://$PROJECT_DIR$/src/components/Attendee.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="86" column="42" lean-forward="false" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/myfunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/bootstrap/portolio.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/portolio.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/bootstrap/portfolio.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/next.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/js/next.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/portfolio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="50" column="10" lean-forward="false" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/JonsStuff/portfolio/css/portfolio.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        <state relative-caret-position="2075">
+          <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="32" />
           <folding>
-            <element signature="e#2051#2143#0" expanded="false" />
-            <element signature="e#2703#2910#0" expanded="false" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/components/RosterView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="100">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#componentDidMount#0;n#RosterView#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillReceiveProps#0;n#RosterView#0" expanded="false" />
+            <element signature="n#!!block;n#componentWillUnMount#0;n#RosterView#0" expanded="false" />
+            <element signature="n#!!block;n#onChange#0;n#RosterView#0" expanded="false" />
+            <element signature="n#!!block;n#handleSelectR#0;n#RosterView#0" expanded="false" />
+            <element signature="e#2949#3062#0" expanded="false" />
+            <element signature="n#!!block;n#handleSelectA#0;n#RosterView#0" expanded="false" />
+            <element signature="e#3284#3298#0" expanded="false" />
+            <element signature="n#!!block;n#pullList2#0;n#RosterView#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

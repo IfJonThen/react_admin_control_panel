@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
-import NavExample from "./Nav";
-import {Form, Grid} from 'react-bootstrap';
 import '../static/css/MainView.css';
-
-import SplitView from './SplitView';
-import TableView from './TableView';
 import {Button} from './ButtonGroup';
 import RosterForm,{RosterEdit} from './RosterForm';
-var members={'Name':'Jon,Max,Gary'};
-var memInfo= {'Gary':{},'Jon':{},'Max':{} };
-var table=[];
 
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
@@ -170,10 +162,10 @@ class RosterView extends Component{
         let left =
             <div className="RosterPane">
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectA}id="Add" value="Add Member"/>
+                    <Button cname="paneBtn"  onClick={this.handleSelectA}id="Add" value="Add Member"/>
                 </div>
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
+                    <Button cname="paneBtn"  onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
                 </div>
             </div>;
         let right =null;
