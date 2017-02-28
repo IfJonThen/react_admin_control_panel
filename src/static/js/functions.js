@@ -60,7 +60,7 @@ export var hasValues =(val,arr)=>{
 * */
 export var getSelectText=(id)=>{
     let t = document.getElementById(id);
-    if (t!=null){
+    if (t!=null && t.selectedIndex!==(null||undefined)){
         return t.options[t.selectedIndex].text;
     }
 }
@@ -73,12 +73,19 @@ export var getUID=(user)=>{
     return uid;
 }
 export var classDB = ['Comp Sci 121', 'Comp Sci 122A', 'Comp Sci 122B', 'Comp Sci 122C',
-    'Econ 2A',
-    'Math 2A','Math 2B','Math 2C', 'Math 2D',
+    'Econ 2A', 'Econ 15A', 'Econ 15B', 'Econ 100B', 'Econ 100C', 'Econ 122A', 'Econ 140',
+        'Econ 115', 'Econ 158', 'Econ 25','Econ 17', 'Econ 20A','Econ 20B',
+    'Bio Sci 9B',
+    'Earth SySci 5',
+    'Soc 3A',
+    'Math 2A','Math 2B','Math 2C', 'Math 2D', 'Math 4',
     'ICS 46','ICS 45C','ICS 45J','ICS 31', 'ICS 32','ICS 33',
     'Informatics 43','Informatics 101','Informatics 113','Informatics 115','Informatics 121','Informatics 122','Informatics 131',
         'Informatics 132', 'Informatics 133','Informatics 141','Informatics 143','Informatics 151','Informatics 161',
     'Stats 7','Stats 67','Stats 115','Stats 120A','Stats 120B',
-    ''
+    'Music 8',
+    'Poli Sci 6B', 'Poli Sci 41A',
+    'Education 107',
+
 
 ];
