@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
-import NavExample from "./Nav";
-import {Form, Grid} from 'react-bootstrap';
 import '../static/css/MainView.css';
-import SplitView from './SplitView';
-import TableView from './TableView';
 import {Button} from './ButtonGroup';
-import RosterForm,{RosterEdit} from './RosterForm';
 import ClassesForm,{ClassView} from './ClassesForm';
 import {classDB} from '../static/js/functions';
-var members={'Name':'Jon,Max,Gary'};
-var memInfo= {'Gary':{},'Jon':{},'Max':{} };
-var table=[];
 
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
-
 
 class ClassTabView extends Component{
 
@@ -22,7 +13,7 @@ class ClassTabView extends Component{
     * bind the functions..thanks es6 -_-
     * set states to default (empty or 0)
     * calls pullDB() to fill states. will most likely change to re-base.syncState in the future
-     *  */
+    *  */
     constructor(){
       super();
       this.count=0;
@@ -153,7 +144,6 @@ class ClassTabView extends Component{
             }
         }
         // console.log("RosterForm: pullList2: added "+v+" options");
-
         return v;
     }
 
@@ -165,7 +155,6 @@ class ClassTabView extends Component{
     fillSelect(id,arr){
         let v = [];
         var t =document.getElementById(id);
-        // console.log("ClassTabView::pullList2:: this.state.base:" +this.state.base);
         for(let j =0; j<this.state.count;j++){
             if(arr[j]!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
@@ -176,8 +165,6 @@ class ClassTabView extends Component{
                 }
             }
         }
-        // console.log("RosterForm: pullList2: added "+v+" options");
-
         return v;
     }
 
@@ -199,8 +186,8 @@ class ClassTabView extends Component{
                     <Button cname="rosterbtn paneBtn" onClick={this.handleSelectC}id="GetByClassBtn" value="Get Schedules by Class"/>
                 </div>
             </div>;
-        let right =null;
-        let v = this.pullList2();
+        let right=null;
+        let v= this.pullList2();
         let classList=this.pullClassList();
         if (this.state.pane==="update"){
             let count= this.onChange();

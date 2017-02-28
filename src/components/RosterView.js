@@ -44,6 +44,7 @@ class RosterView extends Component{
     componentWillUnMount(){
 
     }
+
     /*RosterView()::pullDB()
     * pulls data from database via re-base.fetch()
     * sets "base" state and "count" state

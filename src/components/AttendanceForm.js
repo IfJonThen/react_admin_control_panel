@@ -1,12 +1,11 @@
 import React, {Component } from 'react';
 import '../static/css/RosterView.css';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
-import * as firebase from 'firebase';
-import {Button} from './ButtonGroup';
-import ReactFireMixin from 'reactfire';
 import Attendee from './Attendee';
 import ReactDOM from 'react-dom';
 import Rebase from 're-base';
+import {Button} from './ButtonGroup';
+import {toDayte} from '../static/js/functions';
 /*eslint no-unused-vars: "off"*/
 import {firebaseAuth} from '../static/js/firebaseAuth';
 
@@ -31,7 +30,6 @@ class AttendanceForm extends Component{
         this.state={count:this.props.count};
         this.onButtonClick= this.onButtonClick.bind(this);
         this.addToDB=this.addToDB.bind(this);
-        console.log("AttendanceForm::constructor::props.count " +props.count);
     }
 
     /* AttendanceForm()::onButtonClick()
@@ -86,13 +84,25 @@ class AttendanceForm extends Component{
             let play_map={"bhaas2013":['Brandon Haas',3], "gmachlis2014":['Gary Machlis',2],
             "jlyuen2013":['Jonathan Yuen',1], "kshah2014":['Kevin Shah',0]};
 
-        for (let i =0; i<list_of_names.length;i++){
-            console.log(play_map[list_of_names[i]][0]);
-            t.push(<Attendee key={list_of_names[i]} clickButton={this.click}totalTally={play_map[list_of_names[i]][1]} name={play_map[list_of_names[i]][0]}></Attendee>);
+        for (let i =0; i<this.props.members.length;i++){
+            let j =(this.props.members[i]["first"] + " " +this.props.members[i]["last"]);
+            // console.log(j);
+            t.push(<Attendee key={i} clickButton={this.click} name={j}></Attendee>);
         }
+        let k = toDayte();
         return(
-            <div className="attendSquares">
+            <div className="attendView">
+                <div className="row">
+                <h1 style={{color:"black"}}>{"Attendance"+" "}<span style={{color:"red"}}>{k}</span></h1>
+                    {/*<p style={{color:"red",fontWeight:"bold"}}>{k}</p>*/}
+
+                </div>
+            <div className="row">
+                <Button cname="saveButton"value="save"></Button>
+            </div>
+                <div className="attendForm">
                 {t}
+            </div>
             </div>
 
         );

@@ -65,23 +65,23 @@ class Attendee extends Component{
 
     }
     render(){
-        let t= "rosterbtn attendanceBtn";
+        let t= "attendanceBtn";
         switch(this.state.tally){
             case -1:
                 t+=' redBtn';
                 break;
             case 0:
-                t=' yellowBtn';
+                t+=' yellowBtn';
                 break;
             case 1:
-                t=" greenBtn";
+                t+=" greenBtn";
                 break;
             default:
                 break;
         }
         return(
             <div className="attendSquares">
-                <Button cname={t} onClick={this.onButtonClick} value={this.props.name+" "+this.state.tally}></Button>
+                <Button cname={t} onClick={this.onButtonClick} value={this.props.name}></Button>
             </div>
 
         );
