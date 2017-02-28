@@ -30,9 +30,11 @@ class ClassTabView extends Component{
 
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
+        this.handleSelectC=this.handleSelectC.bind(this);
         this.onChange=this.onChange.bind(this)
         // this.pullList=this.pullList.bind(this);
         this.pullList2=this.pullList2.bind(this);
+        this.fillSelect=this.fillSelect.bind(this);
         this.pullDB=this.pullDB.bind(this);
         this.loadSections=this.loadSections.bind(this);
         this.pullClassList=this.pullClassList.bind(this);
@@ -113,7 +115,7 @@ class ClassTabView extends Component{
      * */
     handleSelectR(event){
         // console.log('ClassTabView::handleSelectRemove() clicked');
-        this.setState({pane:"remove"});
+        this.setState({pane:"byMem"});
         // this.pullList();
     }
 
@@ -123,6 +125,10 @@ class ClassTabView extends Component{
      * */
     handleSelectA(){
         this.setState({pane:"update"});
+    }
+    handleSelectC(e){
+        console.log (e);
+        this.setState({pane:"byClass"});
     }
 
     /*
@@ -151,6 +157,30 @@ class ClassTabView extends Component{
         return v;
     }
 
+    /*
+     * RosterEdit()::fillSelect
+     * generates children for RosterEdit select form based on the number of children in state.base
+     *
+     * */
+    fillSelect(id,arr){
+        let v = [];
+        var t =document.getElementById(id);
+        // console.log("ClassTabView::pullList2:: this.state.base:" +this.state.base);
+        for(let j =0; j<this.state.count;j++){
+            if(arr[j]!==(null||undefined)) {
+                if (typeof this.state.base[j] !== 'string') {
+                    v.push(<option key={j}>{arr[j]}</option>);
+                }
+                else{
+                    console.log("ClassTabView::fillSelect()...no children added");
+                }
+            }
+        }
+        // console.log("RosterForm: pullList2: added "+v+" options");
+
+        return v;
+    }
+
     /*ClassTabView()::Render()
      * controlled by App.js conditionally renders left and right panes
       * if state is add, renders RosterForm
@@ -163,7 +193,10 @@ class ClassTabView extends Component{
                     <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="UpdateBtn" value="Update Classes"/>
                 </div>
                 <div className="row">
-                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectR}id="GetBtn" value="Get Schedules"/>
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectR}id="GetByMemBtn" value="Get Schedules by Member"/>
+                </div>
+                <div className="row">
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectC}id="GetByClassBtn" value="Get Schedules by Class"/>
                 </div>
             </div>;
         let right =null;
@@ -173,8 +206,12 @@ class ClassTabView extends Component{
             let count= this.onChange();
             right= <ClassesForm right={v} system="Quarter" options={classDB}count={count}/>;
         }
-        else{
-            right=<ClassView right={v} count={this.state.count}/>;
+        else if (this.state.pane==="byMem"){
+            right=<ClassView right={v} selectID="selectRemove"formLabel="Select Member"count={this.state.count}/>;
+        }
+        else if (this.state.pane==="byClass"){
+            v=this.fillSelect("selectByClass",classDB);
+            right = <ClassView selectID="selectByClass"formLabel="Select Class"right ={v} count={this.state.count}/>;
         }
 
         return (
@@ -197,7 +234,7 @@ function SplitPane(props){
         <div className="SplitPane-left">
             {props.left}
         </div>
-        <div className="SplitPane-right">
+        <div className="SplitPane-right modal-container">
             {props.right}
         </div>
 
