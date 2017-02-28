@@ -1,7 +1,4 @@
-.splitform {
-    max-width:60%;
-    margin-left:20%;
-}
+
 .entryForm{
     border: 15px inset lightslategrey;
     border-right-style: solid;
@@ -10,4 +7,10 @@
 }
 .col-form-label{
 
+}
+.modal-container{
+    position:relative;
+}
+.modal-container .modal,.modal-container .modal-backdrop{
+    position:absolute;
 }
