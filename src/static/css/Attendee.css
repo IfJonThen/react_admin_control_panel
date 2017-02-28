@@ -1,0 +1,21 @@
+.attendanceBtn{
+    border:2px solid grey;
+    background-color: white;
+    color:Black;
+}
+.atttendanceBtn:active{
+    -webkit-box-shadow: inset 2px 1px  lightblue;
+    -moz-box-shadow: inset 2px 1px lightblue;
+    box-shadow: inset 2px 1px lightblue;
+
+}
+
+.redBtn{
+    background-color:rgba(255,0,0,0.5);
+}
+.greenBtn{
+    background-color:rgba(0,255,0,0.5);
+}
+.yellowBtn{
+    background-color:rgba(255,255,0,0.5);
+}

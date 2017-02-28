@@ -4,6 +4,7 @@ import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap
 import * as firebase from 'firebase';
 import {Button} from './ButtonGroup';
 import ReactFireMixin from 'reactfire';
+import Attendee from './Attendee';
 import ReactDOM from 'react-dom';
 import Rebase from 're-base';
 /*eslint no-unused-vars: "off"*/
@@ -26,6 +27,7 @@ class AttendanceForm extends Component{
     constructor(props){
         super(props);
         // this.count=props.count;
+        this.click=this.click.bind(this);
         this.state={count:this.props.count};
         this.onButtonClick= this.onButtonClick.bind(this);
         this.addToDB=this.addToDB.bind(this);
@@ -35,6 +37,9 @@ class AttendanceForm extends Component{
     /* AttendanceForm()::onButtonClick()
     * bind by constructor, parses Add form for data and sends it to AddToDB helper function
     * */
+    click(event){
+
+    }
     onButtonClick(event){
         event.preventDefault();
         let fname = document.getElementById("inputFname").value;
@@ -42,17 +47,7 @@ class AttendanceForm extends Component{
         let quarter = document.getElementById("selectPledgeYear");
         quarter = quarter.options[quarter.selectedIndex].text;
         let year = document.getElementById("inputYear").value;
-
-        this.addToDB(fname,lname,quarter,year);
-        // base.update('classes',{
-        //     data:{uid: {"jyuen":{f2k16:['CS 161','Informatics 133','Informatics 124']}}},
-        //     then(err){
-        //         if(!err){
-        //             alert("successfully added "+ fname)
-        //             // Router.transitionTo('')
-        //         }
-        //     }
-        // });
+        // this.addToDB(fname,lname,quarter,year);
     }
 
     /*AttendanceForm()::addToDB()
@@ -65,17 +60,6 @@ class AttendanceForm extends Component{
         if (this.state.base!==undefined) {
             t= {first:fname,last:lname,quarter:quarter,year:year};
             this.setState({base:this.state.base.concat([t])});
-            // this.state.base.concat()[]
-            // fbase.update('users', {s
-            //     data: t,
-            //     then(err){
-            //         if (!err) {
-            //             alert("AttendanceForm:buttonHandler: successfully added " + fname)
-            //         } else{
-            //             alert("Error " + err);
-            //         }
-            //     }
-            // });
         }
     }
     componentWillMount(){
@@ -97,38 +81,18 @@ class AttendanceForm extends Component{
 
     render(){
         // let t=null;
-        let t="First Name";
+        let t=[];
+        let list_of_names = ["bhaas2013","gmachlis2014", "jlyuen2013","kshah2014"];
+            let play_map={"bhaas2013":['Brandon Haas',3], "gmachlis2014":['Gary Machlis',2],
+            "jlyuen2013":['Jonathan Yuen',1], "kshah2014":['Kevin Shah',0]};
 
-        if (this.state.count===0 || this.state.count===null){
-            // t="KEYERROR"+this.state.count;
-        }
-        else{
-            t="First Name";
+        for (let i =0; i<list_of_names.length;i++){
+            console.log(play_map[list_of_names[i]][0]);
+            t.push(<Attendee key={list_of_names[i]} clickButton={this.click}totalTally={play_map[list_of_names[i]][1]} name={play_map[list_of_names[i]][0]}></Attendee>);
         }
         return(
             <div className="attendSquares">
-                <Form id="AttendanceForm">
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label">{this.props.quarter}</label>
-                        <label className="col-sm-2 col-form-label">{this.props.week}</label>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label">On Time</label>
-                        <div className="col-sm-6" id="OnTime">
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label  className="col-sm-2 col-form-label">Late</label>
-                        <div className="col-sm-6" id="Late">
-                        </div>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label">Absent</label>
-                        <div className="col-sm-6" id="Late">
-                        </div>
-                        <Button onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Add</Button>
-                    </div>
-                </Form>
+                {t}
             </div>
 
         );
