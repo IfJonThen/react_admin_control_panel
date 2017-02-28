@@ -4,6 +4,7 @@ import NavExample from "./Nav";
 import {Grid} from 'react-bootstrap';
 import DropdownSection from './DropdownSection';
 import TableView from './TableView';
+import AttendanceForm from './AttendanceForm';
 var members={'Name':'Jon,Max,Gary'};
 var memInfo= {'Gary':{},'Jon':{},'Max':{} };
 var table=[];
@@ -50,7 +51,7 @@ class MainView extends Component{
                 break;
             case "attendance":
                 //to do attendance view
-                main=<div > code for attendance</div>;
+                main=<AttendanceForm></AttendanceForm>;
                 break;
             case "calendar":
                 main=<div> code for calendar</div>;
