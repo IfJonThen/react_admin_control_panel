@@ -20,6 +20,8 @@ export class Button extends React.Component {
         }
         return (<button className={cl} id={this.props.id} onClick={this.props.onClick}>
                 {this.props.value}
+                <span style={{fontSize:"0.7em",marginLeft:"20px",float:"right"}}>{this.props.sv}</span>
+
             </button>
         );
     }

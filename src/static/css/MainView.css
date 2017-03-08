@@ -1,22 +1,17 @@
 .paneBtn{
   width:75%;
   background-color: rgba(0, 0, 0, 0.7);
-  border-bottom:black 1px solid;
+  /*border-bottom:black 1px solid;*/
   min-height:60px;
   border:1px solid rgba(0,0,0,0.7);
   color:white;
+  box-shadow:3px 3px rgba(0,0,0,0.5);
+
 }
 
 .paneBtn:hover{
   color:rgba(25,25,25,1);
   background-color: rgba(40, 143, 255, 0.3);
-}
-.btn:hover{
-  /*color:rgba(40,143,255,0.8);*/
-}
-
-.paneBtn{
-  box-shadow:3px 3px rgba(0,0,0,0.5);
 }
 .RosterPane{
   margin-top:30px;
@@ -48,7 +43,7 @@
   /*margin-top:15px;*/
 }
 #editFormLabel{
-  border-bottom:1px solid black;
+  /*border-bottom:1px solid black;*/
 }
 .form-group button{
   margin-top:15px;

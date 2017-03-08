@@ -1,12 +1,11 @@
 import React, {Component } from 'react';
 import '../static/css/Attendee.css';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
-import * as firebase from 'firebase';
 import {Button} from './ButtonGroup';
-import ReactFireMixin from 'reactfire';
-import ReactDOM from 'react-dom';
 import Rebase from 're-base';
 /*eslint no-unused-vars: "off"*/
+import * as funlib from '../static/js/functions';
+import {base} from '../static/js/firebaseRef';
 import {firebaseAuth} from '../static/js/firebaseAuth';
 
 //brings in the Rebase object
@@ -19,14 +18,16 @@ var fbase = Rebase.createClass({
 });
 class Attendee extends Component{
 
-    /*AttendanceForm::constructor()
+    /*Attendee::constructor()
     * binds the functions thanks es6 -_-
     * sets base state "count" equal to props.count
     * */
     constructor(props){
         super(props);
         this.bump=this.bump.bind(this);
-        this.state={tally:-1};
+        this.state={tally:props.tally};
+        // console.log('Attendee::: this.props.week '+ props.tally);
+        this.getName=this.getName.bind(this);
         this.onButtonClick= this.onButtonClick.bind(this);
     }
     bump(){
@@ -37,16 +38,25 @@ class Attendee extends Component{
             return (this.state.tally+1);
         }
     }
-    /* AttendanceForm()::onButtonClick()
+
+    /* Attendee()::onButtonClick()
     * bind by constructor, parses Add form for data and sends it to AddToDB helper function
     * */
     onButtonClick(event){
         event.preventDefault();
         console.log(this.props.name + " " +this.state.tally);
-        this.setState({tally:this.bump()});
+        let tally=this.state.tally;
+        if (this.state.tally>=1){
+            tally=-1;
+        }
+        else{
+            tally+=1;
+        }
+        this.props.clickButton(this.props.val,tally);
+        this.setState({tally:tally});
     }
 
-    /*AttendanceForm()::addToDB()
+    /*Attendee()::addToDB()
     * helper function. takes arguments and places them into firebase
     * sends an Alert(for now upon success)
     * */
@@ -58,11 +68,11 @@ class Attendee extends Component{
 
         }
     }
-    componentWillMount(){
-        // console.log("will mount" +this.state.tally);
+    getName(){
+        return this.props.name;
     }
     componentDidMount() {
-
+        this.setState({tally:this.props.tally});
     }
     render(){
         let t= "attendanceBtn";
@@ -80,8 +90,8 @@ class Attendee extends Component{
                 break;
         }
         return(
-            <div className="attendSquares">
-                <Button cname={t} onClick={this.onButtonClick} value={this.props.name}></Button>
+            <div className="attendSquares" data-tally={this.state.tally}>
+                <Button cname={t} onClick={this.onButtonClick} value={this.props.week+" " +this.props.name +" "+ this.props.tally + " "+ this.state.tally}></Button>
             </div>
 
         );

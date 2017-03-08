@@ -14,8 +14,8 @@ class LogInControl extends React.Component{
 
         // this.handleChange = this.props.handleChange.bind(this);
         this.state={isLoggedIn:false,t:props.t,uname:"1",pw:"2"};
-        console.log("LogInControl(): state.isLoggedIn:"+this.state.isLoggedIn);
-        console.log("LogInControl(): this.isLoggedIn:"+this.ili);
+        // console.log("LogInControl(): state.isLoggedIn:"+this.state.isLoggedIn);
+        // console.log("LogInControl(): this.isLoggedIn:"+this.ili);
     }
 
     /* LogInControl(): log in check

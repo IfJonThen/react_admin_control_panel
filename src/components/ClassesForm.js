@@ -29,9 +29,11 @@ class ClassesForm extends Component{
         super(props);
         this.fillDB =this.fillDB.bind(this);
         // this.count=props.count;
-        this.state={count:this.props.count};
+        this.state={ttemp:[],count:this.props.count};
         this.onButtonClick= this.onButtonClick.bind(this);
         this.addToDB=this.addToDB.bind(this);
+        this.fileGet=this.fileGet.bind(this);
+
         console.log("ClassesForm::constructor::props.count " +props.count);
     }
     fillDB(arr,mem){
@@ -39,17 +41,6 @@ class ClassesForm extends Component{
             console.log(getUID(mem[j].label));
         }
         let t={"jyuen2013": "jlyuen@uci.edu"}
-        fbase.update('email', {
-                data: t,
-                then(err){
-                    if (!err) {
-                        alert("ClassesForm:buttonHandler: successfully added " + t[0])
-                    } else{
-                        alert("Error " + err);
-                    }
-                }
-            });
-
     }
     /* ClassesForm()::onButtonClick()
     * bind by constructor, parses Add form for data and sends it to AddToDB helper function
@@ -60,10 +51,8 @@ class ClassesForm extends Component{
         let info = hasValues([],[].slice.call(t));
         info.push(getSelectText("inputCQuarter"));
         info.push(getSelectText("selectUser"));
+        console.log("info is " +info);
         let selects = ["selectUser","inputCQuarter"];
-        console.log(selects.map(getSelectText));
-        console.log(info);
-        console.log(getUID(getSelectText("selectUser")));
         let uid= getUID(getSelectText("selectUser"));
         // let d = document.getElementById("classType");
         let d = document.getElementsByClassName("token-removeable");
@@ -71,11 +60,12 @@ class ClassesForm extends Component{
         for (let i =0;i<d.length;i++){
             s[i]=d[i].childNodes[1].data;
         }
-        console.log(s);
+        // console.log(s);
         let abc = document.getElementsByTagName("option");
-        console.log(abc);
-        this.fillDB(s,abc);
-        this.fileGet=this.fileGet.bind(this);
+        // console.log(abc);
+        // this.fillDB(s,abc);
+
+
     }
 
     /*ClassesForm()::addToDB()
@@ -84,14 +74,12 @@ class ClassesForm extends Component{
     * */
     fileGet(evt){
         if (window.File && window.FileReader&& window.FileList &&window.Blob){
-
         }
         else{
             alert("file apis not supported");
         }
         var f = evt.target.files[0];
         // console.log(f[0]);
-
         if (f){
             var r = new FileReader();
             console.log(r.readAsText(f));
@@ -172,11 +160,11 @@ class ClassesForm extends Component{
                     </div>
                     </div>
                     <div className="form-group row">
-                    <label className="col-sm-4 col-form-label">Look up user</label>
-                    <div className="col-sm-8">
-                    <select className="form-control" id="selectUser">
-                        {this.props.right}
-                    </select>
+                        <label className="col-sm-4 col-form-label">Look up user</label>
+                        <div className="col-sm-8">
+                        <select className="form-control" id="selectUser">
+                            {this.props.right}
+                        </select>
                     </div>
                 </div>
                 <div className="form-group row ">
@@ -308,15 +296,18 @@ export class ClassView extends Component{
         let close = ()=>this.setState({show:false});
         return (
             <div className="splitform">
-                <Form>
-                    <div className="form-group">
-                    <label id="editFormLabel" style={{color:"white"}}>{this.props.formLabel}</label>
-                    <select className="form-control" id={this.props.selectID}>
-                        {this.props.right}
-                    </select>
-                        <Button onClick={this.handleRemoveBtn} id="removebtn" value="Get"/>
-                        <Button onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
-
+                <Form className="entryForm">
+                    <div className="form-group row">
+                        <div className="col-sm-12">
+                            <label id="editFormLabel">{this.props.formLabel}</label>
+                            <select className="form-control" id={this.props.selectID}>
+                               {this.props.right}
+                            </select>
+                            <div className="row">
+                                <Button onClick={this.handleRemoveBtn} id="getbtn" value="Get"/>
+                                <Button onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
+                            </div>
+                        </div>
                     </div>
                 </Form>
                 <Form id="ClassViewer">
@@ -334,7 +325,7 @@ export class ClassView extends Component{
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p id="contained-modal-body">
+                        <p style={{color:"black"}} id="contained-modal-body">
                         TEST TEST TEST
                         </p>
                     </Modal.Body>

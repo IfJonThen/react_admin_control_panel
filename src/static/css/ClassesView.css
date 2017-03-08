@@ -14,3 +14,16 @@
 .modal-container .modal,.modal-container .modal-backdrop{
     position:absolute;
 }
+#editFormLabel{
+    padding:15px 0;
+}
+#getbtn, #refreshbtn{
+    margin:10px 15px;
+}
+#getbtn:hover, #refreshbtn:hover{
+    background-color:rgba(0,0,0,0.5);
+    color:white;
+}
+#getbtn:active, #refreshbtn:active{
+    box-shadow: 2px 3px grey;
+}

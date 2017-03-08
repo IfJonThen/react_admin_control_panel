@@ -62,17 +62,6 @@ class RosterForm extends Component{
         if (this.state.base!==undefined) {
             t= {first:fname,last:lname,quarter:quarter,year:year};
             this.setState({base:this.state.base.concat([t])});
-            // this.state.base.concat()[]
-            // fbase.update('users', {s
-            //     data: t,
-            //     then(err){
-            //         if (!err) {
-            //             alert("RosterForm:buttonHandler: successfully added " + fname)
-            //         } else{
-            //             alert("Error " + err);
-            //         }
-            //     }
-            // });
         }
     }
     componentWillMount(){

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../static/css/MainView.css';
 import {Button} from './ButtonGroup';
 import ClassesForm,{ClassView} from './ClassesForm';
-import {classDB} from '../static/js/functions';
+import {classDB, getUID} from '../static/js/functions';
 
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
@@ -134,9 +134,9 @@ class ClassTabView extends Component{
         for(let j =0; j<this.state.count;j++){
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
-                    let l = this.state.base[j]['first']+ " "+ this.state.base[j]['last'] +' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
-
-                    v.push(<option key={j}>{l}</option>);
+                    let name = this.state.base[j]['first']+ " "+ this.state.base[j]['last'];
+                    let pledgequarter = ' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
+                    v.push(<option id={getUID(this.state.base[j])}key={j}>{name+pledgequarter}</option>);
                 }
                 else{
                     console.log("ClassTabView::pullList()...no children added");
@@ -146,10 +146,9 @@ class ClassTabView extends Component{
         // console.log("RosterForm: pullList2: added "+v+" options");
         return v;
     }
-
     /*
-     * RosterEdit()::fillSelect
-     * generates children for RosterEdit select form based on the number of children in state.base
+     * ClassTabView()::fillSelect
+     * generates children for ClassTabView select form based on the number of children in state.base
      *
      * */
     fillSelect(id,arr){
@@ -171,13 +170,16 @@ class ClassTabView extends Component{
     /*ClassTabView()::Render()
      * controlled by App.js conditionally renders left and right panes
       * if state is add, renders RosterForm
-      * if state is remove, renders RosterEdit
+      * if state is remove, renders ClassTabView
      */
     render() {
         let left =
             <div className="RosterPane">
                 <div className="row">
                     <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="UpdateBtn" value="Update Classes"/>
+                </div>
+                <div className="row">
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="AddCBtn" value="Add Classes"/>
                 </div>
                 <div className="row">
                     <Button cname="rosterbtn paneBtn" onClick={this.handleSelectR}id="GetByMemBtn" value="Get Schedules by Member"/>
@@ -198,7 +200,7 @@ class ClassTabView extends Component{
         }
         else if (this.state.pane==="byClass"){
             v=this.fillSelect("selectByClass",classDB);
-            right = <ClassView selectID="selectByClass"formLabel="Select Class"right ={v} count={this.state.count}/>;
+            right= <ClassView selectID="selectByClass"formLabel="Select Class"right={v} count={this.state.count}/>;
         }
 
         return (

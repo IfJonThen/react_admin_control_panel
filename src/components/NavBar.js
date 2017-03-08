@@ -52,7 +52,7 @@ class NavBar extends React.Component{
         this.props.handleClick(location);
     }
     componentWillMount(){
-        console.log("waiting");
+        // console.log("waiting");
     }
     render(){
         let baseView = null;
@@ -64,7 +64,7 @@ class NavBar extends React.Component{
                 <Button id="nav3"onClick={this.handleNavClick}cname="navbtn inactivebtn"value="Database"/>
                 <Button id="nav4"onClick={this.handleNavClick} cname="navbtn inactivebtn"value="Classes"/>
                 <div className="dropdown">
-                    <Button id="nav5"cname="navbtn dropbtn"value="Dropdown"/>
+                    <Button id="nav5"cname="navbtn dropbtn"value="Settings"/>
                     <div className="dropdown-content">
                         <Button id="nav5.1"cname="ddbtn"value="placeholder"/>
                         <Button id="nav5.2"cname="ddbtn"value="placeholder"/>
