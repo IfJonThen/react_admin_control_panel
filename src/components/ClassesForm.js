@@ -1,24 +1,16 @@
 import React, {Component } from 'react';
 import '../static/css/ClassesView.css';
-import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
-import * as firebase from 'firebase';
+import {Form,FormControl,Modal,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
 import {Button} from './ButtonGroup';
-import ReactFireMixin from 'reactfire';
-import ReactDOM from 'react-dom';
-import Rebase from 're-base';
-import {getUID,parseForm,getValue, hasValues,getSelectText} from '../static/js/functions';
+import ICAL from 'ical.js';
+import SweetAlert from 'react-bootstrap-sweetalert';
+import * as jLib from '../static/js/functions';
+import Email from './Email';
 import {Typeahead} from 'react-bootstrap-typeahead'
-/*eslint no-unused-vars: "off"*/
-import {firebaseAuth} from '../static/js/firebaseAuth';
+import {base} from '../static/js/firebaseRef';
+import domtoimage from 'dom-to-image';
+/*eslint no-unused-vars: "off",  array-callback-return:"off",no-use-before-define:"off"*/
 
-//brings in the Rebase object
-var fbase = Rebase.createClass({
-    apiKey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
-    authDomain:"classexaminer.firebaseapp.com",
-    databaseURL:"https://classexaminer.firebaseio.com",
-    storageBucket:"classexaminer.appspot.com",
-    messagingSenderId:"150507520756"
-});
 class ClassesForm extends Component{
 
     /*ClassesForm::constructor()
@@ -27,160 +19,168 @@ class ClassesForm extends Component{
     * */
     constructor(props){
         super(props);
-        // this.count=props.count;
-        this.state={count:this.props.count};
+        this.state={list:{},count:this.props.count,upload:{}};
+        this.onTypeaheadChange=this.onTypeaheadChange.bind(this);
         this.onButtonClick= this.onButtonClick.bind(this);
-        this.addToDB=this.addToDB.bind(this);
+        this.fileGet=this.fileGet.bind(this);
+        this.updateLists=this.updateLists.bind(this);
+        this.classList=[];
         console.log("ClassesForm::constructor::props.count " +props.count);
     }
-
     /* ClassesForm()::onButtonClick()
     * bind by constructor, parses Add form for data and sends it to AddToDB helper function
     * */
+    onTypeaheadChange(arr){
+        this.props.onUpload(arr);
+        return true;
+    }
     onButtonClick(event){
         event.preventDefault();
-        let t = document.getElementById("classesform").getElementsByTagName("input");
-        let info = hasValues([],[].slice.call(t));
-        info.push(getSelectText("inputCQuarter"));
-        info.push(getSelectText("selectUser"));
-        let selects = ["selectUser","inputCQuarter"];
-        console.log(selects.map(getSelectText));
-        console.log(info);
-        console.log(getUID(getSelectText("selectUser")));
-        // this.addToDB(classYear,classQuarter,quarter,year);
-        // base.update('classes',{
-        //     data:{uid: {"jyuen":{f2k16:['CS 161','Informatics 133','Informatics 124']}}},
-        //     then(err){
-        //         if(!err){
-        //             alert("successfully added "+ fname)
-        //             // Router.transitionTo('')
-        //         }
-        //     }
-        // });
+        let item={};
+        if((this.props.default.length)!==0 &&jLib.formValidation()){
+            let temp=jLib.formExtraction();
+            if (this.props.default.length>0) {
+                let quarterItem={};
+                quarterItem[temp["quarter"]]=this.props.default;
+                let userItem={};
+                console.log(temp["user"]);
+                userItem[temp["user"]]=quarterItem;
+                console.log(JSON.stringify(userItem));
+                let classItem={};
+                console.log(classItem);
+                this.updateLists(temp["quarter"],temp["user"]);
+                jLib.pushToDB("Schedules",userItem);
+            }
+            else{
+                alert("You have unfilled fields");
+            }
+        }
+        else{
+            alert("Please enter in the correct format");
+            // alert(this.props.default.length!=0);
+            // alert(jLib.formValidation());
+        }
+
+        // this.props.onClear();
+    }
+    updateLists(quarter,user){
+        event.preventDefault();
+        let arr =this.props.fetch;
+        let defaultChoices=this.props.default;
+        for (let i=0;i<defaultChoices.length;i++){
+
+            let arrRef=arr[defaultChoices[i]];
+            if (arrRef.indexOf(user)===-1){
+                arr[defaultChoices[i]].push(user);
+                let item={};
+                item[defaultChoices[i]]=arr[defaultChoices[i]];
+                jLib.pushToDB("Classes/",item);
+            }
+        }
     }
 
     /*ClassesForm()::addToDB()
     * helper function. takes arguments and places them into firebase
     * sends an Alert(for now upon success)
     * */
-    addToDB(fname,lname,quarter,year){
-        // console.log("ClassesForm add "+ this.count);
-        let t = {};
-        if (this.state.base!==undefined) {
-            t= {first:fname,last:lname,quarter:quarter,year:year};
-            this.setState({base:this.state.base.concat([t])});
-            // this.state.base.concat()[]
-            // fbase.update('users', {s
-            //     data: t,
-            //     then(err){
-            //         if (!err) {
-            //             alert("ClassesForm:buttonHandler: successfully added " + fname)
-            //         } else{
-            //             alert("Error " + err);
-            //         }
-            //     }
-            // });
+    fileGet(evt){
+        let classes = {};
+        if (window.File && window.FileReader&& window.FileList &&window.Blob){
         }
-    }
-    componentWillMount(){
-        // console.log("ClassesForm::componentWillMount()");
-        let t = {};
-        if(this.state.base!==undefined) {
-            // this.setState({count:this.state.base.length});
+        else{
+            alert("file apis not supported");
         }
-    }
-    componentDidMount() {
-        // console.log("ClassesForm::componentDidMount()::");
-        fbase.syncState("users",{
-            context:this,
-            state:'base',
-            asArray:true
-        });
-        fbase.syncState("classes",{
-            context:this,
-            state:'classes',
-            asArray:true
-        });
+        var f = evt.target.files[0];
+        if (f){
+            var r = new FileReader();
+            r.readAsText(f);
+            r.onload = function(e){
+                var contents = e.target.result;
+                console.log("got the file.n"
+                    + "name: "+ f.name +"\n"
+                    + "type: " +f.type +"\n"
+                    + "size: " +f.size + "bytes\n"
+                );
+                console.log(classes===undefined);
+                classes=parseFile(contents);
+                if (classes!==undefined){
+                    console.log(JSON.stringify(classes));
+                    // this.props.onUpload(classes);
+                    this.props.onUpload(Object.keys(classes));
+                    // this.setState({upload:Object.keys(classes)});
+                }
+                else{
+                    alert("File read error");
+                }
+            }.bind(this);
+            console.log(r);
+        }else{
+            alert("file upload error");
+        }
+
     }
 
     render(){
-        // let t=null;
-        let t="   ID";
+        let defaultChoice=this.props.default;
 
-        if (this.state.count===0 || this.state.count===null){
-            // t="KEYERROR"+this.state.count;
-        }
-        else{
-            t="   id";
-        }
+        // console.log(defaultChoice);
+        let options=this.props.options;
+        let emptyLabel=true;
         return(
             <div className="splitform">
-                <Form id="classesform">
+                <Form className="entryForm"id="classesform">
                 <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Enter member ID</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputID" placeholder={t}>
+                    <label className="col-sm-4 col-form-label">Enter member ID</label>
+                    <div className="col-sm-8">
+                        <input type="name" className="form-control" id="inputID" placeholder="Member ID">
                         </input>
                     </div>
                 </div>
                 <div className="form-group row">
-                <p style={{color:'black'}}className="col-form-label"> OR </p>
-                </div>
+                    <div className="col-sm-12 col-form-label">
+                <p style={{color:'black'}}> OR </p>
+                    </div>
+                    </div>
                     <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Look up user</label>
-                    <div className="col-sm-6">
-                    <select className="form-control" id="selectUser">
-                        {this.props.right}
-                    </select>
+                        <label className="col-sm-4 col-form-label">Look up user</label>
+                        <div className="col-sm-8">
+                        <select defaultValue="" className="form-control" id="selectUser">
+                            <option></option>
+                            {this.props.right}
+                        </select>
                     </div>
                 </div>
                 <div className="form-group row ">
-                    <label  className="col-sm-2 col-form-label">{(this.props.system)}</label>
-                    <div className="col-sm-6">
-                        <select className="form-control" id="inputCQuarter">
+                    <label  className="col-sm-4 col-form-label">{(this.props.system)}</label>
+                    <div className="col-sm-8">
+                        <select defaultValue="" className="form-control" id="inputCQuarter">
+                            <option></option>
                             <option>Fall</option>
                             <option>Winter</option>
                             <option>Spring</option>
                         </select>
                     </div>
                 </div>
-                <div className="form-group row has-success has-feeedback">
-                    <label className="col-sm-2 col-form-label">Year</label>
-                    <div className="col-sm-6">
+                <div className="form-group row has-success has-feedback">
+                    <label className="col-sm-4 col-form-label">Year</label>
+                    <div className="col-sm-8">
                         <input type="name" className="form-control" id="inputCYear" placeholder="Year">
                         </input>
-                        <span className="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span style={{right:"15px"}} className="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 1:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC1" placeholder="Class Code">
-                        </input>
+                    <div className="form-group row">
+                        <label className="col-sm-4 col-form-label">Select Classes:</label>
+                        <div  id="classType" className="col-sm-8">
+                            <Typeahead id="classSelect" onChange={this.onTypeaheadChange}selected={this.props.default} allowNew={true}emptyLabel={emptyLabel ?'':undefined} labelKey="Classes" multiple={true} options={this.props.options} placeholder="Choose a class"/>
+                            {/*<Typeahead id="classSelect" defaultSelected={["I&C SCI 6B",'I&C SCI 31',"IN4MATX 43"]} allowNew={true}emptyLabel={emptyLabel ?'':undefined} labelKey="Classes" multiple={true} options={this.props.options} placeholder="Choose a class"/>*/}
+                        </div>
                     </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 2:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC2" placeholder="Class Code">
-                        </input>
+                    <div className="form-group row">
+                        <input style={{marginLeft:"26%",marginTop:"10px",marginBottom:"13px"}} onChange={this.fileGet}type="file" id="myFile"/>
                     </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 3:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC3" placeholder="Class Code">
-                        </input>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Class 4:</label>
-                    <div className="col-sm-6">
-                        <input type="name" className="form-control" id="inputC4" placeholder="Class Code">
-                        </input>
-                    </div>
-                </div>
-                <Button onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Go</Button>
+                <Button cname="actionBtn" onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Go</Button>
+                {/*<Button cname="actionBtn" onClick={this.testClick2} id="insertmemberbtn" value="Add">Go</Button>*/}
             </Form>
             </div>
 
@@ -190,92 +190,90 @@ class ClassesForm extends Component{
 export class ClassView extends Component{
     constructor(props) {
         super(props);
-        this.state = {users: [],base:[],count:props.count};
+        this.state = {users: [],classRef:{},classList:[],base:[],count:props.count, val:""};
         this.fetchData = this.fetchData.bind(this);
         this.fetchData();
+        this.fetchFromDB=this.fetchFromDB.bind(this);
+        this.fetchClassFromDB=this.fetchClassFromDB.bind(this);
         this.handleSelect=this.handleSelect.bind(this);
         this.count = props.count;
         this.handleRefreshBtn=this.handleRefreshBtn.bind(this);
         this.handleRemoveBtn=this.handleRemoveBtn.bind(this);
-        this.pullList = this.pullList.bind(this);
         this.loadClasses=this.loadClasses.bind(this);
+        this.handleSend=this.handleSend.bind(this);
         this.loadClasses();
     }
     fetchData(){
-        fbase.fetch('users', {context:this,asArray:true,
+        base.fetch('users', {context:this,asArray:true,
             then(data){
                 if (this.state.count!==data.length){
                     this.setState({base:data,count:data.length});
                     this.count=data.length;
-                    console.log("RosterEdit::fetch:: count changed successfully");
+                    console.log("ClassView::fetch:: count changed successfully");
                 }
                 else{
-                    console.log("RosterEdit::fetch::count changed unsuccesfully");
+                    console.log("ClassView::fetch::count changed unsuccesfully");
                 }
-                console.log("RosterEdit:: fetched data success " + data + data.length +this.state.count);
-
             }});
     }
     handleSelect(event){
-        console.log(event.target.id);
         this.loadClasses();
     }
-    handleRemoveBtn(event){
+    handleRemoveBtn(event) {
         event.preventDefault();
-        // let t = document.getElementById("selectRemove");
-        // console.log("RosterEdit::handleRemove::"+t.options[t]);
-        let v = document.getElementById("selectView");
-        v=v.options[v.selectedIndex].text;
-        console.log("RosterEdit::handleRemoveBtn::triggered :" +v +" will be removed");
+        let v = document.getElementById(this.props.selectID);
+        v = v.options[v.selectedIndex].text;
+        this.setState({show: true, val: v});
+        let uid=jLib.selectUID(v);
+        let quarter= jLib.getQuarter();
+        console.log(quarter);
+        this.fetchFromDB("Schedules/"+uid+"/"+quarter+"/","classList");
     }
+    fetchClassFromDB(endpoint,id){
+        base.fetch(endpoint, {
+            context: this,
+            asArray: true, then(data){
+                console.log(data);
+                let temp=this.state.classRef;
+                temp[id]=data;
+                this.setState({classRef:temp});
+            }
+        });
+    }
+    fetchFromDB(endpoint,val){
+        base.fetch(endpoint, {
+            context: this,
+            asArray: true, then(data){
+                console.log(data);
+                let item={};
+                let classItems={};
+                item[val]=data;
+                this.setState(item);
+                for (let index =0;index< data.length;index++){
+                    this.fetchClassFromDB("Classes/"+data[index],data[index]);
+                }
+            },
+            onFailure(err){
+                console.log(err);
+            }
+        });
+    }
+    handleSend(event){
+        event.preventDefault();
+        console.log("send clicked!!");
+        domtoimage.toJpeg(document.getElementById('getThisImage'), { height:1200,width:1200,quality: 0.95 })
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = 'email.jpeg';
+                link.href = dataUrl;
+                link.click();
+            });
+
+    }
+
     handleRefreshBtn(event){
         event.preventDefault();
-        console.log("RosterEdit::handleRefresh::refreshing...");
-        setTimeout(this.pullList(),500);
-    }
-    createUID(fname,lname){
-        if(fname.length!==0 &&lname.length!==0) {
-            return fname[0]+lname;
-        }
-    }
-    pullList(){
-        let v = null;
-        var t =document.getElementById("selectRemove");
-        console.log("RosterEdit: pullList: adding "+this.state.count +" options");
-        for(let j =0; j<this.state.count;j++){
-            for (let j = 0; j < this.state.count; j++) {
-                if (typeof this.state.base[j] === 'string') {
-                    v = document.createElement("option");
-                    if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
-                        v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
-                        v.value = j + 1;
-                        t.appendChild(v);
-                    }
-                }
-            }
-        }
-        console.log("RosterEdit: pullList: added "+this.state.count +" options");
-    }
-    componentDidMount(){
-        console.log("RosterEdit did mount()");
-        // this.pullList();
-
-    }
-    componentWillMount(){
-        console.log("RosterEdit will mount()");
-        // this.pullList();
-    }
-    componentWillUpdate(){
-        console.log("RosterEdit will update()");
-        // this.pullList();
-
-        if(this.count!==0){
-            // console.log("RosterEditWillUpdate : "+this.fetchData());
-        }
-        else{
-            console.log("database is empty");
-
-        }
+        console.log("ClassView::handleRefresh::refreshing...");
     }
     loadClasses(){
         let t = document.getElementById("selectRemove");
@@ -287,36 +285,124 @@ export class ClassView extends Component{
                 let j = document.createTextNode(t);
                 s.appendChild(j);
                 v.appendChild(s);
-
             }
-            // return (<p> template classes</p>);
         }
         else{
             return (<p>select a member</p>);
         }
-
     }
     render(){
         let t=null;
+        let close = ()=>this.setState({show:false});
         return (
             <div className="splitform">
-                <Form>
-                    <div className="form-group">
-                    <label id="editFormLabel">Select Member</label>
-                    <select className="form-control" onChange={this.handleSelect}id="selectRemove">
-                        {this.props.right}
-                    </select>
-                        <Button onClick={this.handleRemoveBtn} id="removebtn" value="Remove"/>
-                        <Button onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
-
+                <Form className="entryForm">
+                    <div className="form-group row">
+                        <div className="col-sm-12">
+                            <label id="editFormLabel">{this.props.formLabel}</label>
+                            <select className="form-control" id={this.props.selectID}>
+                               {this.props.right}
+                            </select>
+                            <div className="row">
+                                <Button cname="actionBtn"onClick={this.handleRemoveBtn} id="getbtn" value="Get"/>
+                                <Button cname="actionBtn"onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
+                            </div>
+                        </div>
                     </div>
                 </Form>
                 <Form id="ClassViewer">
                     {t}
                 </Form>
+                <Modal
+                    show={this.state.show}
+                    onHide={close}
+                    container={this}
+                    aria-labelledby="contained-modal-title" id="getThisImage"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>
+                            <p style={{color:"black"}}id="ClassesModalTitle">{this.state.val}</p>
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body >
+                        <Email user={this.state.val} classList={this.state.classList} classRef={this.state.classRef}/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button cname="actionBtn" value="Send"onClick={this.handleSend}/>
+                        <Button cstyle="{marginLeft:'20px'}"cname="actionBtn"value="Close"onClick={close}/>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
 
     }
 }
 export default ClassesForm;
+
+var parseFile=(file)=>{
+    console.log("__Starting parseFile__");
+    // console.log(ICAL.parse(file));
+    let schedule={};
+    let jCal = ICAL.parse(file);
+    let comp = new ICAL.Component(jCal);
+    let veventArr=null;
+    try{
+        veventArr=comp.getAllSubcomponents("vevent");
+    }catch(e){
+        console.log("error in getting sub components");
+    }
+
+    if (veventArr!=null) {
+        let propList=['rrule','location','dtstart','summary','dtend'];
+        for (let index = 0; index < veventArr.length; index++) {
+        // for (let index = 0; index < 1; index++) {
+            let vevent = veventArr[index];
+            let v = vevent.getFirstPropertyValue('summary');
+            if (v.substr(0,5)==='Final'){
+                console.log(v);
+            }
+            else{
+                let k =jLib.getClassFormKey(v);
+                v=k;
+                if (schedule[v]===undefined) {
+                    schedule[v]={};
+                    propList.map((property) => {
+                        let temp = "";
+                        let value = vevent.getFirstPropertyValue(property);
+                        let key = "";
+                        switch (property) {
+                            case 'rrule':
+                                value = value.toJSON()['byday'];
+                                key = "days";
+                                break;
+                            case 'dtstart':
+                                value = value.toJSON();
+                                value = value["hour"] + ":" + value["minute"];
+                                key = "start"; break;
+                            case 'summary':
+                                value = value.split(' ');
+                                temp = value[0] + " " + value[1];
+                                value = temp;
+                                key = "name";
+                                break;
+                            case 'dtend':
+                                value = value.toJSON();
+                                value = value["hour"] + ":" + value["minute"];
+                                key = "end";
+                                break;
+                            default:
+                                key = property;
+                                break;
+                        }
+                        schedule[v][key] = value;
+                    });
+                }
+                else{
+                    // console.log('saved a cycle!!!');
+                }
+            }
+        }
+    }
+    console.log("__Finishing parseFile__");
+    return schedule;
+}

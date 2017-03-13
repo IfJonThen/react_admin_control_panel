@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 
 /*eslint no-useless-constructor:"off",
-no-unused-vars: "off"*/
+no-unused-vars: "off",
+ no-use-before-define:"off"*/
 
 export class Button extends React.Component {
     constructor(props){
@@ -14,12 +15,22 @@ export class Button extends React.Component {
         console.log(this.props.id);
     }
     render() {
-        let cl="btn";
+        let cl="button";
         if(this.props.cname!=null) {
              cl+=" " +this.props.cname;
         }
+        let defaultStyle={};
+        if (this.props.style===undefined){
+            defaultStyle={fontSize:"0.7em",marginLeft:"15px",float:"right"};
+        }
+        else{
+            defaultStyle=this.props.style;
+        }
+        // defaultStyle={fontSize:"0.7em",marginLeft:"15px",float:"right"};
         return (<button className={cl} id={this.props.id} onClick={this.props.onClick}>
                 {this.props.value}
+                <span style={defaultStyle}>{this.props.sv}</span>
+
             </button>
         );
     }
@@ -48,4 +59,4 @@ function addMember(info){
 function check(){
 
 }
-export default ButtonGroup;
+export default Button;

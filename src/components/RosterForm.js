@@ -1,10 +1,7 @@
 import React, {Component } from 'react';
-import '../static/css/RosterView.css';
+import '../static/css/MainView.css';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
-import * as firebase from 'firebase';
 import {Button} from './ButtonGroup';
-import ReactFireMixin from 'reactfire';
-import ReactDOM from 'react-dom';
 import Rebase from 're-base';
 /*eslint no-unused-vars: "off"*/
 import {firebaseAuth} from '../static/js/firebaseAuth';
@@ -65,17 +62,6 @@ class RosterForm extends Component{
         if (this.state.base!==undefined) {
             t= {first:fname,last:lname,quarter:quarter,year:year};
             this.setState({base:this.state.base.concat([t])});
-            // this.state.base.concat()[]
-            // fbase.update('users', {s
-            //     data: t,
-            //     then(err){
-            //         if (!err) {
-            //             alert("RosterForm:buttonHandler: successfully added " + fname)
-            //         } else{
-            //             alert("Error " + err);
-            //         }
-            //     }
-            // });
         }
     }
     componentWillMount(){
@@ -105,24 +91,24 @@ class RosterForm extends Component{
         else{
             t="First Name";
         }
-        return(<div className="splitform"><Form id="rosterform">
+        return(<div className="splitform"><Form className="entryForm" id="rosterform">
                 <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">First Name</label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">First Name</label>
+                    <div className="col-sm-8">
                         <input type="name" className="form-control" id="inputFname" placeholder={t}>
                         </input>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Last Name</label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">Last Name</label>
+                    <div className="col-sm-8">
                         <input type="name" className="form-control" id="inputLname" placeholder="Last Name">
                         </input>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label  className="col-sm-2 col-form-label">Pledge Class</label>
-                    <div className="col-sm-6">
+                    <label  className="col-sm-4 col-form-label">Pledge Class</label>
+                    <div className="col-sm-8">
                         <select className="form-control" id="selectPledgeYear">
                             <option>Fall</option>
                             <option>Winter</option>
@@ -131,13 +117,13 @@ class RosterForm extends Component{
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label className="col-sm-2 col-form-label">Year</label>
-                    <div className="col-sm-6">
+                    <label className="col-sm-4 col-form-label">Year</label>
+                    <div className="col-sm-8">
                         <input type="name" className="form-control" id="inputYear" placeholder="Year">
                         </input>
                     </div>
                 </div>
-                <Button onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Add</Button>
+                <Button cname="actionBtn" onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Add</Button>
             </Form>
             </div>
 
@@ -230,14 +216,14 @@ export class RosterEdit extends Component{
     render(){
         return (
             <div className="splitform">
-                <Form>
+                <Form className="entryForm">
                     <div className="form-group">
                     <label id="editFormLabel">Remove Member</label>
                     <select className="form-control" id="selectRemove">
                         {this.props.right}
                     </select>
-                        <Button onClick={this.handleRemoveBtn} id="removebtn" value="Remove"/>
-                        <Button onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
+                        <Button cname="actionBtn"onClick={this.handleRemoveBtn} id="removebtn" value="Remove"/>
+                        <Button cname="actionBtn"onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
 
                     </div>
 

@@ -1,73 +1,52 @@
 import React, { } from 'react';
 import '../static/css/LogInControl.css';
-import {Router, Link} from 'react-router';
+import {parseForm}from '../static/js/functions';
 import {Form,FormControl,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
-
+import base from '../static/js/firebaseRef';
+import {Button} from './ButtonGroup';
 /*eslint no-unused-vars: "off"*/
 
 class LogInControl extends React.Component{
 
     constructor(props){
         super(props);
-        this.handleLogInClick = this.handleLogInClick.bind(this);
+        this.logInCheck = this.logInCheck.bind(this);
         this.handleLogOutClick = this.handleLogOutClick.bind(this);
-        this.handleUName = this.handleUName.bind(this);
-        this.handlePW = this.handlePW.bind(this);
-        this.ili = props.isLoggedIn;
-
         // this.handleChange = this.props.handleChange.bind(this);
-        this.state={isLoggedIn:false,t:props.t,uname:"1",pw:"2"};
-        console.log("LogInControl(): state.isLoggedIn:"+this.state.isLoggedIn);
-        console.log("LogInControl(): this.isLoggedIn:"+this.ili);
+        this.state={isLoggedIn:false,uname:"1",pw:"2"};
     }
-    handleLogInClick(e){
+
+    /* LogInControl(): log in check
+    * calls props and reports if log in information is correct;
+    * */
+    logInCheck(){
         event.preventDefault();
-        // alert("logged in");
-        this.props.onClick(true);
-        // this.ili=true;
-        this.setState({isLoggedIn:!this.state.isLoggedIn},console.log("LogInControl: state.isLoggedIn "+this.state.isLoggedIn));
-        // this.context.router.transitionTo('/home');
-        var TransitionTo = Router.transitionTo;
-        TransitionTo('home');
-        // console.log("++++" + e.);
+        let login = [];
+        login=parseForm (login,[["id","formControlsText"],["id", "formControlsPassword"]]);
+        // let logInInfo= {uname:login[0],password:login[1]};
+        console.log("LogInControl()::loginCheck:: username and password are "+ login);
+        this.props.isLoggedin(login);
     }
-    handleUName(e){
-        this.setState({uname:event.target.value});
-        console.log("uname is "+event.target.value);
-    }
-    handlePW(e){
-        this.setState({pw:event.target.value});
-        console.log("pw is "+event.target.value);
-    }
+
 
     handleLogOutClick(){
         alert("logged out");
         this.setState({isLoggedIn:false});
     }
     render(){
-        const Ls=this.state.isLoggedIn;
-        console.log("LogInControl() render(): Ls "+Ls);
-        let button=null;
-        if (Ls){
-            return this.props.t;
-            // return(<button onClick={props.onClick}>
-            //     Logout
-            // </button>);
-            // return (this.props.t);
-        }
-        else{
+        // alert(this.state.uname);
             return(
                 <div className="logInForm">
-                    <h2>Please Log In.</h2>
+                    <h2>Please Log In</h2>
                     <Form id="myform">
-                        <FieldGroup id="formControlsText" onChange={this.handleUName}type="text" label="Username" placeholder="Enter Username"/>
-                        <FieldGroup id="formControlsPassword" onChange={this.handlePW}type="password" label="Password" placeholder="Enter Password"/>
-                        <button  onClick={this.handleLogInClick}> Log In</button>
+                        <FieldGroup id="formControlsText" type="text" label="Username" placeholder="Enter Username"/>
+                        <FieldGroup id="formControlsPassword" type="password" label="Password" placeholder="Enter Password"/>
+                        <button className="button loginButton" id="loginBtn"onClick={this.logInCheck} >Log In</button>
                     </Form>
                 </div>
             );
         }
-    }
+    // }
 }
 function FieldGroup({ id, label, help, ...props }) {
     return (

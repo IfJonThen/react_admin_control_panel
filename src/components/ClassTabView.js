@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import NavExample from "./Nav";
-import {Form, Grid} from 'react-bootstrap';
 import '../static/css/MainView.css';
-import SplitView from './SplitView';
-import TableView from './TableView';
 import {Button} from './ButtonGroup';
-import RosterForm,{RosterEdit} from './RosterForm';
 import ClassesForm,{ClassView} from './ClassesForm';
-var members={'Name':'Jon,Max,Gary'};
-var memInfo= {'Gary':{},'Jon':{},'Max':{} };
-var table=[];
+import {classDB, getUID} from '../static/js/functions';
 
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
-
 
 class ClassTabView extends Component{
 
@@ -21,19 +13,24 @@ class ClassTabView extends Component{
     * bind the functions..thanks es6 -_-
     * set states to default (empty or 0)
     * calls pullDB() to fill states. will most likely change to re-base.syncState in the future
-     *  */
+    *  */
     constructor(){
       super();
       this.count=0;
-      this.state={pane:"remove",count:0,base:[]};
+      this.state={list:{},pane:"update",count:0,base:[],inputClass:[]};
 
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
-        this.onChange=this.onChange.bind(this)
-        // this.pullList=this.pullList.bind(this);
+        this.handleSelectC=this.handleSelectC.bind(this);
+        this.onChange=this.onChange.bind(this);
+        this.onUpload=this.onUpload.bind(this);
+        this.onClear=this.onClear.bind(this);
         this.pullList2=this.pullList2.bind(this);
+        this.fillSelect=this.fillSelect.bind(this);
         this.pullDB=this.pullDB.bind(this);
+        this.fetchFromDB=this.fetchFromDB.bind(this);
         this.loadSections=this.loadSections.bind(this);
+        this.pullClassList=this.pullClassList.bind(this);
         this.pullDB();
     }
     componentDidMount(){
@@ -52,6 +49,33 @@ class ClassTabView extends Component{
     componentWillUnMount(){
 
     }
+    onUpload(schedule){
+        // let keys=Object.keys(schedule);
+        console.log("ClassTabView:: Just Uploaded these classes "+schedule);
+        this.setState({list:{}});
+        for (let i=0;i<schedule.length;i++){
+            this.fetchFromDB("Classes/"+schedule[i]+"/",schedule[i]);
+        }
+        this.setState({inputClass:schedule});
+    }
+    onClear(){
+        this.setState({inputClass:[],list:{}});
+        console.log("ClassTabView:: Class selection cleared ");
+    }
+    fetchFromDB(endpoint, val){
+        base.fetch(endpoint, {
+            context: this,
+            asArray: true, then(data){
+                let t = this.state.list;
+                t[val]=data;
+                console.log(t);
+                this.setState({list:t});
+            },
+            onFailure(err){
+                console.log(err);
+            }
+        });
+    };
     /*ClassTabView()::pullDB()
     * pulls data from database via re-base.fetch()
     * sets "base" state and "count" state
@@ -68,9 +92,22 @@ class ClassTabView extends Component{
         }).catch(error=>{
             console.log("ClassTabView:constructor: fetch error");
         });
-        console.log("ClassTabView::constructor::this.state.count " + this.state.count);
+        // console.log("ClassTabView::constructor::this.state.count " + this.state.count);
     }
+    /*ClassTabView()::pullClassList()
+    * pulls class List from data base via fetch
+    * for the typeahead
+    * */
+    pullClassList(){
+        base.fetch('classDB',{
+            context:this,asArray:true,
+        }).then(data=>{
 
+        }).catch(error=>{
+            console.log("ClassTabView::pullClassList():: fetch error");
+        });
+        return [];
+    }
     /*ClassTabView()::loadSections()
     * helper function
     * makes a call to pullList, may remove in the future
@@ -98,7 +135,7 @@ class ClassTabView extends Component{
      * */
     handleSelectR(event){
         // console.log('ClassTabView::handleSelectRemove() clicked');
-        this.setState({pane:"remove"});
+        this.setState({pane:"byMem"});
         // this.pullList();
     }
 
@@ -107,33 +144,12 @@ class ClassTabView extends Component{
      * changes state to "add"
      * */
     handleSelectA(){
-        this.setState({pane:"add"});
+        this.setState({pane:"update"});
     }
-
-    /*ClassTabView()::pullList() Not in Use
-     * generates textNodes for RosterEdit select form based on the number of children in state.base
-     * */
-    // pullList(){
-    //     let v = null;
-    //     var t =document.getElementById("selectRemove");
-    //     console.log("ClassTabView::pullList:: this.state.base:" +this.state.base);
-    //     if (t !=null) {
-    //         for (let j = 0; j < this.state.count; j++) {
-    //             if (typeof this.state.base[j] !== 'string') {
-    //                 v = document.createElement("option");
-    //                 if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
-    //                     v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
-    //                     v.value = j + 1;
-    //                     t.appendChild(v);
-    //                 }
-    //                 else{
-    //                     console.log("ClassTabView::pullList()...no children added");
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     console.log("RosterForm: pullList: added "+this.state.count +" options");
-    // }
+    handleSelectC(e){
+        console.log (e);
+        this.setState({pane:"byClass"});
+    }
 
     /*
     * RosterEdit()::pullList2
@@ -147,9 +163,9 @@ class ClassTabView extends Component{
         for(let j =0; j<this.state.count;j++){
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
-                    let l = this.state.base[j]['first']+ " "+ this.state.base[j]['last'] +' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
-
-                    v.push(<option key={j}>{l}</option>);
+                    let name = this.state.base[j]['first']+ " "+ this.state.base[j]['last'];
+                    let pledgequarter= ' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
+                    v.push(<option id={getUID(this.state.base[j])}key={j}>{name+pledgequarter}</option>);
                 }
                 else{
                     console.log("ClassTabView::pullList()...no children added");
@@ -157,34 +173,63 @@ class ClassTabView extends Component{
             }
         }
         // console.log("RosterForm: pullList2: added "+v+" options");
-
+        return v;
+    }
+    /*
+     * ClassTabView()::fillSelect
+     * generates children for ClassTabView select form based on the number of children in state.base
+     *
+     * */
+    fillSelect(id,arr){
+        let v = [];
+        var t =document.getElementById(id);
+        for(let j =0; j<this.state.count;j++){
+            if(arr[j]!==(null||undefined)) {
+                if (typeof this.state.base[j] !== 'string') {
+                    v.push(<option key={j}>{arr[j]}</option>);
+                }
+                else{
+                    console.log("ClassTabView::fillSelect()...no children added");
+                }
+            }
+        }
         return v;
     }
 
     /*ClassTabView()::Render()
      * controlled by App.js conditionally renders left and right panes
       * if state is add, renders RosterForm
-      * if state is remove, renders RosterEdit
+      * if state is remove, renders ClassTabView
      */
     render() {
         let left =
             <div className="RosterPane">
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectA}id="Add" value="Update Classes"/>
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="UpdateBtn" value="Update Classes"/>
                 </div>
                 <div className="row">
-                    <Button cname="rosterbtn" onClick={this.handleSelectR}id="Remove" value="Get Schedules"/>
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="AddCBtn" value="Add Classes"/>
+                </div>
+                <div className="row">
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectR}id="GetByMemBtn" value="Get Schedules by Member"/>
+                </div>
+                <div className="row">
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectC}id="GetByClassBtn" value="Get Schedules by Class"/>
                 </div>
             </div>;
-        let right =null;
-        let v = this.pullList2();
-
-        if (this.state.pane==="add"){
+        let right=null;
+        let v= this.pullList2();
+        let classList=this.pullClassList();
+        if (this.state.pane==="update"){
             let count= this.onChange();
-            right= <ClassesForm right={v}system="Quarter" count={count}/>;
+            right= <ClassesForm fetch={this.state.list}default={this.state.inputClass} onClear={this.onClear}onUpload={this.onUpload}right={v} system="Quarter" options={classDB}count={count}/>;
         }
-        else{
-            right=<ClassView right={v} count={this.state.count}/>;
+        else if (this.state.pane==="byMem"){
+            right=<ClassView right={v} selectID="selectRemove"formLabel="Select Member"count={this.state.count}/>;
+        }
+        else if (this.state.pane==="byClass"){
+            v=this.fillSelect("selectByClass",classDB);
+            right= <ClassView selectID="selectByClass"formLabel="Select Class"right={v} count={this.state.count}/>;
         }
 
         return (
@@ -207,7 +252,7 @@ function SplitPane(props){
         <div className="SplitPane-left">
             {props.left}
         </div>
-        <div className="SplitPane-right">
+        <div className="SplitPane-right modal-container">
             {props.right}
         </div>
 
