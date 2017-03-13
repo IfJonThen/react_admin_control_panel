@@ -17,16 +17,18 @@ class ClassTabView extends Component{
     constructor(){
       super();
       this.count=0;
-      this.state={pane:"update",count:0,base:[]};
+      this.state={list:{},pane:"update",count:0,base:[],inputClass:[]};
 
         this.handleSelectA=this.handleSelectA.bind(this);
         this.handleSelectR=this.handleSelectR.bind(this);
         this.handleSelectC=this.handleSelectC.bind(this);
-        this.onChange=this.onChange.bind(this)
-        // this.pullList=this.pullList.bind(this);
+        this.onChange=this.onChange.bind(this);
+        this.onUpload=this.onUpload.bind(this);
+        this.onClear=this.onClear.bind(this);
         this.pullList2=this.pullList2.bind(this);
         this.fillSelect=this.fillSelect.bind(this);
         this.pullDB=this.pullDB.bind(this);
+        this.fetchFromDB=this.fetchFromDB.bind(this);
         this.loadSections=this.loadSections.bind(this);
         this.pullClassList=this.pullClassList.bind(this);
         this.pullDB();
@@ -47,6 +49,33 @@ class ClassTabView extends Component{
     componentWillUnMount(){
 
     }
+    onUpload(schedule){
+        // let keys=Object.keys(schedule);
+        console.log("ClassTabView:: Just Uploaded these classes "+schedule);
+        this.setState({list:{}});
+        for (let i=0;i<schedule.length;i++){
+            this.fetchFromDB("Classes/"+schedule[i]+"/",schedule[i]);
+        }
+        this.setState({inputClass:schedule});
+    }
+    onClear(){
+        this.setState({inputClass:[],list:{}});
+        console.log("ClassTabView:: Class selection cleared ");
+    }
+    fetchFromDB(endpoint, val){
+        base.fetch(endpoint, {
+            context: this,
+            asArray: true, then(data){
+                let t = this.state.list;
+                t[val]=data;
+                console.log(t);
+                this.setState({list:t});
+            },
+            onFailure(err){
+                console.log(err);
+            }
+        });
+    };
     /*ClassTabView()::pullDB()
     * pulls data from database via re-base.fetch()
     * sets "base" state and "count" state
@@ -63,7 +92,7 @@ class ClassTabView extends Component{
         }).catch(error=>{
             console.log("ClassTabView:constructor: fetch error");
         });
-        console.log("ClassTabView::constructor::this.state.count " + this.state.count);
+        // console.log("ClassTabView::constructor::this.state.count " + this.state.count);
     }
     /*ClassTabView()::pullClassList()
     * pulls class List from data base via fetch
@@ -135,7 +164,7 @@ class ClassTabView extends Component{
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
                     let name = this.state.base[j]['first']+ " "+ this.state.base[j]['last'];
-                    let pledgequarter = ' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
+                    let pledgequarter= ' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
                     v.push(<option id={getUID(this.state.base[j])}key={j}>{name+pledgequarter}</option>);
                 }
                 else{
@@ -193,7 +222,7 @@ class ClassTabView extends Component{
         let classList=this.pullClassList();
         if (this.state.pane==="update"){
             let count= this.onChange();
-            right= <ClassesForm right={v} system="Quarter" options={classDB}count={count}/>;
+            right= <ClassesForm fetch={this.state.list}default={this.state.inputClass} onClear={this.onClear}onUpload={this.onUpload}right={v} system="Quarter" options={classDB}count={count}/>;
         }
         else if (this.state.pane==="byMem"){
             right=<ClassView right={v} selectID="selectRemove"formLabel="Select Member"count={this.state.count}/>;
