@@ -21,9 +21,39 @@
     margin:10px 15px;
 }
 #getbtn:hover, #refreshbtn:hover{
-    background-color:rgba(0,0,0,0.5);
-    color:white;
+    /*background-color:rgba(0,0,0,0.5);*/
+    /*color:white;*/
 }
 #getbtn:active, #refreshbtn:active{
     box-shadow: 2px 3px grey;
+}
+.token-removeable{
+    border-radius:4px;
+    margin-top: 0;
+    margin-right: 50px;
+    margin-left: 30px;
+    padding-left:10px;
+    margin-bottom: 0;
+    border:1px rgba(0,0,0,0.3) solid;
+}
+.close-button{
+    float:right;
+    text-align: center;
+    /*padding-left:30px;*/
+    padding-right:10px;
+    color:red;
+    font-weight:bold;
+}
+.form-control-feedback{
+    /*left:20px;*/
+}
+.col-form-label{
+    padding-top:6px;
+}
+.form-control{
+    width:94%;
+    margin-left:15px;
+}
+.bootstrap-typeahead{
+    text-align:left;
 }

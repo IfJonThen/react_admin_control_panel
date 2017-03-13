@@ -7,7 +7,7 @@
     background-color: black;
     color:white;
     border-radius:5px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 
     /*font-weight:bold;*/
 }
@@ -58,6 +58,6 @@
     float:left;
     width:19%;
     height:100%;
-    padding:1px 14px;
+    padding:1px 12px;
     margin: 4px 2px 4px 2px;
 }

@@ -13,6 +13,9 @@
   border-radius: 0px;
   color:rgba(255,255,255,1);
 }
+btn:active{
+  color:white;
+}
 .navbtn:hover{
   color:rgba(40,143,255,0.8);
   /*border-color:rgba(0, 0, 0, 0.7);*/
