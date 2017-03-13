@@ -14,19 +14,17 @@ class RosterView extends Component{
     * set states to default (empty or 0)
     * calls pullDB() to fill states. will most likely change to re-base.syncState in the future
      *  */
-    constructor(){
-      super();
+    constructor(props){
+      super(props);
       this.count=0;
       this.state={pane:"add",count:0,base:[]};
-
-        this.handleSelectA=this.handleSelectA.bind(this);
-        this.handleSelectR=this.handleSelectR.bind(this);
-        this.onChange=this.onChange.bind(this)
-        // this.pullList=this.pullList.bind(this);
-        this.pullList2=this.pullList2.bind(this);
-        this.pullDB=this.pullDB.bind(this);
-        this.loadSections=this.loadSections.bind(this);
-        this.pullDB();
+      this.handleSelectA=this.handleSelectA.bind(this);
+      this.handleSelectR=this.handleSelectR.bind(this);
+      this.onChange=this.onChange.bind(this);
+      this.pullList2=this.pullList2.bind(this);
+      // this.pullDB=this.pullDB.bind(this);
+      this.loadSections=this.loadSections.bind(this);
+      // this.pullDB();
     }
     componentDidMount(){
         // console.log("RosterView::componentDidMount()::");
@@ -50,19 +48,19 @@ class RosterView extends Component{
     * sets "base" state and "count" state
     * may change to syncState
     *  */
-    pullDB(){
-        base.fetch('users', {
-            context: this, asArray: true,
-        }).then(data=>
-        {
-            this.count=data.length;
-            // console.log("RosterView::pullDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
-            this.setState({base:data,count:this.count});
-        }).catch(error=>{
-            console.log("RosterView:constructor: fetch error");
-        });
-        console.log("RosterView::constructor::this.state.count " + this.state.count);
-    }
+    // pullDB(){
+    //     base.fetch('users', {
+    //         context: this, asArray: true,
+    //     }).then(data=>
+    //     {
+    //         this.count=data.length;
+    //         // console.log("RosterView::pullDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
+    //         this.setState({base:data,count:this.count});
+    //     }).catch(error=>{
+    //         console.log("RosterView:constructor: fetch error");
+    //     });
+    //     console.log("RosterView::constructor::this.state.count " + this.state.count);
+    // }
 
     /*RosterView()::loadSections()
     * helper function
@@ -141,7 +139,6 @@ class RosterView extends Component{
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
                     let l = this.state.base[j]['first']+ " "+ this.state.base[j]['last'] +' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
-
                     v.push(<option key={j}>{l}</option>);
                 }
                 else{
@@ -170,16 +167,14 @@ class RosterView extends Component{
                 </div>
             </div>;
         let right =null;
-
         if (this.state.pane==="add"){
-            let count= this.onChange();
-            right= <RosterForm count={count}/>;
+            // let count= this.onChange();
+            right= <RosterForm count={this.state.base}/>;
         }
         else{
             let v = this.pullList2();
             right=<RosterEdit right={v} count={this.state.count}/>;
         }
-
         return (
             <div>
                 <SplitPane pane={this.state.pane} left={left} right={right}>

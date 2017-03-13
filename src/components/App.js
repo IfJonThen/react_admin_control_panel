@@ -14,28 +14,21 @@ import ClassTabView from './ClassTabView';
 import RosterView from './RosterView';
 import LogInControl from './LogInControl';
 import NavBar from './NavBar';
+import {base} from '../static/js/firebaseRef';
 import {login,logout} from '../static/js/firebaseAuth';
 /*eslint no-unused-vars: "off"*/
 
 class App extends Component {
-    constructor(props){
-        super(props);
-        this.state={isLoggedIn:false,loc:props.loc};
+    constructor(){
+        super();
+        this.state={cred:[],isLoggedIn:false,loc:undefined};
         this.logInCheck=this.logInCheck.bind(this);
-        this.onSelect=this.onSelect.bind(this);
+        this.checkLogIn=this.checkLogIn.bind(this);
         this.handleNavClick=this.handleNavClick.bind(this);
         console.log("App.js: state.loc:"+this.state.loc);
-        // let l = {email:process.env.REACT_APP_SECRET_DB_U,password:process.env.REACT_APP_SECRET_DB_P};
-        let l = {email:"pikahatonjon@gmail.com",password:"password"};
-        login(l);
-    }
+        this.checkLogIn(["j","yuen"]);
 
-    /*App()::conSelect(data);
-    * no functionality at the moment
-    * */
-    onSelect(data){
-        console.log("App()::updateLoc  changing views thanks to loc "+data);
-        // this.setState({"loc"});
+
     }
     /*App()::handleNavClick():
     * helper function for NavBar. updates state
@@ -44,28 +37,53 @@ class App extends Component {
         if (nav==="logout"){
             this.setState({isLoggedIn:false});
         }
-        else if (nav==="attendence"){
+        else if (nav==="attendance"){
             this.setState({loc:"home"});
         }
         else {
             this.setState({loc:nav});
         }
     }
+
+
     /*App ():: logInCheck():
     * checks if user is logged in
     * */
     logInCheck(event){
-        // event.preventDefault();
-        //call authentication method
-        //if true set state to true
-        //else throw error
-        this.setState({isLoggedIn:event,loc:"home"});
+       this.checkLogIn(event);
+       //
+        this.setState({isLoggedIn:true,loc:"home"});
+        //
+        let login=false;
+        for (let i =0; i<this.state.cred.length;i++){
+            // console.log(cred);
+            if (this.state.cred[i]["username"]===event[0]&& this.state.cred[i]["password"]===event[1]){
+                alert("Login Sucessful");
+                this.setState({isLoggedIn:true,loc:"home"});
+                login=true;
+            }
+        }
+        if (!login) {
+            alert("Incorrect Username and Password");
+        }
+        }
+    checkLogIn(){
+        // alert(cred);
+        base.fetch("cabinet", {
+            context: this, asArray: true,
+        }).then(data=>
+        {
+            // alert(data.length);
+           this.setState({cred:data});
+        }).catch(error=>{
+            console.log("App::checkLogIn():: fetch error");
+        });
     }
-
     render() {
         console.log("App.js render(): state.loc:"+this.state.loc);
         var navbar =null;
         var base = null;
+        console.log(this.state.isLoggedIn);
         if(this.state.isLoggedIn) {
             navbar =(<div>
                     <NavBar handleClick={this.handleNavClick}/>
@@ -76,18 +94,15 @@ class App extends Component {
                 document.body.style.backgroundColor="white";
                 navbar=<div id="loginTemp">
                     <LogInControl isLoggedin={this.logInCheck}/>
-                    {/*<button onClick={()=>{this.setState({loc:"classes"})}}>Log In</button>*/}
                 </div>;
             }
             else {
                 //sets body to grey color if logged in
                 document.body.style.backgroundColor = "rgba(0,0,0,0.3)";
-                //roster render condition
                 if (this.state.loc === "roster") {
-
                     var s = <Button id="AddM" value="Add Member"></Button>;
                     var t = (<DropdownSection/>);
-                    base = <RosterView db={this.props.db}/>;
+                    base = <RosterView base={this.state.base} db={this.props.db}/>;
                 }
                 //home render condition
                 else if (this.state.loc === "home") {
@@ -99,9 +114,10 @@ class App extends Component {
             }
         }
         else{
-             navbar = <LogInControl handleLogIn={this.logInCheck}/>
+            document.body.style.backgroundColor = "rgba(255,255,255,1)";
+            navbar = <LogInControl isLoggedin={this.logInCheck}/>
         }
-                return (<div className="App">
+        return (<div className="App">
                         <div className="App-header">
                             <img src={logo} className="App-logo" alt="logo"/>
                             <h2>Welcome</h2>

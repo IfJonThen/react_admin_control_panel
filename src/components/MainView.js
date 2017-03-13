@@ -31,7 +31,7 @@ class MainView extends Component{
                     context: this, asArray: true,
                 }).then(data=>
                 {
-                    console.log("this is data "+ data);
+                    // console.log("this is data "+ data);
                     this.setState({currentWeek:data});
                 }).catch(error=>{
                     console.log("MainView::getCurrentWeek():: fetch error");
@@ -89,37 +89,33 @@ class MainView extends Component{
     }
     render() {
         let main= null;
-        console.log("nv=="+this.props.nv);
         switch(this.state.nav){
             case undefined:
                 main=<div className="mainSquare">
-                    <Button onClick={this.AttendanceUpdate} className="squares"id="attendanceupdate" value="Attendance"/>
-                    <Button onClick={this.classUpdate} className="squares" id="classupdate" value="Class Update"/>
-                    <Button onClick={this.calUpdate} className="squares" id="calupdate" value="Calendar Update"/>
+                    <Button onClick={this.AttendanceUpdate} cname="squares"id="attendanceupdate" value="Attendance"/>
+                    <Button onClick={this.classUpdate} cname="squares" id="classupdate" value="Class Update"/>
+                    <Button onClick={this.calUpdate} cname="squares" id="calupdate" value="Calendar Update"/>
                 </div>;
                 break;
             case "attendance":
 
                 let memList=this.parseAlumni();
                 // this.currentWeek=this.getCurrentWeek();
-                let t = null;
-                // console.log('current week' + this.state.currentWeek);
-                // console.log("memList/n"+ JSON.stringify(memList));
-                let week=[{},{}];
+                let t = null;let week=[{},{}];
                 if (this.state.currentWeek!==(null || undefined)){
                     week=this.state.currentWeek;
                 }
-                console.log("week is\n "+week+"\n\n\n"+JSON.stringify(week));
-                main=<AttendanceForm redraw={this.redraw} tallyTree={t}currentWeek={week} memId={memList["uid"]} members={memList["undergrad"]}></AttendanceForm>;
+                // console.log("week is\n "+week+"\n\n\n"+JSON.stringify(week));
+                main=<AttendanceForm redraw={this.redraw} tallyTree={t}currentWeek={week} memId={memList["uid"]} members={memList["undergrad"]}/>;
                 break;
             case "calendar":
                 main=<div> code for calendar</div>;
                 break;
             default:
                 main=<div style={{backgroundColor:"rgba(0,0,0,0.5)"}}>
-                    <Button onClick={this.AttendanceUpdate} className="squares"id="attendanceupdate" value="Attendance"/>
-                    <Button onClick={this.classUpdate} className="squares" id="classupdate" value="Class Update"/>
-                    <Button onClick={this.calUpdate} className="squares" id="calupdate" value="Calendar Update"/>
+                    <Button onClick={this.AttendanceUpdate} cname="squares"id="attendanceupdate" value="Attendance"/>
+                    <Button onClick={this.classUpdate} cname="squares" id="classupdate" value="Class Update"/>
+                    <Button onClick={this.calUpdate} cname="squares" id="calupdate" value="Calendar Update"/>
                 </div>
                 break;
         }

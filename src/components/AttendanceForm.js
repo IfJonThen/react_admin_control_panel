@@ -6,7 +6,7 @@ import {toDayte,getQuarter,getUID,getSelectText,sortMembers} from '../static/js/
 import {login,firebaseAuth} from '../static/js/firebaseAuth';
 import update from 'immutability-helper';
 import {base} from '../static/js/firebaseRef';
-/*eslint no-unused-vars: "off"*/
+/*eslint no-unused-vars: "off",no-use-before-define:"off",no-direct-mutation-state:"off"*/
 
 class AttendanceForm extends Component{
     /*AttendanceForm::constructor()
@@ -22,7 +22,6 @@ class AttendanceForm extends Component{
             tallyMap:props.currentWeek,
             currentMap:(props.currentWeek[(props.currentWeek.length-1)]),
             newMap:false,newForm:{}};
-        this.onButtonClick= this.onButtonClick.bind(this);
         this.onSave=this.onSave.bind(this);
         this.onChange=this.onChange.bind(this);
         this.setExcused=this.setExcused.bind(this);
@@ -49,30 +48,16 @@ class AttendanceForm extends Component{
         let l = {email:"pikahatonjon@gmail.com",password:"password"};
         login(l);
     }
-
-    /* AttendanceForm()::onButtonClick()
-    * bind by constructor, parses Add form for data and sends it to AddToDB helper function
-    * */
-    fetchTotal(id){
+    fetchTotal(id,week){
         this.tally.setTree("total",id);
-        if (this.state.newMap) {
-            for (let weekCount = 0; weekCount <= this.state.weekSelect-1; weekCount++) {
-                console.log(id + "'s count for week " + weekCount + ":" + this.state.tallyMap[weekCount][id]);
-                if (this.state.tallyMap[weekCount][id] === 1) {
-                    this.tally.incTotal(id);
-                }
-            }
-            if (this.state.newForm[id]===1){
+        for (let weekCount = 0; weekCount <= week &&weekCount<this.state.tallyMap.length; weekCount++) {
+            // console.log(id + "'s count for week " + weekCount + ":" + this.state.tallyMap[weekCount][id]);
+            if (this.state.tallyMap[weekCount][id] === 1) {
                 this.tally.incTotal(id);
             }
         }
-        else{
-            for (let weekCount = 0; weekCount <= this.state.weekSelect; weekCount++) {
-                console.log(id + "'s count for week " + weekCount + ":" + this.state.tallyMap[weekCount][id]);
-                if (this.state.tallyMap[weekCount][id] == 1) {
-                    this.tally.incTotal(id);
-                }
-            }
+        if (this.state.newMap&&this.state.newForm[id]===1){
+            this.tally.incTotal(id);
         }
     }
     click(id,newTally){
@@ -108,12 +93,18 @@ class AttendanceForm extends Component{
             if (selectedText>=this.props.currentWeek.length){
                 temp=true;
                 this.setState({newMap:temp,weekSelect: selectedText, currentMap: this.tally.getT("new")});
-
             }
             else {
                 this.setState({newMap:temp,weekSelect: selectedText, currentMap: this.state.tallyMap[selectedText]});
                this.tally.copyT(this.state.currentMap);
             }
+            for (let mem=0;mem<this.members.length;mem++){
+                // console.log(this.members[mem]);
+                this.fetchTotal(this.members[mem][1],selectedText);
+            }
+            console.log(this.tally.getT("total"));
+            this.members=sortMembers(this.members,this.tally.getT("total"));
+
         }
     }
     setExcused(){
@@ -158,6 +149,7 @@ class AttendanceForm extends Component{
         }
         else{
             l[this.state.weekSelect]=this.state.newForm;
+            this.setState({tallyMap:update(this.state.tallyMap,{$merge:l})});
         }
             base.update("Attendance/Quarter/"+getQuarter()+"/", {
             context:this,
@@ -171,36 +163,19 @@ class AttendanceForm extends Component{
                 }
             }
         });
-        // this.props.redraw();
-    }
-
-    onButtonClick(event){
-        event.preventDefault();
-        let fname = document.getElementById("inputFname").value;
-        let lname = document.getElementById("inputLname").value;
-        let quarter = document.getElementById("selectPledgeYear");
-        quarter = quarter.options[quarter.selectedIndex].text;
-        let year = document.getElementById("inputYear").value;
-        // this.addToDB(fname,lname,quarter,year);
+        this.props.redraw();
     }
     render(){
         //check if week exists
         let k = toDayte();
         let t = [this.props.members,this.props.memId];
         let temp =[1];
-        console.log("outputting currentWeek/n"+this.props.currentWeek);
-        console.log(this.props.currentWeek.length);
-        console.log(this.state.weekSelect);
+        // console.log("outputting currentWeek/n"+this.props.currentWeek);
+        // console.log(this.props.currentWeek.length);
+        // console.log(this.state.weekSelect);
         for (let ind=1; ind<this.props.currentWeek.length+1;ind++){
             temp.push(ind+1);
         }
-        for (let mem=0;mem<this.members.length;mem++){
-            console.log(this.members[mem]);
-            this.fetchTotal(this.members[mem][1]);
-        }
-        console.log(this.tally.getT("total"));
-        this.members=sortMembers(this.members,this.tally.getT("total"));
-
         // console.log("Render()::::"+this.state.weekSelect);
         return(
             <div className="attendView">
@@ -214,7 +189,7 @@ class AttendanceForm extends Component{
                     })
                     }
                 </select>
-                <Button onClick={this.onSave}cname="saveButton"value="save"/>
+                <Button cname="actionBtn" onClick={this.onSave}id="saveButton"value="save"/>
                 {/*<Button onClick={this.setExcused}cname="saveButton"value="Set Excused"></Button>*/}
                 </div>
                 <div className="attendForm">
@@ -222,11 +197,25 @@ class AttendanceForm extends Component{
                 {this.members.map((member)=> {
                     let tally = -1;
                     if (this.state.currentMap !== (null || undefined)&& !this.state.newMap) {
-                        tally = this.state.currentMap[member[1]];
+                        if (this.state.currentMap[member[1]]===undefined){
+                            tally =-1;
+                        }
+                        else{
+                            tally = this.state.currentMap[member[1]];
+                        }
                     }
                     else if (this.state.newMap){
-                        tally=this.state.newForm[member[1]];
+                        if (this.state.currentMap[member[1]]===undefined){
+                            tally =-1;
+                        }
+                        else{
+                            tally=this.state.newForm[member[1]];
+                        }
                     }
+                    else{
+                        tally=-1;
+                    }
+
                     let total=this.tally.getTree("total",member[1]);
                    return <AttendeeSquare
                                     tally={tally} total={total}

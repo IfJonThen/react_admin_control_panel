@@ -123,7 +123,7 @@ class RosterForm extends Component{
                         </input>
                     </div>
                 </div>
-                <Button onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Add</Button>
+                <Button cname="actionBtn" onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Add</Button>
             </Form>
             </div>
 
@@ -216,14 +216,14 @@ export class RosterEdit extends Component{
     render(){
         return (
             <div className="splitform">
-                <Form>
+                <Form className="entryForm">
                     <div className="form-group">
                     <label id="editFormLabel">Remove Member</label>
                     <select className="form-control" id="selectRemove">
                         {this.props.right}
                     </select>
-                        <Button onClick={this.handleRemoveBtn} id="removebtn" value="Remove"/>
-                        <Button onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
+                        <Button cname="actionBtn"onClick={this.handleRemoveBtn} id="removebtn" value="Remove"/>
+                        <Button cname="actionBtn"onClick={this.handleRefreshBtn} id="refreshbtn" value="Refresh"/>
 
                     </div>
 
