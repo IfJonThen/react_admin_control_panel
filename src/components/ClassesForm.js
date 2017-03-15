@@ -44,12 +44,12 @@ class ClassesForm extends Component{
                 quarterItem[temp["quarter"]]=this.props.default;
                 let userItem={};
                 console.log(temp["user"]);
-                userItem[temp["user"]]=quarterItem;
+                // userItem[temp["user"]]=quarterItem;
                 console.log(JSON.stringify(userItem));
                 let classItem={};
                 console.log(classItem);
                 this.updateLists(temp["quarter"],temp["user"]);
-                jLib.pushToDB("Schedules",userItem);
+                jLib.pushToDB("Schedules/"+temp["user"],quarterItem);
             }
             else{
                 alert("You have unfilled fields");
@@ -261,10 +261,16 @@ export class ClassView extends Component{
     handleSend(event){
         event.preventDefault();
         console.log("send clicked!!");
-        domtoimage.toJpeg(document.getElementById('getThisImage'), { height:1200,width:1200,quality: 0.95 })
+        let t= document.getElementsByClassName("modal-content");
+        let d= document.getElementById("getThisImage");
+        console.log(t[0]);
+        console.log(d);
+        domtoimage.toJpeg(t[0], {
+        // domtoimage.toJpeg(document.getElementById('getThisImage'), {
+            height:800,width:600,quality:0.95,bgcolor:"white" })
             .then(function (dataUrl) {
                 var link = document.createElement('a');
-                link.download = 'email.jpeg';
+                link.download = 'email'+jLib.getQuarter()+'.jpeg';
                 link.href = dataUrl;
                 link.click();
             });

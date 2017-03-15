@@ -6,7 +6,6 @@ import RosterForm,{RosterEdit} from './RosterForm';
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
 
-
 class RosterView extends Component{
 
     /*RosterView()::constructor()
@@ -42,25 +41,6 @@ class RosterView extends Component{
     componentWillUnMount(){
 
     }
-
-    /*RosterView()::pullDB()
-    * pulls data from database via re-base.fetch()
-    * sets "base" state and "count" state
-    * may change to syncState
-    *  */
-    // pullDB(){
-    //     base.fetch('users', {
-    //         context: this, asArray: true,
-    //     }).then(data=>
-    //     {
-    //         this.count=data.length;
-    //         // console.log("RosterView::pullDB():: data contains " + ((data)=>{if (data !== null){return "data";}}));
-    //         this.setState({base:data,count:this.count});
-    //     }).catch(error=>{
-    //         console.log("RosterView:constructor: fetch error");
-    //     });
-    //     console.log("RosterView::constructor::this.state.count " + this.state.count);
-    // }
 
     /*RosterView()::loadSections()
     * helper function
@@ -100,31 +80,6 @@ class RosterView extends Component{
     handleSelectA(){
         this.setState({pane:"add"});
     }
-
-    /*RosterView()::pullList() Not in Use
-     * generates textNodes for RosterEdit select form based on the number of children in state.base
-     * */
-    // pullList(){
-    //     let v = null;
-    //     var t =document.getElementById("selectRemove");
-    //     console.log("RosterView::pullList:: this.state.base:" +this.state.base);
-    //     if (t !=null) {
-    //         for (let j = 0; j < this.state.count; j++) {
-    //             if (typeof this.state.base[j] !== 'string') {
-    //                 v = document.createElement("option");
-    //                 if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
-    //                     v.appendChild(document.createTextNode(this.state.base[j]['first'] + this.state.base[j]['last']));
-    //                     v.value = j + 1;
-    //                     t.appendChild(v);
-    //                 }
-    //                 else{
-    //                     console.log("RosterView::pullList()...no children added");
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     console.log("RosterForm: pullList: added "+this.state.count +" options");
-    // }
 
     /*
     * RosterEdit()::pullList2

@@ -15,9 +15,10 @@ import RosterView from './RosterView';
 import LogInControl from './LogInControl';
 import NavBar from './NavBar';
 import {base} from '../static/js/firebaseRef';
+import firebase from 'firebase';
 import {login,logout} from '../static/js/firebaseAuth';
 /*eslint no-unused-vars: "off"*/
-
+import {AuthService} from '../utils/AuthService';
 class App extends Component {
     constructor(){
         super();
@@ -50,30 +51,58 @@ class App extends Component {
     * checks if user is logged in
     * */
     logInCheck(event){
-       this.checkLogIn(event);
-       //
-        this.setState({isLoggedIn:true,loc:"home"});
-        //
+       //Note: The user's password is NOT the password used to access the user's email account.
+        // The email address serves as a unique identifier for the user, and the password is used to access the user's account in your Firebase project.
+
+        this.checkLogIn(event);
+       //  firebase.auth().signInWithEmailAndPassword().catch(function(error){
+       //      let errorCode = error.code;
+       //      let errorMessage = error.message;
+       //      switch(errorCode){
+       //          case 'auth/wrongpassword':
+       //              alert("incorrect password");
+       //              break;
+       //          case 'auth/wrongpassword':
+       //              alert("incorrect password");
+       //              break;
+       //          case 'auth/wrongpassword':
+       //              alert("incorrect password");
+       //              break;
+       //          case 'auth/wrongpassword':
+       //              alert("incorrect password");
+       //              break;
+       //      }
+       // });
+
         let login=false;
         for (let i =0; i<this.state.cred.length;i++){
-            // console.log(cred);
             if (this.state.cred[i]["username"]===event[0]&& this.state.cred[i]["password"]===event[1]){
-                alert("Login Sucessful");
-                this.setState({isLoggedIn:true,loc:"home"});
                 login=true;
             }
         }
-        if (!login) {
+        if (login){
+            alert("Login Successful");
+            this.setState({isLoggedIn:true,loc:"home"});
+
+        }
+        else{
             alert("Incorrect Username and Password");
+
         }
+       //  this.setState({isLoggedIn:true,loc:"home"});
+        //
+
+        if (!login) {
         }
-    checkLogIn(){
+    }
+    checkLogIn(event){
         // alert(cred);
         base.fetch("cabinet", {
             context: this, asArray: true,
         }).then(data=>
         {
-            // alert(data.length);
+
+                // alert(data.length);
            this.setState({cred:data});
         }).catch(error=>{
             console.log("App::checkLogIn():: fetch error");

@@ -9,15 +9,28 @@ export default class Email extends Component{
     constructor(props) {
         super(props);
         this.func=this.func.bind(this);
+        this.uid=jLib.selectUID(this.props.user);
     }
 
     func(course){
         let temp;
         if (this.props.classRef[course]!==undefined){
             temp=(this.props.classRef[course]).map((data)=>{
-                return (
-                    <tr><td key={data} className="emailData">{data}
-                    </td></tr>);
+                console.log(this.uid);
+                if (data ===this.uid){
+
+                }
+                else {
+                    return (
+                        <tr>
+                            <td key={data+"grade"} className="gradeData">A
+                            </td>
+                            <td key={data} className="nameData">{data}
+                            </td>
+                            <td key={data + "email"} className="emailData">{data + 's email address'}
+                            </td>
+                        </tr>);
+                }
             })
             return temp;
         }
@@ -39,7 +52,7 @@ export default class Email extends Component{
                                 t=this.props.classRef[course];
                             }
                             return (<table key={course} className="table">
-                                <thead><tr><th scope="row">{course}</th></tr></thead>
+                                <thead className="thead-inverse"><tr><th scope="row">{course}</th></tr></thead>
                                 <tbody>
 
                                     {this.func(course)}

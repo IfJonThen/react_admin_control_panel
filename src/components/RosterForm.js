@@ -5,15 +5,9 @@ import {Button} from './ButtonGroup';
 import Rebase from 're-base';
 /*eslint no-unused-vars: "off"*/
 import {firebaseAuth} from '../static/js/firebaseAuth';
+import {base} from '../static/js/firebaseRef';
 
 //brings in the Rebase object
-var fbase = Rebase.createClass({
-    apiKey: "AIzaSyDbA2-3W4c4a1Fdl9QPG_KHMJGIRSn_ORU",
-    authDomain:"classexaminer.firebaseapp.com",
-    databaseURL:"https://classexaminer.firebaseio.com",
-    storageBucket:"classexaminer.appspot.com",
-    messagingSenderId:"150507520756"
-});
 class RosterForm extends Component{
 
     /*RosterForm::constructor()
@@ -74,7 +68,7 @@ class RosterForm extends Component{
     componentDidMount() {
         // console.log("RosterForm::componentDidMount()::");
         // var firebaseRef = firebase.database().ref("Names");
-        fbase.syncState("users",{
+        base.syncState("users",{
             context:this,
             state:'base',
             asArray:true
@@ -142,7 +136,7 @@ export class RosterEdit extends Component{
         this.pullList = this.pullList.bind(this)
     }
     fetchData(){
-        fbase.fetch('users', {context:this,asArray:true,
+        base.fetch('users', {context:this,asArray:true,
             then(data){
                 if (this.state.count!==data.length){
                     this.setState({base:data,count:data.length});
