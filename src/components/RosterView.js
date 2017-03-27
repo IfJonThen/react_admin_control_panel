@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../static/css/MainView.css';
 import {Button} from './ButtonGroup';
 import RosterForm,{RosterEdit} from './RosterForm';
+import CustomForm from './Form';
+import {Form} from 'react-bootstrap';
 
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
@@ -16,9 +18,8 @@ class RosterView extends Component{
     constructor(props){
       super(props);
       this.count=0;
-      this.state={pane:"add",count:0,base:[]};
-      this.handleSelectA=this.handleSelectA.bind(this);
-      this.handleSelectR=this.handleSelectR.bind(this);
+      this.state={pane:"addR",count:0,base:[]};
+      this.handleSelect=this.handleSelect.bind(this);
       this.onChange=this.onChange.bind(this);
       this.pullList2=this.pullList2.bind(this);
       // this.pullDB=this.pullDB.bind(this);
@@ -67,20 +68,9 @@ class RosterView extends Component{
      * handler function for the Remove Button
      * changes state to "remove"
      * */
-    handleSelectR(event){
-        // console.log('RosterView::handleSelectRemove() clicked');
-        this.setState({pane:"remove"});
-        // this.pullList();
+    handleSelect(event){
+        this.setState({pane:event.target.id});
     }
-
-    /*RosterView()::handleSelectA()
-     * handler function for the AddButton
-     * changes state to "add"
-     * */
-    handleSelectA(){
-        this.setState({pane:"add"});
-    }
-
     /*
     * RosterEdit()::pullList2
     * generates children for RosterEdit select form based on the number of children in state.base
@@ -90,7 +80,7 @@ class RosterView extends Component{
         let v = [];
         var t =document.getElementById("selectRemove");
         // console.log("RosterView::pullList2:: this.state.base:" +this.state.base);
-        for(let j =0; j<this.state.count;j++){
+        for(let j =0; j<this.state.base.length;j++){
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
                     let l = this.state.base[j]['first']+ " "+ this.state.base[j]['last'] +' - '+ this.state.base[j]['quarter']+" "+this.state.base[j]['year'];
@@ -113,22 +103,31 @@ class RosterView extends Component{
      */
     render() {
         let left =
-            <div className="RosterPane">
-                <div className="row">
-                    <Button cname="paneBtn"  onClick={this.handleSelectA}id="Add" value="Add Member"/>
+            <div className="leftPane">
+                <div className="paneRow">
+                    <Button cname="paneBtn"  onClick={this.handleSelect}id="addR" value="Add Member"/>
                 </div>
-                <div className="row">
-                    <Button cname="paneBtn"  onClick={this.handleSelectR}id="Remove" value="Remove Member"/>
+                <div className="paneRow">
+                    <Button cname="paneBtn"  onClick={this.handleSelect}id="removeR" value="Remove Member"/>
+                </div>
+                <div className="paneRow">
+                    <Button cname="paneBtn"  onClick={this.handleSelect}id="read" value="Read Transcripts"/>
                 </div>
             </div>;
         let right =null;
-        if (this.state.pane==="add"){
+        if (this.state.pane==="addR"){
             // let count= this.onChange();
             right= <RosterForm count={this.state.base}/>;
         }
-        else{
+        else if (this.state.pane==='removeR'){
             let v = this.pullList2();
             right=<RosterEdit right={v} count={this.state.count}/>;
+        }
+        else{
+            let v = this.pullList2();
+            let ar = MemID();
+            let l = [ar,selectOptions(v)];
+            right=<CustomForm data={FormData(l,v)}right={v}><FormData select={v}/></CustomForm>;
         }
         return (
             <div>
@@ -158,3 +157,44 @@ function SplitPane(props){
 }
 
 export default RosterView;
+
+
+function FormData(data,options){
+    return (
+        <div className="wut">
+<Form className="entryForm"id="classesform">
+    <MemID/>
+    <div className="form-group row">
+        <div className="col-sm-12 col-form-label">
+            <p style={{color:'black'}}> OR </p>
+        </div>
+    </div>
+    <selectOptions options={options}/>
+    <div className="form-group row">
+        <input style={{marginLeft:"26%",marginTop:"10px",marginBottom:"13px"}} type="file" id="myFile"/>
+    </div>
+    <Button cname="actionBtn" id="insertmemberbtn" value="Add">Go</Button>
+</Form>
+</div>
+    );
+}
+function MemID(){
+    return (<div className="form-group row">
+        <label className="col-sm-4 col-form-label">Enter member ID</label>
+        <div className="col-sm-8">
+            <input type="name" className="form-control" id="inputID" placeholder="Member ID">
+            </input>
+        </div>s
+    </div>);
+}
+function selectOptions(props){
+    return  (<div className="form-group row">
+        <label className="col-sm-4 col-form-label">Look up user</label>
+        <div className="col-sm-8">
+            <select defaultValue="" className="form-control" id="selectUser">
+                <option/>
+                {this.props.children}
+            </select>
+        </div>
+    </div>);
+}

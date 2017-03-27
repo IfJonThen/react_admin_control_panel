@@ -35,7 +35,6 @@ class NavBar extends React.Component{
                 break;
             case "nav3":
                 location="database";
-                //go to database;
                 break;
             case "nav4":
                 location="classes";

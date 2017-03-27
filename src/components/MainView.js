@@ -71,6 +71,7 @@ class MainView extends Component{
         });
         console.log("MainView::helperFetch::memList"+ this.state.memList);
     }
+
     classUpdate(){
         this.setState({loc:"class"});
         // browserHistory.push('home');
@@ -120,11 +121,11 @@ class MainView extends Component{
                 break;
         }
        return (<div className="mainView">
-           <Grid fluid={true}>
+           {/*<Grid fluid={true}>*/}
                <div className="MainSquare">
                    {main}
                </div>
-           </Grid>
+           {/*</Grid>*/}
        </div>);
     }
 }

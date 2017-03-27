@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../static/css/MainView.css';
 import {Button} from './ButtonGroup';
 import ClassesForm,{ClassView} from './ClassesForm';
-import {classDB, getUID} from '../static/js/functions';
+import {classDB, getUID,sortMembers} from '../static/js/functions';
 
 import {base} from "../static/js/firebaseRef";
 /*eslint no-unused-vars: "off"*/
@@ -41,12 +41,6 @@ class ClassTabView extends Component{
             state:'base',
             asArray:true
         });
-
-    }
-    componentWillReceiveProps(){
-        // console.log("ClassTabView::ComponentWillReceiveProps  ");
-    }
-    componentWillUnMount(){
 
     }
     onUpload(schedule){
@@ -160,6 +154,9 @@ class ClassTabView extends Component{
         let v = [];
         var t =document.getElementById("selectRemove");
         // console.log("ClassTabView::pullList2:: this.state.base:" +this.state.base);
+        // let unsorted=this.state.base;
+        // unsorted=sortMembers(unsorted,undefined);
+        // this.state.base=unsorted;
         for(let j =0; j<this.state.count;j++){
             if((this.state.base[j]['first']&& this.state.base[j]['last'])!==(null||undefined)) {
                 if (typeof this.state.base[j] !== 'string') {
@@ -203,17 +200,17 @@ class ClassTabView extends Component{
      */
     render() {
         let left =
-            <div className="RosterPane">
-                <div className="row">
-                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="UpdateBtn" value="Update Classes"/>
+            <div className="leftPane">
+                <div className="paneRow">
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="UpdateBtn" value="Add Classes"/>
                 </div>
-                <div className="row">
-                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="AddCBtn" value="Add Classes"/>
+                <div className="paneRow">
+                    <Button cname="rosterbtn paneBtn" onClick={this.handleSelectA}id="AddCBtn" value="Update Classes"/>
                 </div>
-                <div className="row">
+                <div className="paneRow">
                     <Button cname="rosterbtn paneBtn" onClick={this.handleSelectR}id="GetByMemBtn" value="Get Schedules by Member"/>
                 </div>
-                <div className="row">
+                <div className="paneRow">
                     <Button cname="rosterbtn paneBtn" onClick={this.handleSelectC}id="GetByClassBtn" value="Get Schedules by Class"/>
                 </div>
             </div>;

@@ -30,33 +30,75 @@ btn:active{
 .dropdown-content{
   min-width:100px;
   position:absolute;
-  box-shadow:0px 10px 15px 0px rgba(0,0,0,0.2);
+  box-shadow:0 15px 15px 0 rgba(2,5,2,.5);
   z-index:1;
   top:41px;
+  right:1px;
   border-bottom: 2px black solid;
   border-left: 2px black solid;
   border-right: 2px black solid;
-  background-color: grey;
+  background-color: rgba(200,200,200,1);
   display:none;
 }
 .dropdown{
   /*right:0;*/
+  /*margin-right:1px;*/
   float:right;
   position:relative;
-  display:inline;
+  /*display:inline;*/
   /*border:red 2px solid;*/
   width:100px;
+  bottom:200px;
   /*height:200px;*/
 }
 .ddbtn{
   width:inherit;
   background-color:rgba(0,0,0,0.0);
-  color:white;
+  color:black;
+  font-weight:bold;
+  border: 0px solid transparent;
 }
-.dropdown:hover .dropdown-content{
-  display:block;
+.dropdown:hover .dropdown-content {
+  display: block;
+  /*}*/
 }
-.dropdown-content:nth-child(1){
-  border-top:1px white inset;
-  background-color:red;
+.ddbtn:nth-child(3){
+  width:100%;
+  border-top:1px black inset;
+  /*background-color:red;*/
+}
+@media only screen and (min-width:80em){
+  .navbtn{
+    padding:10px 15px;
+    border:1px solid rgba(0,0,0,0.7);
+    float:left;
+    /*padding-left:10px;*/
+    background-color:rgba(0, 0, 0, 0.7);
+    border-radius: 0px;
+    color:rgba(255,255,255,1);
+  }
+  .ddbtn:nth-child(3){
+    width:100%;
+    border-top:1px black inset;
+    /*background-color:red;*/
+  }
+
+  .dropdown{
+    /*right:0;*/
+    margin-right:1px;
+    float:right;
+    position:relative;
+    display:inline;
+    /*border:red 2px solid;*/
+    width:100px;
+    top:0;
+    /*height:200px;*/
+  }
+  .ddbtn{
+    width:inherit;
+    background-color:rgba(0,0,0,0.0);
+    color:black;
+    font-weight:bold;
+    border: 0px solid transparent;
+  }
 }

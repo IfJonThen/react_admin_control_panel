@@ -61,3 +61,16 @@
     padding:1px 12px;
     margin: 4px 2px 4px 2px;
 }
+@media only screen and (max-width:40em) {
+    .attendSquares{
+        float:left;
+        width:100%;
+        height:100%;
+        padding:0px 0px;
+        margin: 4px 0px 4px 0px;
+    }
+    .attendanceBtn{
+        height:50px;
+    }
+
+}

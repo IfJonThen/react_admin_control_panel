@@ -176,17 +176,30 @@ export var getQuarter=()=>{
     //     });
     // }
 // }
-export var merge = (a,c,map)=>{
+export var merge = (a,c,selection,map)=>{
     let answer =[];
     while(a.length >0 && c.length>0){
-        if (map[a[0][1]]>= map[c[0][1]]){
-            answer.push(a[0]);
-            a=a.slice(1);
+        if (map===undefined){
+            if (a[0]<= c[0]){
+                answer.push(a[0]);
+                a=a.slice(1);
+            }
+            else{
+                answer.push(c[0]);
+                c=c.slice(1);
+            }
         }
         else{
-            answer.push(c[0]);
-            c=c.slice(1);
+            if (map[a[0][1]]>= map[c[0][1]]){
+                answer.push(a[0]);
+                a=a.slice(1);
+            }
+            else{
+                answer.push(c[0]);
+                c=c.slice(1);
+            }
         }
+
     }
     while (a.length>0){
         answer.push(a[0]);
@@ -245,7 +258,7 @@ export var formValidation=()=>{
     if (year!==""){
         let intYear=parseInt(year,10);
         console.log(intYear);
-        if (intYear<=2013|| intYear>=2020){
+        if (intYear<=2012|| intYear>=2020){
             y= false;
         }
         else{
@@ -320,9 +333,11 @@ export var pushToDB=(endpoint,item)=>{
         data:item,
         then(err){
             if (!err){
+                alert("Push Successful!");
             }
             else{
                 console.log(err);
+                alert("Push Unsuccessful!");
             }
         }
     });
@@ -343,3 +358,13 @@ export var fetchFromDB=(endpoint,context)=>{
     });
     return context;
 };
+export var getHttp=(url,callback)=>{
+    var xmlHttp=new XMLHttpRequest();
+    xmlHttp.onreadystatechange= function(){
+        if (xmlHttp.readyState===4 && xmlHttp.status ==200){
+            callback(xmlHttp.responseText);
+        }
+    }
+    xmlHttp.open("GET",url,true);
+    xmlHttp.send(null);
+}

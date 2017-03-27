@@ -38,6 +38,7 @@ export default class Email extends Component{
     render(){
         console.log("ClassList is "+ this.props.classList);
         console.log("ClassRef is "+ JSON.stringify(this.props.classRef));
+        console.log("GPA"+this.props.gpa);
         let cList=this.props.classList;
         let cRef=this.props.classRef;
 

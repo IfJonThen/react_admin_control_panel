@@ -70,3 +70,20 @@ background-color:rgba(0,0,0,0.3);
   border-radius:3px;
   box-shadow:3px 1px rgba(0,0,255,0.5);
 }
+
+@media only screen and (max-width:40em) {
+  h1{
+    font-size:30px;
+  }
+  .MainSquare{
+    margin-top:43px;
+    margin-bottom:43px;
+    border:black 0px solid;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    height:auto;
+    /*background-color:rgba(0,0,0,0.3);*/
+  }
+
+}
