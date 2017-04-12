@@ -6,6 +6,7 @@ import {toDayte,getQuarter,getUID,getSelectText,sortMembers} from '../static/js/
 import {login,firebaseAuth} from '../static/js/firebaseAuth';
 import update from 'immutability-helper';
 import {base} from '../static/js/firebaseRef';
+import Toggle from 'react-bootstrap-toggle';
 /*eslint no-unused-vars: "off",no-use-before-define:"off",no-direct-mutation-state:"off"*/
 
 class AttendanceForm extends Component{
@@ -21,20 +22,25 @@ class AttendanceForm extends Component{
         this.state={undergrad:[],tally:{},weekSelect:(props.currentWeek.length-1||1),
             tallyMap:props.currentWeek,
             currentMap:(props.currentWeek[(props.currentWeek.length-1)]),
-            newMap:false,newForm:{}};
+            newMap:false,newForm:{},toggleActive: true };
         this.onSave=this.onSave.bind(this);
         this.onChange=this.onChange.bind(this);
         this.setExcused=this.setExcused.bind(this);
         this.fetchTotal=this.fetchTotal.bind(this);
+        this.onToggle = this.onToggle.bind(this);
+        this.toggleHandler=this.toggleHandler.bind(this);
         this.members=[];
         this.tally=  new Tally();
         if (this.state.currentMap===(null||undefined)){
             this.state.currentMap={};
+            console.log(this.props.members.length);
             for (let i =0;i<this.props.members.length;i++){
                 this.state.currentMap[this.props.memId[i]]=-1;
             }
         }
         for (let i =0;i<this.props.members.length;i++){
+            console.log("attendance form cosntructor ::"+this.props.members.length);
+
             this.members.push([this.props.members[i],this.props.memId[i]]);
             this.tally.updateTree("individual",this.props.memId[i],-1);
             this.tally.updateTree("new",this.props.memId[i],-1);
@@ -47,6 +53,24 @@ class AttendanceForm extends Component{
         // console.log(JSON.stringify(this.tally.getT()));
         let l = {email:"pikahatonjon@gmail.com",password:"password"};
         login(l);
+        this.members=sortMembers(this.members,undefined);
+
+    }
+    onToggle() {
+        this.setState({ toggleActive: !this.state.toggleActive });
+        this.toggleHandler();
+
+    }
+    toggleHandler(){
+        let choice=undefined;
+        if (!this.toggleActive){
+            for (let mem=0;mem<this.members.length;mem++){
+                this.fetchTotal(this.members[mem][1],this.state.weekSelect);
+            }
+            choice=this.tally.getT("total");
+        }
+        this.members=sortMembers(this.members,choice);
+
     }
     fetchTotal(id,week){
         this.tally.setTree("total",id);
@@ -98,13 +122,7 @@ class AttendanceForm extends Component{
                 this.setState({newMap:temp,weekSelect: selectedText, currentMap: this.state.tallyMap[selectedText]});
                this.tally.copyT(this.state.currentMap);
             }
-            for (let mem=0;mem<this.members.length;mem++){
-                // console.log(this.members[mem]);
-                this.fetchTotal(this.members[mem][1],selectedText);
-            }
-            console.log(this.tally.getT("total"));
-            this.members=sortMembers(this.members,this.tally.getT("total"));
-
+            this.toggleHandler();
         }
     }
     setExcused(){
@@ -139,9 +157,6 @@ class AttendanceForm extends Component{
         }
         let l ={};
         let t = this.props.currentWeek.length;
-        // console.log("props\n"+ JSON.stringify(this.tally.getT("individual")));
-        // console.log(this.state.weekSelect);
-        // l[this.state.weekSelect]=this.tally.getT();
         if (!this.state.newMap){
             l[this.state.weekSelect]=this.state.currentMap;
             this.setState({
@@ -179,10 +194,11 @@ class AttendanceForm extends Component{
         // console.log("Render()::::"+this.state.weekSelect);
         return(
             <div className="attendView">
-                <div className="row">
+                <div className="row" style={{marginRight:"0px"}}>
                 <h1 style={{color:"black"}}>Attendance <span style={{color:"red"}}>{k}</span></h1>
+
                 </div>
-            <div className="row">
+            <div className="row" style={{marginRight:"0px"}}>
                 <select defaultValue={"Week "+(this.state.weekSelect+1)} onChange={this.onChange}id="weekselect">
                     {temp.map((val)=>{
                         return (<option key={val}>Week {val}</option>)
