@@ -33,8 +33,17 @@ class RosterForm extends Component{
         let quarter = document.getElementById("selectPledgeYear");
         quarter = quarter.options[quarter.selectedIndex].text;
         let year = document.getElementById("inputYear").value;
+        let email = document.getElementById("inputEmail").value;
+        let grad = document.getElementById("selectGrad");
+        grad=grad.options[grad.selectedIndex].text;
+        if (grad==="Yes"){
+            grad=true;
+        }
+        else{
+            grad=false;
+        }
 
-        this.addToDB(fname,lname,quarter,year);
+        this.addToDB(fname,lname,quarter,year,grad,email);
         // base.update('classes',{
         //     data:{uid: {"jyuen":{f2k16:['CS 161','Informatics 133','Informatics 124']}}},
         //     then(err){
@@ -50,11 +59,11 @@ class RosterForm extends Component{
     * helper function. takes arguments and places them into firebase
     * sends an Alert(for now upon success)
     * */
-    addToDB(fname,lname,quarter,year){
+    addToDB(fname,lname,quarter,year,grad,email){
         // console.log("RosterForm add "+ this.count);
         let t = {};
         if (this.state.base!==undefined) {
-            t= {first:fname,last:lname,quarter:quarter,year:year};
+            t= {first:fname,last:lname,quarter:quarter,year:year,graduated:grad,email:email};
             this.setState({base:this.state.base.concat([t])});
         }
     }
@@ -117,6 +126,23 @@ class RosterForm extends Component{
                         </input>
                     </div>
                 </div>
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">Email</label>
+                    <div className="col-sm-8">
+                        <input type="name" className="form-control" id="inputEmail" placeholder="Email">
+                        </input>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label className="col-sm-4 col-form-label">Graduated</label>
+                    <div className="col-sm-8">
+                        <select defaultValue={"No"} className="form-control" id="selectGrad">
+                            <option>Yes</option>
+                            <option>No</option>
+                            </select>
+                    </div>
+                </div>
+
                 <Button cname="actionBtn" onClick={this.onButtonClick} id="insertmemberbtn" value="Add">Add</Button>
             </Form>
             </div>

@@ -143,7 +143,7 @@ class App extends Component {
             }
         }
         else{
-            document.body.style.backgroundColor = "rgba(255,255,255,1)";
+            document.body.style.backgroundColor = "rgba(119,119,119,0.5)";
             navbar = <LogInControl isLoggedin={this.logInCheck}/>
         }
         return (<div className="App">

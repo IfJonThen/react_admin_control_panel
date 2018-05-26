@@ -41,6 +41,10 @@ class NavBar extends React.Component{
                 break;
             case "nav5":
                 break;
+            case "nav5.1":
+                alert("Alpha-testing turned on");
+                location="alpha";
+                break;
             case "nav5.3":
                 alert("logoutbutton clicked");
                 location="logout";
@@ -65,7 +69,7 @@ class NavBar extends React.Component{
                 <div className="dropdown">
                     <Button id="nav5"cname="navbtn dropbtn"value="Settings"/>
                     <div className="dropdown-content">
-                        <Button id="nav5.1"cname="ddbtn"value="placeholder"/>
+                        <Button id="nav5.1" onClick={this.handleNavClick} cname="ddbtn" value="demo"/>
                         <Button id="nav5.2"cname="ddbtn"value="placeholder"/>
                         <Button id="nav5.3" onClick={this.handleNavClick} cname="ddbtn"value="LogOut"/>
                     </div>

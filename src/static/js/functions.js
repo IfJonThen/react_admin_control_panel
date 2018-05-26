@@ -368,3 +368,71 @@ export var getHttp=(url,callback)=>{
     xmlHttp.open("GET",url,true);
     xmlHttp.send(null);
 }
+// let parseFile = (file) => {
+//     console.log("__Starting parseFile__");
+//     // console.log(ICAL.parse(file));
+//     let schedule = {};
+//     let jCal = ICAL.parse(file);
+//     let comp = new ICAL.Component(jCal);
+//     let veventArr = null;
+//     try {
+//         veventArr = comp.getAllSubcomponents("vevent");
+//     } catch (e) {
+//         console.log("error in getting sub components");
+//     }
+//
+//     if (veventArr != null) {
+//         let propList = ['rrule', 'location', 'dtstart', 'summary', 'dtend'];
+//         for (let index = 0; index < veventArr.length; index++) {
+//             // for (let index = 0; index < 1; index++) {
+//             let vevent = veventArr[index];
+//             let v = vevent.getFirstPropertyValue('summary');
+//             if (v.substr(0, 5) === 'Final') {
+//                 console.log(v);
+//             }
+//             else {
+//                 let k = jLib.getClassFormKey(v);
+//                 v = k;
+//                 if (schedule[v] === undefined) {
+//                     schedule[v] = {};
+//                     propList.map((property) => {
+//                         let temp = "";
+//                         let value = vevent.getFirstPropertyValue(property);
+//                         let key = "";
+//                         switch (property) {
+//                             case 'rrule':
+//                                 value = value.toJSON()['byday'];
+//                                 key = "days";
+//                                 break;
+//                             case 'dtstart':
+//                                 value = value.toJSON();
+//                                 value = value["hour"] + ":" + value["minute"];
+//                                 key = "start";
+//                                 break;
+//                             case 'summary':
+//                                 value = value.split(' ');
+//                                 temp = value[0] + " " + value[1];
+//                                 value = temp;
+//                                 key = "name";
+//                                 break;
+//                             case 'dtend':
+//                                 value = value.toJSON();
+//                                 value = value["hour"] + ":" + value["minute"];
+//                                 key = "end";
+//                                 break;
+//                             default:
+//                                 key = property;
+//                                 break;
+//                         }
+//                         schedule[v][key] = value;
+//                     });
+//                 }
+//                 else {
+//                     // console.log('saved a cycle!!!');
+//                 }
+//             }
+//         }
+//     }
+//     console.log("__Finishing parseFile__");
+//     return schedule;
+// };

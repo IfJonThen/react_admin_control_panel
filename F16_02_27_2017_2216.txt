@@ -1,0 +1,68 @@
+Events
+------
+
+Summary:     IN4MATX 133  LEC A (37070)
+Start:       2016-09-22 12:30:00-07:00
+End:         2016-09-22 13:50:00-07:00
+Location:    SSL 228
+LastModified:
+
+Summary:     COMPSCI 132  LEC A (34120)
+Start:       2016-09-22 15:30:00-07:00
+End:         2016-09-22 16:50:00-07:00
+Location:    BS3 1200
+LastModified:
+
+Summary:     COMPSCI 161  DIS 2 (34282)
+Start:       2016-09-22 18:00:00-07:00
+End:         2016-09-22 18:50:00-07:00
+Location:    ICS 174
+LastModified:
+
+Summary:     IN4MATX 133  DIS 2 (37072)
+Start:       2016-09-23 14:00:00-07:00
+End:         2016-09-23 14:50:00-07:00
+Location:    MSTB 110
+LastModified:
+
+Summary:     COMPSCI 161  LEC A (34280)
+Start:       2016-09-23 15:00:00-07:00
+End:         2016-09-23 15:50:00-07:00
+Location:    SSLH 100
+LastModified:
+
+Summary:     COMPSCI 132  DIS A6 (34126)
+Start:       2016-09-26 17:00:00-07:00
+End:         2016-09-26 17:50:00-07:00
+Location:    SSTR 101
+LastModified:
+
+Summary:     IN4MATX 115  LEC A (37030)
+Start:       2016-09-26 18:30:00-07:00
+End:         2016-09-26 19:50:00-07:00
+Location:    DBH 1100
+LastModified:
+
+Summary:     Final Exam for COMPSCI 161 LEC [34280]
+Start:       2016-12-05 16:00:00-08:00
+End:         2016-12-05 18:00:00-08:00
+Location:    SSLH 100
+LastModified:
+
+Summary:     Final Exam for COMPSCI 132 LEC [34120]
+Start:       2016-12-06 16:00:00-08:00
+End:         2016-12-06 18:00:00-08:00
+Location:    BS3 1200
+LastModified:
+
+Summary:     Final Exam for IN4MATX 133 LEC [37070]
+Start:       2016-12-09 10:30:00-08:00
+End:         2016-12-09 12:30:00-08:00
+Location:    SSL 228
+LastModified:
+
+Summary:     Final Exam for IN4MATX 115 LEC [37030]
+Start:       2016-12-09 19:00:00-08:00
+End:         2016-12-09 21:00:00-08:00
+Location:    DBH 1100
+LastModified:

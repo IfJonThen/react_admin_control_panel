@@ -131,7 +131,11 @@ p{
     max-width:100%;
     margin:0 0;
   }
+  .row{
+    margin-right:0px;
+  }
   .paneRow{
+    margin-right:0px;
     width:100%;
     float:left;
     display:block;

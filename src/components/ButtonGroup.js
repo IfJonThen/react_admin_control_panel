@@ -35,19 +35,26 @@ export class Button extends React.Component {
         );
     }
 }
-class ButtonGroup extends Component {
+export class ButtonGroup extends Component {
     constructor(props){
         super(props);
 
     }
-    renderButtons(i,j,k){
-        return (<Button cname={k}id={j} value={i}/>);
+    renderButtons(className,value,id,style){
+        return (<Button cname={className}id={id} value={value} style={style}/>);
     }
     render() {
+        let t= null;
+        for (let i =0;i<this.props.group;i++) {
+            if (t===null){
+                t = this.renderButtons(this.props.group[i]["className"], this.props.group[i]["id"], this.props.group[i]["value"], this.props.group[i]["style"]);
+            }
+            else{
+                t += this.renderButtons(this.props.group[i]["className"], this.props.group[i]["id"], this.props.group[i]["value"], this.props.group[i]["style"]);
+            }
+            }
         return (<div>
-                {this.renderButtons("Jon_Fall 2016",'jf16',null)}
-                {this.renderButtons("Max_Fall 2016",'mf16',null)}
-                {this.renderButtons("Gary_Fall 2016",'gf16',null)}
+                {t}
         </div>
         );
     }

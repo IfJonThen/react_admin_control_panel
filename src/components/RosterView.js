@@ -3,6 +3,7 @@ import '../static/css/MainView.css';
 import {Button} from './ButtonGroup';
 import RosterForm,{RosterEdit} from './RosterForm';
 import CustomForm from './Form';
+import RightPaneView from './RightPaneView';
 import {Form} from 'react-bootstrap';
 
 import {base} from "../static/js/firebaseRef";
@@ -36,13 +37,6 @@ class RosterView extends Component{
         });
 
     }
-    componentWillReceiveProps(){
-        // console.log("RosterView::ComponentWillReceiveProps  ");
-    }
-    componentWillUnMount(){
-
-    }
-
     /*RosterView()::loadSections()
     * helper function
     * makes a call to pullList, may remove in the future
@@ -102,14 +96,20 @@ class RosterView extends Component{
       * if state is remove, renders RosterEdit
      */
     render() {
+
         let left =
             <div className="leftPane">
                 <div className="paneRow">
                     <Button cname="paneBtn"  onClick={this.handleSelect}id="addR" value="Add Member"/>
                 </div>
                 <div className="paneRow">
+                    <Button cname="paneBtn"  onClick={this.handleSelect}id="editR" value="Edit Member"/>
+                </div>
+
+                <div className="paneRow">
                     <Button cname="paneBtn"  onClick={this.handleSelect}id="removeR" value="Remove Member"/>
                 </div>
+
                 <div className="paneRow">
                     <Button cname="paneBtn"  onClick={this.handleSelect}id="read" value="Read Transcripts"/>
                 </div>
@@ -123,11 +123,20 @@ class RosterView extends Component{
             let v = this.pullList2();
             right=<RosterEdit right={v} count={this.state.count}/>;
         }
+        else if (this.state.pane==='editR'){
+            let v = this.pullList2();
+            right=<RightPaneView right={v} count={this.state.count}/>;
+        }
         else{
             let v = this.pullList2();
             let ar = MemID();
-            let l = [ar,selectOptions(v)];
-            right=<CustomForm data={FormData(l,v)}right={v}><FormData select={v}/></CustomForm>;
+            // let l = [ar,selectOptions(v)];
+            right=<CustomForm right={v}>
+                {/*<FormData select={v}/>*/}
+                <MemID/>
+                <OrDivider/>
+                <selectOptions data={v}/>
+                    </CustomForm>;
         }
         return (
             <div>
@@ -164,11 +173,7 @@ function FormData(data,options){
         <div className="wut">
 <Form className="entryForm"id="classesform">
     <MemID/>
-    <div className="form-group row">
-        <div className="col-sm-12 col-form-label">
-            <p style={{color:'black'}}> OR </p>
-        </div>
-    </div>
+
     <selectOptions options={options}/>
     <div className="form-group row">
         <input style={{marginLeft:"26%",marginTop:"10px",marginBottom:"13px"}} type="file" id="myFile"/>
@@ -184,16 +189,24 @@ function MemID(){
         <div className="col-sm-8">
             <input type="name" className="form-control" id="inputID" placeholder="Member ID">
             </input>
-        </div>s
+        </div>
     </div>);
 }
-function selectOptions(props){
+function OrDivider(){
+    return (<div className="form-group row">
+        <div className="col-sm-12 col-form-label">
+            <p style={{color:'black'}}> OR </p>
+        </div>
+    </div>);
+}
+function selectOptions(data){
+    console.log(data);
     return  (<div className="form-group row">
         <label className="col-sm-4 col-form-label">Look up user</label>
         <div className="col-sm-8">
             <select defaultValue="" className="form-control" id="selectUser">
                 <option/>
-                {this.props.children}
+                {data}
             </select>
         </div>
     </div>);

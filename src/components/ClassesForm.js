@@ -1,9 +1,8 @@
 import React, {Component } from 'react';
 import '../static/css/ClassesView.css';
-import {Form,FormControl,Modal,ControlLabel,HelpBlock,FormGroup} from 'react-bootstrap';
+import {Form,FormControl,Modal,ControlLabel,HelpBlock,FormGroup,Checkbox} from 'react-bootstrap';
 import {Button} from './ButtonGroup';
 import ICAL from 'ical.js';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import * as jLib from '../static/js/functions';
 import Email from './Email';
 import {Typeahead} from 'react-bootstrap-typeahead'
@@ -12,7 +11,6 @@ import domtoimage from 'dom-to-image';
 /*eslint no-unused-vars: "off",  array-callback-return:"off",no-use-before-define:"off"*/
 
 class ClassesForm extends Component{
-
     /*ClassesForm::constructor()
     * binds the functions thanks es6 -_-
     * sets base state "count" equal to props.count
@@ -34,6 +32,7 @@ class ClassesForm extends Component{
         this.props.onUpload(arr);
         return true;
     }
+
     onButtonClick(event){
         event.preventDefault();
         let item={};
@@ -49,7 +48,7 @@ class ClassesForm extends Component{
                 let classItem={};
                 console.log(classItem);
                 this.updateLists(temp["quarter"],temp["user"]);
-                jLib.pushToDB("Schedules/"+temp["user"],quarterItem);
+                console.log(jLib.pushToDB("Schedules/"+temp["user"],quarterItem));
             }
             else{
                 alert("You have unfilled fields");
@@ -122,7 +121,6 @@ class ClassesForm extends Component{
 
     render(){
         let defaultChoice=this.props.default;
-
         // console.log(defaultChoice);
         let options=this.props.options;
         let emptyLabel=true;
@@ -166,7 +164,7 @@ class ClassesForm extends Component{
                     <div className="col-sm-8">
                         <input type="name" className="form-control" id="inputCYear" placeholder="Year">
                         </input>
-                        <span style={{right:"15px"}} className="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span style={{right:"15px"}} className="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"/>
                     </div>
                 </div>
                     <div className="form-group row">
@@ -190,7 +188,7 @@ class ClassesForm extends Component{
 export class ClassView extends Component{
     constructor(props) {
         super(props);
-        this.state = {users: [],classRef:{},classList:[],base:[],count:props.count, val:""};
+        this.state = {users: [],classRef:{},classList:[],base:[],checked:false,count:props.count, val:""};
         this.fetchData = this.fetchData.bind(this);
         this.fetchData();
         this.fetchFromDB=this.fetchFromDB.bind(this);
@@ -306,6 +304,7 @@ export class ClassView extends Component{
                     <div className="form-group row">
                         <div className="col-sm-12">
                             <label id="editFormLabel">{this.props.formLabel}</label>
+
                             <select className="form-control" id={this.props.selectID}>
                                {this.props.right}
                             </select>
@@ -331,7 +330,7 @@ export class ClassView extends Component{
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <Email user={this.state.val} classList={this.state.classList} classRef={this.state.classRef}/>
+                        <Email gpa={this.state.checked}user={this.state.val} classList={this.state.classList} classRef={this.state.classRef}/>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button cname="actionBtn" value="Send"onClick={this.handleSend}/>

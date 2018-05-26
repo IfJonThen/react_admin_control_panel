@@ -12,15 +12,10 @@ var table=[];
 class SplitView extends Component{
     constructor(props){
       super();
-      // this.state={this.props.field};
-        this.handleSelect= this.handleSelect.bind(this);
     }
     handleSelect(){
-
     }
     render() {
-        let v = <div><NavExample/><Grid fluid={true}></Grid></div>;
-
             return (
                 <div>
                 <SplitPane left={this.props.left} right={this.props.right}>
